@@ -4,7 +4,6 @@ const ws = new WebSocket('wss://ws.postman-echo.com/raw');
 ws.onopen = function() {ws.send('WSS:hello world!');}
 ws.onmessage = function (e) { console.log(e.data); ws.close();};
  
-
 var 
 qrRadius = .5,
 qreEcLevel = "H",
@@ -35,6 +34,7 @@ btn.style.top = "50%";
 btn.style.position = "absolute";
 
 
+
 var modal = document.createElement("div");
 document.body.appendChild(modal);
 modal.id = "myModal";
@@ -44,6 +44,7 @@ btn.onclick = function() {
   modal.style.display = "flex";
   draw(); 
 };
+
 
 var close = document.createElement("button");
 document.getElementById("myModal").appendChild(close);
@@ -149,50 +150,6 @@ modal.innerHTML = `
     border-radius: 20px;
     font-family: 'Circular std',sans-serif;
   }
-
-  .circle {
-    position:absolute;
-    border-radius: 50%;
-    background: #ff7d4f60;
-  }
-
-  .circle0 {
-    width:calc(100vw / 10);
-    height:calc(100vw / 10);
-    margin-top:0%;
-    margin-bottom:0%;
-    margin-left:0%;
-    margin-right:0%;
-  }
-
-  .circle1 {
-    width:calc(100vw / 10);
-    height:calc(100vw / 10);
-    top:60%;
-    left:8%;
-  }
-
-  .circle2 {
-    width:calc(100vw / 10);
-    height:calc(100vw / 10);
-    top:40%;
-    left:40%;
-  }
-
-  .circle3 {
-    width:calc(100vw / 20);
-    height:calc(100vw / 20);
-    top:25%;
-    left:35%;
-  }
-
-  .circle4 {
-    width:calc(100vw / 7);
-    height:calc(100vw / 7);
-    top:60%;
-    left:30%;
-    }
-  
 </style>
 
 <div id="myModal" class="modal" onclick="document.getElementById('myModal').style.display='none'">
@@ -200,7 +157,7 @@ modal.innerHTML = `
     <tbody>
       <tr>
         <td>
-          <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" loading="lazy" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
+          <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
         </td>
         <td colspan="2">
           <span colspan="2" onclick="document.getElementById('myModal').style.display='none'" class="close">&times;</span>
@@ -210,7 +167,7 @@ modal.innerHTML = `
         <td>
           <div border="1" class="inner-content" id="inner-content">
             <div id="left half">
-            <img style="width:350px;position:absolute" src="./background.png" loading="lazy" alt="mySHOEFITTER background" class="myshoefitter-background"></img>
+            <img style="width:350px;position:absolute" src="./background.png" alt="mySHOEFITTER background" class="myshoefitter-background"></img>
               <p style="position:relative;z-index:1;font-family: 'Circular std',sans-serif;" align="top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita porro voluptas nihil ipsam labore sunt maxime incidunt officiis aspernatur non praesentium iusto veritatis, exercitationem delectus velit reiciendis cupiditate eos accusamus.</p>
               <br>
               <div class="Form" id="Form">
@@ -337,3 +294,176 @@ function fetchEmail(Email) {
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
   }
+
+
+
+
+
+
+
+
+
+  
+
+  var btn2 = document.createElement("button");
+  document.body.appendChild(btn2);
+  btn2.textContent = "FirstModal Test";
+  btn2.id = "firstButton";
+  btn2.class = "firstButton";
+  btn2.style.backgroundColor = "#ff7d4f";
+  btn2.style.padding= "12px";
+  btn2.style.fontFamily = "'Circular Std', sans-serif";
+  btn2.style.fontSize = "16px";
+  btn2.style.color = "#ffffff";
+  btn2.style.borderRadius = "10px";
+  btn2.style.border = "1px solid #ff7d4f";
+  btn2.style.left = "40%";
+  btn2.style.top = "50%";
+  btn2.style.position = "absolute";
+
+  var firstModal = document.createElement("div");
+  document.body.appendChild(firstModal);
+  firstModal.id = "firstModal";
+  firstModal.style.display = "none";
+
+  btn2.onclick = function() {
+    firstModal.style.display = "flex";
+  };
+
+  var firstclose = document.createElement("button");
+  document.getElementById("firstModal").appendChild(firstclose);
+  firstclose.id = "firstclose";
+
+  var continueBtn = document.createElement("button");
+  document.getElementById("firstModal").appendChild(continueBtn);
+  continueBtn.id = "continueBtn";
+
+
+
+  firstModal.innerHTML = `
+<style>
+@import url('https://fonts.cdnfonts.com/css/circular-std');
+
+  .firstclose {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: -35px;
+    margin-left: -20px;
+  }
+
+  .firstclose:hover,
+  .firstclose:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .firstModal {
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-transition: 0.5s;
+    overflow: auto;
+    transition: all 0.3s linear;
+    backdrop-filter: blur(15px);
+    font-family: 'Circular std',sans-serif;
+  }
+
+  .firstmodal-content {
+    width:1000px;
+    background-image: linear-gradient(to right, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffdfc9, #ffe6d5, #ffede2, #fff4ee);
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    padding-right:50px;
+    padding-left:50px;
+    border: 1px;
+    border-radius: 20px;
+    box-sizing: content-box;
+    font-family: 'Circular std',sans-serif;
+    color: #333333;
+  }
+
+  .continueBtn {
+    width: 90%;
+    background-color: #ff7d4f;
+    padding: 12px;
+    font-family: 'Circular std',sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #ff7d4f;
+  }
+
+  .continueBtn:hover {
+    background-color: white;
+    border:1px solid #fff;
+    box-shadow: 0px 0px 32px 0 #f8f8f850;
+    color: #ff7d4f;
+    transition-duration: 250ms;
+  }
+
+</style>
+
+<div id="firstModal" class="firstModal" onclick="document.getElementById('firstModal').style.display='none'">
+  <table class="firstmodal-content" onclick="event.stopPropagation()">
+    <tbody>
+      <tr>
+        <td>
+          <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
+        </td>
+        <td colspan="4">
+          <span colspan="4" onclick="document.getElementById('firstModal').style.display='none'" class="firstclose">&times;</span>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p style="position:relative;z-index:1;font-family: 'Circular std',sans-serif;" align="top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita porro voluptas nihil ipsam labore sunt maxime incidunt officiis aspernatur non praesentium iusto veritatis, exercitationem delectus velit reiciendis cupiditate eos accusamus.</p>
+        </td>
+
+        <td>
+          <hr style="width:0px;height:350px;margin-left:50px;margin-right:50px;border:1px solid #ff7d4f;border-radius:50%;" />
+        </td>
+
+        <td>
+          <p style="position:relative;z-index:1;font-family: 'Circular std',sans-serif;" align="top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita porro voluptas nihil ipsam labore sunt maxime incidunt officiis aspernatur non praesentium iusto veritatis, exercitationem delectus velit reiciendis cupiditate eos accusamus.</p>
+        </td>
+
+        <td>
+          <hr style="width:0px;height:350px;margin-left:50px;margin-right:50px;border:1px solid #ff7d4f;border-radius:50%;" />
+        </td>
+
+        <td>
+          <p style="position:relative;z-index:1;font-family: 'Circular std',sans-serif;" align="top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita porro voluptas nihil ipsam labore sunt maxime incidunt officiis aspernatur non praesentium iusto veritatis, exercitationem delectus velit reiciendis cupiditate eos accusamus.</p>
+        </td>
+      </tr>
+          
+         <tr>
+         <td></td><td></td>
+          <td colspan="5" style = "display: flex;justify-content: center;width:100%" >
+            <button id="continueBtn" class="continueBtn">Fortfahren</button>
+          </td>
+          <td></td><td></td>
+        </tr>
+
+    </tbody>
+  </table>
+</div>
+`;
+
+document.querySelector("#continueBtn").onclick  = function() {
+  document.getElementById("firstModal").style.display = "none";
+  document.getElementById("myModal").style.display = "flex";
+  draw(); 
+
+  };
