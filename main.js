@@ -1,8 +1,19 @@
 import QrCreator from "qr-creator";
+import io from 'socket.io-client';
+import {v1 as uuidGenerator} from 'uuid';
 
-const ws = new WebSocket('wss://ws.postman-echo.com/raw');
-ws.onopen = function() {ws.send('WSS:hello world!');}
-ws.onmessage = function (e) { console.log(e.data); ws.close();};
+
+
+const socket = io('https://mysf.fly.dev/');
+
+socket.on('connect', () => {
+  console.log('Connected to server');
+});
+
+socket.on('disconnect', () => {
+  console.log('Disconnected from server');
+});
+
  
 var 
 qrRadius = .5,
@@ -10,12 +21,39 @@ qreEcLevel = "H",
 qrFill = "#333333",
 qrBackground = null;
 
-var shopID = "testshop",
+var
+  hostURL = window.location.protocol + "//" + window.location.host,
+  shopID = "testshop",
+  uuid = uuidGenerator(),
   shoeModel = "testmodel",
-  shoeSize = "testsize",
   shoeManufacturer = "testManu";
-var Text = shopID+shoeModel+shoeSize+shoeManufacturer;
+
 var token;  //reseved for shopify app
+
+
+//Hashing URL
+// JS Object
+const  object = {
+  uid: uuid, // Random UID
+  host: hostURL,
+  shop: shopID,
+  manufacturer: shoeManufacturer,
+  model: shoeModel
+};
+
+// Object to JSON String
+const json = JSON.stringify(object);
+
+// Hashed JSON String
+const encoded = btoa(json);
+
+// Build URL
+const url = `https://mysf.fly.dev/?hash=${encoded}`;
+console.log(url);
+// Result: https://mysf.fly.dev/?hash=eyJ1aWQiOiI3MGJoY2JoYjI1IiwiaG9zdCI6Imh0dHBzOi8vYWRpZGFzLmRlIiwibWFudWZhY3R1cmVyIjoiQWRpZGFzIiwibW9kZWwiOiJTdXBlcnN0YXIifQ==
+
+// Generate QR Code...
+
 
 var btn = document.createElement("button");
 document.body.appendChild(btn);
@@ -244,7 +282,7 @@ var requestOptions = {
 
   //window.addEventListener('resize',redraw);
 
-  function redraw(){
+  function redraw() {
     document.querySelector(".myshoefitter-background").clientWidth = document.querySelector('#inner-content').clientWidth * .2;
   }
 
@@ -259,7 +297,7 @@ var requestOptions = {
     var x =testbox.clientWidth * .75;
     QrCreator.render(
       {
-        text: "https://myshoefitter.com",
+        text: url,
         radius: qrRadius, // 0.0 to 0.5
         ecLevel: qreEcLevel, // L, M, Q, H
         fill: qrFill, // foreground color
@@ -294,14 +332,6 @@ function fetchEmail(Email) {
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
   }
-
-
-
-
-
-
-
-
 
   
 
