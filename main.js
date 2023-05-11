@@ -5,88 +5,93 @@ import {v1 as uuidGenerator} from 'uuid';
 
 
 const socket = io('https://mysf.fly.dev/');
-
 socket.on('connect', () => {
-  console.log('Connected to server');
+    console.log('Connected to server');
 });
 
 socket.on('disconnect', () => {
-  console.log('Disconnected from server');
+    console.log('Disconnected from server');
 });
 
- 
-var 
-qrRadius = .5,
-qreEcLevel = "H",
-qrFill = "#333333",
-qrBackground = null;
+var
+    qrRadius = .5,
+    qreEcLevel = "H",
+    qrFill = "#333333";
 
 var
-  hostURL = window.location.protocol + "//" + window.location.host,
-  shopID = "testshop",
-  uuid = uuidGenerator(),
-  shoeModel = "testmodel",
-  shoeManufacturer = "testManu";
+    hostURL = window.location.protocol + "//" + window.location.host,
+    shopID = "testshop",
+    uuid = uuidGenerator(),
+    shoeModel = "testmodel",
+    shoeManufacturer = "testManu";
 
-var token;  //reseved for shopify app
+var token; //reseved for shopify app
 
 
 //Hashing URL
 // JS Object
-const  object = {
-  uid: uuid, // Random UID
-  host: hostURL,
-  shop: shopID,
-  manufacturer: shoeManufacturer,
-  model: shoeModel
+const urlObj = {
+    uid: uuid, // Random UID
+    host: hostURL,
+    shop: shopID,
+    manufacturer: shoeManufacturer,
+    model: shoeModel
 };
-
 // Object to JSON String
-const json = JSON.stringify(object);
-
+const json = JSON.stringify(urlObj);
 // Hashed JSON String
 const encoded = btoa(json);
-
 // Build URL
 const url = `https://mysf.fly.dev/?hash=${encoded}`;
-console.log(url);
-// Result: https://mysf.fly.dev/?hash=eyJ1aWQiOiI3MGJoY2JoYjI1IiwiaG9zdCI6Imh0dHBzOi8vYWRpZGFzLmRlIiwibWFudWZhY3R1cmVyIjoiQWRpZGFzIiwibW9kZWwiOiJTdXBlcnN0YXIifQ==
 
-// Generate QR Code...
-
-
-var btn = document.createElement("button");
-document.body.appendChild(btn);
-btn.textContent = "Modal Test";
-btn.id = "myButton";
-btn.class = "myButton";
-btn.style.backgroundColor = "#ff7d4f";
-btn.style.padding= "12px";
-btn.style.fontFamily = "'Circular Std', sans-serif";
-btn.style.fontSize = "16px";
-btn.style.color = "#ffffff";
-btn.style.borderRadius = "10px";
-btn.style.border = "1px solid #ff7d4f";
-btn.style.left = "50%";
-btn.style.top = "50%";
-btn.style.position = "absolute";
-
-
+var isMobile = false;
 
 var modal = document.createElement("div");
 document.body.appendChild(modal);
 modal.id = "myModal";
 modal.style.display = "none";
 
-btn.onclick = function() {
-  modal.style.display = "flex";
-  draw(); 
-};
-
 
 var close = document.createElement("button");
 document.getElementById("myModal").appendChild(close);
 close.id = "close";
+
+var myBtn = document.createElement("button");
+document.body.appendChild(myBtn);
+myBtn.textContent = "Modal Test";
+myBtn.id = "firstButton";
+myBtn.class = "firstButton";
+myBtn.style.backgroundColor = "#ff7d4f";
+myBtn.style.padding = "12px";
+myBtn.style.fontFamily = "'Circular Std', sans-serif";
+myBtn.style.fontSize = "16px";
+myBtn.style.color = "#ffffff";
+myBtn.style.borderRadius = "10px";
+myBtn.style.border = "1px solid #ff7d4f";
+myBtn.style.left = "45%";
+myBtn.style.top = "50%";
+myBtn.style.position = "absolute";
+
+var firstModal = document.createElement("div");
+document.body.appendChild(firstModal);
+firstModal.id = "firstModal";
+firstModal.style.display = "none";
+
+myBtn.onclick = function() {
+    firstModal.style.display = "flex";
+    draw();
+};
+
+var firstclose = document.createElement("button");
+document.getElementById("firstModal").appendChild(firstclose);
+firstclose.id = "firstclose";
+
+var continueBtn = document.createElement("button");
+document.getElementById("firstModal").appendChild(continueBtn);
+continueBtn.id = "continueBtn";
+
+
+
 
 modal.innerHTML = `
 <style>
@@ -233,144 +238,8 @@ modal.innerHTML = `
 `;
 
 
-document.querySelector("#submitBtn").onclick  = function() {
-var idField = document.querySelector("#idField");
-var emailField = document.querySelector("#emailField");
 
-var userCode = idField.value; 
-var userEmail = emailField.value;
-  //fetchLogin();
-  if(userCode != "") {
-  fetchCode();
-  console.log("ID submitted!");
-  }
-  if(userEmail != "") {
-    fetchEmail(userEmail);
-    console.log("Email submitted!");
-  }
-  
-};
-
-
-function fetchCode() {
-var myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer oU-s4wmSpctuufVBIFNf-rUi9MtNKj5a");
-myHeaders.append("Content-Type", "application/json");
-
-var raw = JSON.stringify({
-  "code": "test"
-});
-
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
-};
-
-
- fetch("https://admin.myshoefitter.com/flows/trigger/c7a5aa72-8ff2-4398-b910-a88994aeab4c", requestOptions)
-  .then(response => response.json())
-  .then(result => {
-    //console.log(result);
-    //note: response is json array
-    const Data = result[0].id;
-    console.log(Data);
-  })
-  .catch(error => console.log('error', error));
-}
-
-  //window.addEventListener('resize',redraw);
-
-  function redraw() {
-    document.querySelector(".myshoefitter-background").clientWidth = document.querySelector('#inner-content').clientWidth * .2;
-  }
-
-
-  //window.addEventListener('resize', draw);
-
-  function draw() {
-    var testbox  = document.querySelector("#inner-content");
-    if(modal.style.display != "none") { 
-    document.querySelector("#qr-code").innerHTML = "";
-    //console.log("Width is " + testbox.offsetWidth);
-    var x =testbox.clientWidth * .75;
-    QrCreator.render(
-      {
-        text: url,
-        radius: qrRadius, // 0.0 to 0.5
-        ecLevel: qreEcLevel, // L, M, Q, H
-        fill: qrFill, // foreground color
-        background: null, // color or null for transparent
-        size: x, // in pixels
-      },
-      document.querySelector("#qr-code")
-    );
-  }
-}
-//document.querySelector(".myCirlce").style.width = document.querySelector("#inner-content").clientWidth * .1;
-
-function fetchEmail(Email) {
-  var myHeaders = new Headers();
-  myHeaders.append("Authorization", "Bearer oU-s4wmSpctuufVBIFNf-rUi9MtNKj5a");
-  myHeaders.append("Content-Type", "application/json");
-  
-  var raw = JSON.stringify({
-    "email": Email
-  });
-  
-  var requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: raw,
-    redirect: 'follow'
-  };
-  
-
-   fetch("https://admin.myshoefitter.com/flows/trigger/bc96cffb-f215-4b8e-ba65-481d8c29e910", requestOptions)
-    .then(response => response.json())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
-  }
-
-  
-
-  var btn2 = document.createElement("button");
-  document.body.appendChild(btn2);
-  btn2.textContent = "FirstModal Test";
-  btn2.id = "firstButton";
-  btn2.class = "firstButton";
-  btn2.style.backgroundColor = "#ff7d4f";
-  btn2.style.padding= "12px";
-  btn2.style.fontFamily = "'Circular Std', sans-serif";
-  btn2.style.fontSize = "16px";
-  btn2.style.color = "#ffffff";
-  btn2.style.borderRadius = "10px";
-  btn2.style.border = "1px solid #ff7d4f";
-  btn2.style.left = "40%";
-  btn2.style.top = "50%";
-  btn2.style.position = "absolute";
-
-  var firstModal = document.createElement("div");
-  document.body.appendChild(firstModal);
-  firstModal.id = "firstModal";
-  firstModal.style.display = "none";
-
-  btn2.onclick = function() {
-    firstModal.style.display = "flex";
-  };
-
-  var firstclose = document.createElement("button");
-  document.getElementById("firstModal").appendChild(firstclose);
-  firstclose.id = "firstclose";
-
-  var continueBtn = document.createElement("button");
-  document.getElementById("firstModal").appendChild(continueBtn);
-  continueBtn.id = "continueBtn";
-
-
-
-  firstModal.innerHTML = `
+firstModal.innerHTML = `
 <style>
 @import url('https://fonts.cdnfonts.com/css/circular-std');
 
@@ -491,9 +360,121 @@ function fetchEmail(Email) {
 </div>
 `;
 
-document.querySelector("#continueBtn").onclick  = function() {
-  document.getElementById("firstModal").style.display = "none";
-  document.getElementById("myModal").style.display = "flex";
-  draw(); 
 
+document.querySelector("#submitBtn").onclick = function() {
+  var idField = document.querySelector("#idField");
+  var emailField = document.querySelector("#emailField");
+
+  var userCode = idField.value;
+  var userEmail = emailField.value;
+
+  if (userCode != "") {
+      fetchCode(userCode);
+      console.log("ID submitted!");
+  }
+  if (userEmail != "") {
+      fetchEmail(userEmail);
+      console.log("Email submitted!");
+  }
+
+};
+
+
+function fetchCode(Code) {
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer oU-s4wmSpctuufVBIFNf-rUi9MtNKj5a");
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify({
+      "code": Code
+  });
+
+  var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
   };
+
+
+  fetch("https://admin.myshoefitter.com/flows/trigger/c7a5aa72-8ff2-4398-b910-a88994aeab4c", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+          console.log(result);
+          //note: response is json array
+          const Data = result[0].id;
+          console.log(Data);
+      })
+      .catch(error => {
+          console.log('error', error);
+          alert("Invalid User Code");
+      });
+}
+
+function draw() {
+  var testbox = document.querySelector("#inner-content");
+  if (modal.style.display != "none") {
+      document.querySelector("#qr-code").innerHTML = "";
+      //console.log("Width is " + testbox.offsetWidth);
+      var x = testbox.clientWidth * .75;
+      QrCreator.render({
+              text: url,
+              radius: qrRadius, // 0.0 to 0.5
+              ecLevel: qreEcLevel, // L, M, Q, H
+              fill: qrFill, // foreground color
+              background: null, // color or null for transparent
+              size: x, // in pixels
+          },
+          document.querySelector("#qr-code")
+      );
+  }
+}
+
+function fetchEmail(Email) {
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer oU-s4wmSpctuufVBIFNf-rUi9MtNKj5a");
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify({
+      "email": Email
+  });
+
+  var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+  };
+
+
+  fetch("https://admin.myshoefitter.com/flows/trigger/bc96cffb-f215-4b8e-ba65-481d8c29e910", requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+}
+
+
+document.querySelector("#continueBtn").onclick = function() {
+    document.getElementById("firstModal").style.display = "none";
+    document.getElementById("myModal").style.display = "flex";
+    draw();
+
+};
+
+
+
+
+
+window.addEventListener('resize', function () {
+  if (window.innerWidth <= 768) {
+      // Code for mobile devices
+      // Apply mobile styles or behaviors
+      isMobile = true;
+      console.log("MOBILE DEVICE VIEW");
+  } else {
+      // Code for desktop devices
+      // Apply desktop styles or behaviors
+      console.log("DESKTOP DEVICE VIEW");
+      isMobile = false;
+  }
+});
