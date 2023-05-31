@@ -1,6 +1,6 @@
 import QrCreator from "qr-creator";
-import io from 'socket.io-client';
-import {v1 as uuidGenerator} from 'uuid';
+import io from "socket.io-client";
+import {v1 as uuidGenerator} from "uuid";
 
 
 
@@ -17,16 +17,25 @@ var
     qreEcLevel = "H",
     qrFill = "#333333";
 
-var
+var 
+    url ,
     hostURL = window.location.protocol + "//" + window.location.host,
-    shopID = "testshop",
-    uuid = uuidGenerator(),
-    shoeModel = "testmodel",
-    shoeManufacturer = "testManu";
-
-var token; //reseved for shopify app
+    uuid = uuidGenerator();
 
 
+var token = "1234567890"; //reseved for shopify app
+
+const mySF = (function() {
+  function setvalues(manufacturer, model, token) {  
+     generateURL(token,manufacturer,model);
+  }
+
+  return {
+    setvalues: setvalues,
+  };
+})();
+
+function generateURL(shopID,shoeManufacturer,shoeModel) {
 //Hashing URL
 // JS Object
 const urlObj = {
@@ -41,38 +50,23 @@ const json = JSON.stringify(urlObj);
 // Hashed JSON String
 const encoded = btoa(json);
 // Build URL
-const url = `https://mysf.fly.dev/?hash=${encoded}`;
+url = `https://mysf.fly.dev/?hash=${encoded}`;
+}
 
 var isMobile = false;
-
 var sentMail = false;
 
 var modal = document.createElement("div");
 document.body.appendChild(modal);
-modal.id = "myModal";
+modal.id = "mySF_User_Modal";
 modal.style.display = "none";
 
 
 var close = document.createElement("button");
-document.getElementById("myModal").appendChild(close);
+document.getElementById("mySF_User_Modal").appendChild(close);
 close.id = "close";
 
-var myBtn = document.createElement("button");
-document.body.appendChild(myBtn);
-myBtn.textContent = "Modal Test";
-myBtn.id = "firstButton";
-myBtn.class = "firstButton";
-myBtn.style.backgroundColor = "#ff7d4f";
-myBtn.style.padding = "12px";
-myBtn.style.fontFamily = "'Circular Std', sans-serif";
-myBtn.style.fontSize = "16px";
-myBtn.style.color = "#ffffff";
-myBtn.style.borderRadius = "10px";
-myBtn.style.border = "1px solid #ff7d4f";
-myBtn.style.left = "25%";
-myBtn.style.top = "50%";
-myBtn.style.position = "absolute";
-myBtn.style.width = "50%";
+
 
 var firstModal = document.createElement("div");
 document.body.appendChild(firstModal);
@@ -103,123 +97,147 @@ if(isMobile)
 {
 firstModal.innerHTML = `
 <style>
-@import url('https://fonts.cdnfonts.com/css/circular-std');
+    @import url('https://fonts.cdnfonts.com/css/circular-std');
 
-  .firstclose {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    margin-top: -35px;
-    margin-left: -20px;
-  }
+    th,
+    td {
+      border: 0px !important;
+    }
 
-  .firstclose:hover,
-  .firstclose:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
+    .firstclose {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: -20px;
+      margin-left: -20px;
+    }
 
-  .firstModal {
-    display: flex;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 9999;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    -webkit-transition: 0.5s;
-    overflow: auto;
-    transition: all 0.3s linear;
-    backdrop-filter: blur(15px);
-    font-family: 'Circular std',sans-serif;
-  }
+    .firstclose:hover,
+    .firstclose:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-  .firstmodal-content {
-    width:70%;
-    background-image: linear-gradient(to right, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffdfc9, #ffe6d5, #ffede2, #fff4ee);
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2em;
-    padding-right:2em;
-    padding-left:2em;
-    border: 1px;
-    border-radius: 20px;
-    box-sizing: content-box;
-    font-family: 'Circular std',sans-serif;
-    color: #333333;
-  }
+    .firstModal {
+      display: flex;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 9999;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      -webkit-transition: 0.5s;
+      overflow: auto;
+      transition: all 0.3s linear;
+      backdrop-filter: blur(15px);
+      font-family: 'Circular std', sans-serif;
+    }
 
-  .continueBtn2 {
-    width: 90%;
-    background-color: #ff7d4f;
-    padding: 12px;
-    font-family: 'Circular std',sans-serif;
-    font-size: 14px;
-    color: #ffffff;
-    border-radius: 20px;
-    border: 1px solid #ff7d4f;
-  }
-  .continueBtn {
-    width: 90%;
-    background-color: transparent;
-    padding: 12px;
-    font-family: 'Circular std',sans-serif;
-    font-size: 14px;
-    color: #ff7d4f;
-    border-radius: 20px;
-    border: 1px solid #ff7d4f;
-  }
+    .firstmodal-content {
+      width: 70%;
+      background-image: linear-gradient(to right, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffdfc9, #ffe6d5, #ffede2, #fff4ee);
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 2em;
+      padding-right: 2em;
+      padding-left: 2em;
+      border: 0px;
+      border-radius: 20px;
+      box-sizing: content-box;
+      font-family: 'Circular std', sans-serif;
+      color: #333333;
+      display: flex;
+      flex-direction: column;
+    }
 
-  .continueBtn2:hover {
-    background-color: white;
-    border:1px solid #fff;
-    box-shadow: 0px 0px 32px 0 #f8f8f850;
-    color: #ff7d4f;
-    transition-duration: 250ms;
-  }
+    .continueBtn2 {
+      width: 100%;
+      background-color: #ff7d4f;
+      padding: 12px;
+      font-family: 'Circular std', sans-serif;
+      font-size: 14px;
+      color: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #ff7d4f;
+    }
 
-</style>
+    .continueBtn {
+      width: 100%;
+      background-color: transparent;
+      padding: 12px;
+      font-family: 'Circular std', sans-serif;
+      font-size: 14px;
+      color: #ff7d4f;
+      border-radius: 20px;
+      border: 1px solid #ff7d4f;
+    }
+
+    .continueBtn2:hover {
+      background-color: white;
+      border: 1px solid #fff;
+      box-shadow: 0px 0px 32px 0 #f8f8f850;
+      color: #ff7d4f;
+      transition-duration: 250ms;
+    }
+
+  </style>
 
 <div id="firstModal" class="firstModal" onclick="document.getElementById('firstModal').style.display='none'">
-  <table class="firstmodal-content" onclick="event.stopPropagation()">
-    <tbody>
-      <tr>
-        <td>
-          <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
-        </td>
-        <td colspan="4">
-          <span colspan="4" onclick="document.getElementById('firstModal').style.display='none'" class="firstclose">&times;</span>
-        </td>
-      </tr>
-      <tr style="height: 2em;"></tr>
-      <tr>
-        <td colspan="6" style="text-align: center;">
-          <button id="continueBtn2" class="continueBtn2" style="display: block; margin: 0 auto;">Fortfahren</button>
+
+<div class="modal-content" onclick="event.stopPropagation()">
+  <div>
+    <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
+
+    <span colspan="2" onclick="document.getElementById('firstModal').style.display='none'" class="close">×</span>
+  </div>
+  <div border="1" class="inner-content" id="inner-content">
+    <div id="left half">
+      <div class="Form" id="Form">
+        <div style="display: contents;">
+          <input type="text" id="emailField" name="emailField" placeholder="Enter your Email" style="font-family: 'Circular std',sans-serif; display: none;">
+          <input type="text" id="idField" name="idFormField" placeholder="Enter your ID" style="font-family: 'Circular std',sans-serif;">
+        </div>
+        <div style="width:85%; margin-bottom:1em">
+          <a style="float:right; color:grey;  text-decoration: none;" id="forgotButton">ID vergessen?</a>
+          <p style="margin: 0;float:left; color:grey;  text-decoration: none;" id="infoText"></p>
           <br>
-          <button id="continueBtn" class="continueBtn" style="display: block; margin: 0 auto;">ID eingeben</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        </div>
+        <button id="submitBtn" class="submitBtn">Senden</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-`;
 
-modal.innerHTML = `
+<div class="firstmodal-content" onclick="event.stopPropagation()">
+<div>
+  <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
+
+  <span onclick="document.getElementById('firstModal').style.display='none'" class="firstclose">&times;</span>
+</div>
+<br>
+<div>
+  <button id="continueBtn2" class="continueBtn2" style="display: block; margin: 0 auto;">Fortfahren</button>
+  <br>
+  <button id="continueBtn" class="continueBtn" style="display: block; margin: 0 auto;">ID eingeben</button>
+</div>
+</div>
+
+
 <style>
-@import url('https://fonts.cdnfonts.com/css/circular-std');
+  @import url('https://fonts.cdnfonts.com/css/circular-std');
 
   .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-    margin-top: -35px;
+    margin-top: -20px;
   }
 
   .close:hover,
@@ -229,57 +247,44 @@ modal.innerHTML = `
     cursor: pointer;
   }
 
-  .modal {
-    display: flex;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 9999;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    -webkit-transition: 0.5s;
-    overflow: auto;
-    transition: all 0.3s linear;
-    backdrop-filter: blur(15px);
-    font-family: 'Circular std',sans-serif;
-  }
-
   .modal-content {
+    width: fit-content;
     background-image: linear-gradient(to right, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffdfc9, #ffe6d5, #ffede2, #fff4ee);
     margin-top: auto;
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
     padding: 30px;
-    border: 1px;
+    border: 0px;
     border-radius: 20px;
     box-sizing: content-box;
-    font-family: 'Circular std',sans-serif;
+    font-family: 'Circular std', sans-serif;
     color: #333333;
     width: 70%;
+    display: flex;
+    flex-direction: column;
   }
 
   .inner-content {
     align-items: center;
     justify-content: space-between;
-    font-family: 'Circular std',sans-serif;
+    font-family: 'Circular std', sans-serif;
     margin: auto;
   }
 
   .Form {
-    position:relative;
-    font-family: 'Circular std',sans-serif;
+    position: relative;
+    font-family: 'Circular std', sans-serif;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
 
   .submitBtn {
-    width: 90%;
+    width: 100%;
     background-color: #ff7d4f;
     padding: 12px;
-    font-family: 'Circular std',sans-serif;
+    font-family: 'Circular std', sans-serif;
     font-size: 14px;
     color: #ffffff;
     border-radius: 20px;
@@ -288,14 +293,15 @@ modal.innerHTML = `
 
   .submitBtn:hover {
     background-color: white;
-    border:1px solid #fff;
+    border: 1px solid #fff;
     box-shadow: 0px 0px 32px 0 #f8f8f850;
     color: #ff7d4f;
     transition-duration: 250ms;
   }
 
   input {
-    width: 86%;
+    width: 100%;
+    background-color: white;
     margin-top: 5px;
     margin-bottom: 10px;
     padding-top: 12px;
@@ -303,45 +309,13 @@ modal.innerHTML = `
     padding-left: 16px;
     border: 1px solid #d2d9e4;
     border-radius: 20px;
-    font-family: 'Circular std',sans-serif;
+    font-family: 'Circular std', sans-serif;
   }
-</style>
 
-<div id="myModal" class="modal" onclick="document.getElementById('myModal').style.display='none'">
-    <table class="modal-content" onclick="event.stopPropagation()">
-      <tbody>
-        <tr>
-          <td>
-            <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
-          </td>
-          <td colspan="2">
-            <span colspan="2" onclick="document.getElementById('myModal').style.display='none'" class="close">×</span>
-          </td>
-        </tr>
-        <tr style="height: 2em;"></tr>
-        <tr>
-          <td>
-            <div border="1" class="inner-content" id="inner-content">
-              <div id="left half">
-                <div class="Form" id="Form">
-                <div style="display: contents;">
-                <input type="text" id="emailField" name="emailField" placeholder="Enter your Email" style="font-family: 'Circular std',sans-serif; display: none;"> 
-                <input type="text" id="idField" name="idFormField" placeholder="Enter your ID" style="font-family: 'Circular std',sans-serif;">
-                </div>
-                <div style="width:85%; margin-bottom:1em">
-                  <a style="float:right; color:grey;  text-decoration: none;" id="forgotButton">ID vergessen?</a>
-                  <p style="margin: 0;float:left; color:grey;  text-decoration: none;" id="infoText"></p>
-                  <br>
-                  </div>
-                  <button id="submitBtn" class="submitBtn">Senden</button>
-                </div>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+</style>
+`;
+
+modal.innerHTML = `
 
 `;
 }
@@ -349,7 +323,11 @@ else {
   firstModal.innerHTML = `
   <style>
   @import url('https://fonts.cdnfonts.com/css/circular-std');
-  
+
+  th, td{
+    border: 0px !important;
+    }
+
     .firstclose {
       color: #aaaaaa;
       float: right;
@@ -392,7 +370,7 @@ else {
       padding: 30px;
       padding-right:50px;
       padding-left:50px;
-      border: 1px;
+      border: 0px !important;
       border-radius: 20px;
       box-sizing: content-box;
       font-family: 'Circular std',sans-serif;
@@ -420,7 +398,47 @@ else {
   
   </style>
   
+
+
+
   <div id="firstModal" class="firstModal" onclick="document.getElementById('firstModal').style.display='none'">
+
+  <table class="modal-content" onclick="event.stopPropagation()" style="display:none;">
+    <tbody>
+      <tr>
+        <td>
+          <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
+        </td>
+        <td colspan="2">
+          <span colspan="2" onclick="document.getElementById('firstModal').style.display='none'" class="close">&times;</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div border="1" class="inner-content" id="inner-content">
+            <div id="left half">
+            <!--<img style="width:350px;position:absolute" src="./background.png" alt="mySHOEFITTER background" class="myshoefitter-background"></img>-->
+              <p style="position:relative;z-index:1;font-family: 'Circular std',sans-serif;" align="top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita porro voluptas nihil ipsam labore sunt maxime incidunt officiis aspernatur non praesentium iusto veritatis, exercitationem delectus velit reiciendis cupiditate eos accusamus.</p>
+              <div class="Form" id="Form">
+                <label style = "font-family: 'Circular std',sans-serif;">ScanID:</label> 
+                <input type="text" id="idField" name="idFormField" placeholder="Enter your ID" style="font-family: 'Circular std',sans-serif;"> <br>
+                <label style= "font-family: 'Circular std',sans-serif;">Email: </label> 
+                <input type="text" id="emailField" name="emailField" placeholder="Enter your Email" style="font-family: 'Circular std',sans-serif;"> <br>
+                <button id="submitBtn" class="submitBtn">Senden</button>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+        <hr style="width:0px;height:350px;margin-left:50px;margin-right:50px;border:1px solid #ff7d4f;border-radius:50%;" />
+        </td>
+        <td>
+          <div id="qr-code" class="qr-code"> </div>
+          <center style="color:#33333375; font-family:'Circular std',sans-serif; font-size:14px">QrCode mit dem Smartphone scannen</center>
+        </td>
+      </tr>
+    </tbody>
+  </table>
     <table class="firstmodal-content" onclick="event.stopPropagation()">
       <tbody>
         <tr>
@@ -465,12 +483,14 @@ else {
       </tbody>
     </table>
   </div>
-  `;
 
-  modal.innerHTML = `
   <style>
   @import url('https://fonts.cdnfonts.com/css/circular-std');
   
+    th, td{
+    border: 0px !important;
+    }
+
     .close {
       color: #aaaaaa;
       float: right;
@@ -503,14 +523,14 @@ else {
     }
   
     .modal-content {
-      max-width: 800px;
+      width: fit-content;
       background-image: linear-gradient(to right, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffdfc9, #ffe6d5, #ffede2, #fff4ee);
       margin-top: auto;
       margin-bottom: auto;
       margin-left: auto;
       margin-right: auto;
       padding: 30px;
-      border: 1px;
+      border: 0px;
       border-radius: 20px;
       box-sizing: content-box;
       font-family: 'Circular std',sans-serif;
@@ -565,58 +585,24 @@ else {
       padding-left: 16px;
       border: 1px solid #d2d9e4;
       border-radius: 20px;
+      background-color: white;
       font-family: 'Circular std',sans-serif;
     }
   </style>
-  
-  <div id="myModal" class="modal" onclick="document.getElementById('myModal').style.display='none'">
-    <table class="modal-content" onclick="event.stopPropagation()">
-      <tbody>
-        <tr>
-          <td>
-            <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
-          </td>
-          <td colspan="2">
-            <span colspan="2" onclick="document.getElementById('myModal').style.display='none'" class="close">&times;</span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div border="1" class="inner-content" id="inner-content">
-              <div id="left half">
-              <img style="width:350px;position:absolute" src="./background.png" alt="mySHOEFITTER background" class="myshoefitter-background"></img>
-                <p style="position:relative;z-index:1;font-family: 'Circular std',sans-serif;" align="top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita porro voluptas nihil ipsam labore sunt maxime incidunt officiis aspernatur non praesentium iusto veritatis, exercitationem delectus velit reiciendis cupiditate eos accusamus.</p>
-                <br>
-                <div class="Form" id="Form">
-                  <label style = "font-family: 'Circular std',sans-serif;">ScanID:</label> <br>
-                  <input type="text" id="idField" name="idFormField" placeholder="Enter your ID" style="font-family: 'Circular std',sans-serif;"> <br>
-                  <label style= "font-family: 'Circular std',sans-serif;">Email: </label> <br>
-                  <input type="text" id="emailField" name="emailField" placeholder="Enter your Email" style="font-family: 'Circular std',sans-serif;"> <br>
-                  <button id="submitBtn" class="submitBtn">Senden</button>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td>
-          <hr style="width:0px;height:350px;margin-left:50px;margin-right:50px;border:1px solid #ff7d4f;border-radius:50%;" />
-          </td>
-          <td>
-            <div id="qr-code" class="qr-code"> </div>
-            <center style="color:#33333375; font-family:'Circular std',sans-serif; font-size:14px">QrCode mit dem Smartphone scannen</center>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
+  `;
+
+  modal.innerHTML = `
+
   `;
 }
 
 
 
 
-myBtn.onclick = function() {
+document.querySelector("#mySF_Widget_Button").onclick = function() {
   firstModal.style.display = "flex";
+  document.querySelector(".firstmodal-content").style.display = "flex";
+  document.querySelector(".modal-content").style.display = "none";
   if (!isMobile){
   draw();
   }
@@ -638,19 +624,18 @@ document.querySelector("#submitBtn").onclick = function() {
       console.log("Email submitted!");
   }
   if (sentMail) {
-    document.getElementById("infoText").textContent = "Email gesendet!";
     document.getElementById("forgotButton").textContent = "ID vergessen?";
     document.getElementById("emailField").style.display = "none";
     document.getElementById("idField").style.display = "flex";
   }
 };
 
+document.addEventListener("DOMContentLoaded", function() {
 document.querySelector("#continueBtn").onclick = function() {
-  document.getElementById("firstModal").style.display = "none";
-  document.getElementById("myModal").style.display = "flex";
+  document.querySelector(".firstmodal-content").style.display = "none";
+  document.querySelector(".modal-content").style.display = "flex";
   draw();
-
-};
+};});
 
 if(isMobile)  {
 document.querySelector("#continueBtn2").onclick = function() {
@@ -658,17 +643,17 @@ document.querySelector("#continueBtn2").onclick = function() {
 };
 
 document.querySelector("#forgotButton").onclick = function() {
-  document.getElementById("emailField").style.display = "flex";
-  document.getElementById("idField").style.display = "none";
-  document.getElementById("forgotButton").textContent = " ";
-  document.getElementById("infoText").textContent = " ";
+  document.querySelector("#emailField").style.display = "flex";
+  document.querySelector("#idField").style.display = "none";
+  document.querySelector("#forgotButton").textContent = " ";
+  document.querySelector("#infoText").textContent = " ";
   sentMail = true;
 };
 }
 
 
 document.querySelector("#idField").onclick = function() {
-  document.getElementById("infoText").textContent = " ";
+  document.querySelector("#infoText").textContent = " ";
 };
 
 window.addEventListener('resize', function () {
@@ -707,13 +692,13 @@ function fetchCode(Code) {
       .then(result => {
           console.log(result);
           //note: response is json array
-          const Data = result[0].id;
+          const Data = result[0].size;
           console.log(Data);
-          document.getElementById("infoText").textContent = "ID gesendet!";
+          document.querySelector("#infoText").textContent = "ID gesendet!";
       })
       .catch(error => {
           console.log('error', error);
-          document.getElementById("infoText").textContent = "Dieser Code exisitert nicht!";
+          document.querySelector("#infoText").textContent = "Dieser Code exisitert nicht!";
       });
 }
 
@@ -736,13 +721,19 @@ function fetchEmail(Email) {
 
   fetch("https://admin.myshoefitter.com/flows/trigger/bc96cffb-f215-4b8e-ba65-481d8c29e910", requestOptions)
       .then(response => response.json())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
+      .then(result => {
+        console.log(result);
+        //document.getElementById("infoText").textContent = "Email gesendet!";
+      })
+      .catch(error => {
+        console.log('error', error);
+        document.querySelector("#infoText").textContent = "Email nicht gefunden";
+    });
 }
 
 function draw() {
   var testbox = document.querySelector("#inner-content");
-  if (!isMobile && modal.style.display != "none") {
+  if (!isMobile) {
       document.querySelector("#qr-code").innerHTML = "";
       //console.log("Width is " + testbox.offsetWidth);
       var x = testbox.clientWidth * .75;
@@ -758,3 +749,8 @@ function draw() {
       );
   }
 }
+
+
+
+
+mySF.setvalues("model","manufacturer","mySHOEFITTER Shop");
