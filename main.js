@@ -1,16 +1,31 @@
 import QrCreator from "qr-creator";
 import io from "socket.io-client";
 import {v1 as uuidGenerator} from "uuid";
+import 'animate.css';
 
+var isMobile = false;
+var sentMail = false;
+var device;
+if (screen.width <= 768) {
+  // Code for mobile devices
+  // Apply mobile styles or behaviors
+  isMobile = true;
+  console.log("MOBILE DEVICE VIEW");
+  device = "mobile"
+} else {
+  // Code for desktop devices
+  // Apply desktop styles or behaviors
+  console.log("DESKTOP DEVICE VIEW");
+  isMobile = false;
+}
 
-
-const socket = io('https://mysf.fly.dev/');
+/* const socket = io('https://mysf.vercel.app/');
 socket.on('connect', () => {
     console.log('Connected to server');
 });
 socket.on('disconnect', () => {
     console.log('Disconnected from server');
-});
+}); */
 
 var
     qrRadius = .5,
@@ -35,6 +50,7 @@ const mySF = (function() {
   };
 })();
 
+
 function generateURL(shopID,shoeManufacturer,shoeModel) {
 //Hashing URL
 // JS Object
@@ -43,555 +59,426 @@ const urlObj = {
     host: hostURL,
     shop: shopID,
     manufacturer: shoeManufacturer,
-    model: shoeModel
+    model: shoeModel,
+    client: device
 };
 // Object to JSON String
 const json = JSON.stringify(urlObj);
 // Hashed JSON String
 const encoded = btoa(json);
 // Build URL
-url = `https://mysf.fly.dev/?hash=${encoded}`;
+url = `https://mysf.vercel.app/?hash=${encoded}`;
+console.log(url);
 }
-
-var isMobile = false;
-var sentMail = false;
-
-var modal = document.createElement("div");
-document.body.appendChild(modal);
-modal.id = "mySF_User_Modal";
-modal.style.display = "none";
-
-
-var close = document.createElement("button");
-document.getElementById("mySF_User_Modal").appendChild(close);
-close.id = "close";
-
-
 
 var firstModal = document.createElement("div");
 document.body.appendChild(firstModal);
-firstModal.id = "firstModal";
+firstModal.id = "modal-overlay";
 firstModal.style.display = "none";
 
-var firstclose = document.createElement("button");
-document.getElementById("firstModal").appendChild(firstclose);
-firstclose.id = "firstclose";
-
-var continueBtn = document.createElement("button");
-document.getElementById("firstModal").appendChild(continueBtn);
-continueBtn.id = "continueBtn";
-
-if (screen.width <= 768) {
-  // Code for mobile devices
-  // Apply mobile styles or behaviors
-  isMobile = true;
-  console.log("MOBILE DEVICE VIEW");
-} else {
-  // Code for desktop devices
-  // Apply desktop styles or behaviors
-  console.log("DESKTOP DEVICE VIEW");
-  isMobile = false;
-}
 
 if(isMobile)
 {
 firstModal.innerHTML = `
 <style>
-    @import url('https://fonts.cdnfonts.com/css/circular-std');
+  @import url('https://fonts.cdnfonts.com/css/montserrat');
 
-    th,
-    td {
-      border: 0px !important;
-    }
+  .modal-overlay {
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-transition: 0.5s;
+    transition: all 0.3s linear;
+    backdrop-filter: blur(15px);
+    font-family: 'Montserrat', sans-serif;
+  }
 
-    .firstclose {
-      color: #aaaaaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      margin-top: -20px;
-      margin-left: -20px;
-    }
-
-    .firstclose:hover,
-    .firstclose:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .firstModal {
-      display: flex;
-      position: fixed;
-      left: 0;
-      top: 0;
-      z-index: 9999;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
-      -webkit-transition: 0.5s;
-      overflow: auto;
-      transition: all 0.3s linear;
-      backdrop-filter: blur(15px);
-      font-family: 'Circular std', sans-serif;
-    }
-
-    .firstmodal-content {
-      width: 70%;
-      background-image: linear-gradient(to right, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffdfc9, #ffe6d5, #ffede2, #fff4ee);
-      margin-top: auto;
-      margin-bottom: auto;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 2em;
-      padding-right: 2em;
-      padding-left: 2em;
-      border: 0px;
-      border-radius: 20px;
-      box-sizing: content-box;
-      font-family: 'Circular std', sans-serif;
-      color: #333333;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .continueBtn2 {
-      width: 100%;
-      background-color: #ff7d4f;
-      padding: 12px;
-      font-family: 'Circular std', sans-serif;
-      font-size: 14px;
-      color: #ffffff;
-      border-radius: 20px;
-      border: 1px solid #ff7d4f;
-    }
-
-    .continueBtn {
-      width: 100%;
-      background-color: transparent;
-      padding: 12px;
-      font-family: 'Circular std', sans-serif;
-      font-size: 14px;
-      color: #ff7d4f;
-      border-radius: 20px;
-      border: 1px solid #ff7d4f;
-    }
-
-    .continueBtn2:hover {
-      background-color: white;
-      border: 1px solid #fff;
-      box-shadow: 0px 0px 32px 0 #f8f8f850;
-      color: #ff7d4f;
-      transition-duration: 250ms;
-    }
-
-  </style>
-
-<div id="firstModal" class="firstModal" onclick="document.getElementById('firstModal').style.display='none'">
-
-<div class="modal-content" onclick="event.stopPropagation()">
-  <div>
-    <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
-
-    <span colspan="2" onclick="document.getElementById('firstModal').style.display='none'" class="close">×</span>
-  </div>
-  <div border="1" class="inner-content" id="inner-content">
-    <div id="left half">
-      <div class="Form" id="Form">
-        <div style="display: contents;">
-          <input type="text" id="emailField" name="emailField" placeholder="Enter your Email" style="font-family: 'Circular std',sans-serif; display: none;">
-          <input type="text" id="idField" name="idFormField" placeholder="Enter your ID" style="font-family: 'Circular std',sans-serif;">
-        </div>
-        <div style="width:85%; margin-bottom:1em">
-          <a style="float:right; color:grey;  text-decoration: none;" id="forgotButton">ID vergessen?</a>
-          <p style="margin: 0;float:left; color:grey;  text-decoration: none;" id="infoText"></p>
-          <br>
-        </div>
-        <button id="submitBtn" class="submitBtn">Senden</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="firstmodal-content" onclick="event.stopPropagation()">
-<div>
-  <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
-
-  <span onclick="document.getElementById('firstModal').style.display='none'" class="firstclose">&times;</span>
-</div>
-<br>
-<div>
-  <button id="continueBtn2" class="continueBtn2" style="display: block; margin: 0 auto;">Fortfahren</button>
-  <br>
-  <button id="continueBtn" class="continueBtn" style="display: block; margin: 0 auto;">ID eingeben</button>
-</div>
-</div>
-
-
-<style>
-  @import url('https://fonts.cdnfonts.com/css/circular-std');
+  .modal-content {
+    width: 70%;
+    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 2em;
+    border-radius: 40px;
+    box-sizing: content-box;
+    font-family: 'Montserrat', sans-serif;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    background-image: url('./background0.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    box-shadow: 0 0 40px 10px rgba(0,0,0,0.1);
+  }
 
   .close {
-    color: #aaaaaa;
+    color: #ff7d4f;
     float: right;
-    font-size: 28px;
-    font-weight: bold;
-    margin-top: -20px;
+    font-size: 64px;
+    font-weight: 300;
+    margin-top: -10px;
   }
 
   .close:hover,
   .close:focus {
-    color: #000;
+    color: #aaa;
     text-decoration: none;
     cursor: pointer;
   }
 
-  .modal-content {
-    width: fit-content;
-    background-image: linear-gradient(to right, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffdfc9, #ffe6d5, #ffede2, #fff4ee);
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 30px;
-    border: 0px;
-    border-radius: 20px;
-    box-sizing: content-box;
-    font-family: 'Circular std', sans-serif;
-    color: #333333;
-    width: 70%;
+  .form-container {
     display: flex;
     flex-direction: column;
-  }
-
-  .inner-content {
     align-items: center;
     justify-content: space-between;
-    font-family: 'Circular std', sans-serif;
-    margin: auto;
   }
 
-  .Form {
-    position: relative;
-    font-family: 'Circular std', sans-serif;
+  .form-inputs {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    width: -webkit-fill-available;
+    flex-direction: row;
+    border: 1px solid #d2d9e4;
+    padding: 1px;
+    border-radius: 20px;
+    background: #fff;
+    margin-bottom: 1em;
   }
 
-  .submitBtn {
+  .form-inputs input {
+    border: none;
+    width: -webkit-fill-available;
+    padding: 12px;
+    border-radius: 20px;
+    background-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .form-inputs input:focus {
+    outline: none;
+    background-color: transparent;
+  }
+
+  .form-inputs input:-webkit-autofill,
+  .form-inputs input:-webkit-autofill:hover,
+  .form-inputs input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    -webkit-text-fill-color: #333;
+  }
+
+  .form-inputs input:-moz-autofill {
+    -moz-box-shadow: 0 0 0px 1000px white inset;
+    -moz-text-fill-color: #333;
+  }
+
+  .form-inputs input::placeholder {
+    color: #333333;
+  }
+
+  .form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    width: 100%;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+  }
+
+  .forgot-link {
+    cursor: pointer;
+    color: grey;
+  }
+
+  .info-text {
+    margin: 0;
+    color: grey;
+    text-decoration: none;
+  }
+
+  .continue-button {
     width: 100%;
     background-color: #ff7d4f;
     padding: 12px;
-    font-family: 'Circular std', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     color: #ffffff;
     border-radius: 20px;
     border: 1px solid #ff7d4f;
+    margin-bottom: 1em;
   }
 
-  .submitBtn:hover {
+  .continue-button:hover {
     background-color: white;
-    border: 1px solid #fff;
     box-shadow: 0px 0px 32px 0 #f8f8f850;
     color: #ff7d4f;
     transition-duration: 250ms;
   }
-
-  input {
+  
+  .continue-to-id-button {
     width: 100%;
-    background-color: white;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 16px;
-    border: 1px solid #d2d9e4;
+    background-color: transparent;
+    padding: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #ff7d4f;
     border-radius: 20px;
-    font-family: 'Circular std', sans-serif;
+    border: 1px solid #ff7d4f;
+    margin-bottom: 1em;
   }
-
 </style>
-`;
 
-modal.innerHTML = `
+<div id="modal-overlay" class="modal-overlay" onclick="document.getElementById('modal-overlay').style.display='none'">
+
+  <div class="modal-content animate__fadeInUp" onclick="event.stopPropagation()">
+    <div>
+      <img src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/6458f00e1462140aca5e9f19_mySHOEFITTER%20Logo-p-800.png" width="150px" style="position: relative; z-index: 1;">
+      <span onclick="{document.getElementById('modal-overlay').style.display='none';document.getElementById('mysf_input').style.display='none';document.getElementById('mysf_mob').style.display='block'}" class="close">×</span>
+    </div>
+    <br>
+    <div id="mysf_input" style="display:none">
+      <div class="form-container">
+        <div class="form-inputs">
+          <input type="text" id="id-field" name="idFormField" placeholder="Enter your ID">
+          <input type="text" id="email-field" name="emailField" placeholder="Enter your Email" style="display:none;">
+        </div>
+        <button id="submit-btn" class="continue-button">Senden</button>
+        <div class="form-footer">
+          <a id="forgot-button" class="forgot-link">ID vergessen?</a>
+          <p id="info-text" class="info-text"></p>
+        </div>
+      </div>
+    </div>
+
+    <div id="mysf_mob">
+      <h4>Deine perfekte Schuhgröße wartet schon auf dich! 🚀</h4>
+      <p>Wenn du schon eine <b>ID</b> hast, kannst du sie unten <b>eingeben</b> und kommst so direkt zu deiner perfekten Größe, <b>oder</b> falls du noch keine Messung durchgeführt hast, klicke auf <b>"Jetzt Fuß vermessen"</b> und folge den Anweisungen.</p>
+      <br>
+      <button id="continue-btn2" class="continue-button" style="display: block; margin: 0 auto;">Jetzt Fuß vermessen</button>
+      <br>
+      <button id="continue-btn" class="continue-to-id-button" style="display: block; margin: 0 auto;">ID eingeben</button>
+    </div>
+  </div>
+
+</div>
 
 `;
 }
 else {
   firstModal.innerHTML = `
   <style>
-  @import url('https://fonts.cdnfonts.com/css/circular-std');
+  @import url('https://fonts.cdnfonts.com/css/montserrat');
 
-  th, td{
-    border: 0px !important;
-    }
+  .modal-overlay {
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-family: 'Montserrat', sans-serif;
+  }
 
-    .firstclose {
-      color: #aaaaaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      margin-top: -35px;
-      margin-left: -20px;
-    }
-  
-    .firstclose:hover,
-    .firstclose:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
-  
-    .firstModal {
-      display: flex;
-      position: fixed;
-      left: 0;
-      top: 0;
-      z-index: 9999;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
-      -webkit-transition: 0.5s;
-      overflow: auto;
-      transition: all 0.3s linear;
-      backdrop-filter: blur(15px);
-      font-family: 'Circular std',sans-serif;
-    }
-  
-    .firstmodal-content {
-      width:1000px;
-      background-image: linear-gradient(to right, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffdfc9, #ffe6d5, #ffede2, #fff4ee);
-      margin-top: auto;
-      margin-bottom: auto;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 30px;
-      padding-right:50px;
-      padding-left:50px;
-      border: 0px !important;
-      border-radius: 20px;
-      box-sizing: content-box;
-      font-family: 'Circular std',sans-serif;
-      color: #333333;
-    }
-  
-    .continueBtn {
-      width: 90%;
-      background-color: #ff7d4f;
-      padding: 12px;
-      font-family: 'Circular std',sans-serif;
-      font-size: 14px;
-      color: #ffffff;
-      border-radius: 20px;
-      border: 1px solid #ff7d4f;
-    }
-  
-    .continueBtn:hover {
-      background-color: white;
-      border:1px solid #fff;
-      box-shadow: 0px 0px 32px 0 #f8f8f850;
-      color: #ff7d4f;
-      transition-duration: 250ms;
-    }
-  
-  </style>
-  
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    background-color: white;
+    background-image: url('./background0.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    box-shadow: 0 0 40px 10px rgba(0,0,0,0.1);
+    margin: auto;
+    padding: 30px;
+    border-radius: 40px;
+    font-family: 'Montserrat', sans-serif;
+    color: #333333;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .close {
+    color: #ff7d4f;
+    font-size: 64px;
+    font-weight: 300;
+    cursor: pointer;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #aaa;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .inner-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: auto;
+  }
+
+  .left-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 33.3%;
+  }
+
+  .right-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form {
+    width: 100%;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-fields {
+    display: flex;
+    flex-direction: row;
+    width: -webkit-fill-available;
+    border: 1px solid #d2d9e4;
+    padding: 1px;
+    border-radius: 20px;
+    background: #fff;
+  }
 
 
+  input {
+    border: none;
+    width: -webkit-fill-available;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+    border-radius: 20px;
+    background-color: transparent;
+    font-family: inherit;
+  }
 
-  <div id="firstModal" class="firstModal" onclick="document.getElementById('firstModal').style.display='none'">
+  input:focus {
+    outline: none;
+    background-color: transparent;
+  }
 
-  <table class="modal-content" onclick="event.stopPropagation()" style="display:none;">
-    <tbody>
-      <tr>
-        <td>
-          <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
-        </td>
-        <td colspan="2">
-          <span colspan="2" onclick="document.getElementById('firstModal').style.display='none'" class="close">&times;</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div border="1" class="inner-content" id="inner-content">
-            <div id="left half">
-            <!--<img style="width:350px;position:absolute" src="./background.png" alt="mySHOEFITTER background" class="myshoefitter-background"></img>-->
-              <p style="position:relative;z-index:1;font-family: 'Circular std',sans-serif;" align="top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita porro voluptas nihil ipsam labore sunt maxime incidunt officiis aspernatur non praesentium iusto veritatis, exercitationem delectus velit reiciendis cupiditate eos accusamus.</p>
-              <div class="Form" id="Form">
-                <label style = "font-family: 'Circular std',sans-serif;">ScanID:</label> 
-                <input type="text" id="idField" name="idFormField" placeholder="Enter your ID" style="font-family: 'Circular std',sans-serif;"> <br>
-                <label style= "font-family: 'Circular std',sans-serif;">Email: </label> 
-                <input type="text" id="emailField" name="emailField" placeholder="Enter your Email" style="font-family: 'Circular std',sans-serif;"> <br>
-                <button id="submitBtn" class="submitBtn">Senden</button>
-              </div>
-            </div>
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    -webkit-text-fill-color: #333;
+  }
+
+  input:-moz-autofill {
+    -moz-box-shadow: 0 0 0px 1000px white inset;
+    -moz-text-fill-color: #333;
+  }
+
+  input:-ms-input-placeholder {
+    background-color: transparent !important;
+  }
+
+  .submit-btn {
+    background-color: #ff7d4f;
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #ff7d4f;
+  }
+
+  .submit-btn:hover {
+    background-color: white;
+    border: 1px solid #ff7d4f;
+    box-shadow: 0px 0px 32px 0 #f8f8f850;
+    color: #ff7d4f;
+    transition-duration: 250ms;
+  }
+
+  .form-footer {
+    background-color: transparent;
+    width: 100%;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+  }
+
+  #forgot-button {
+    cursor: pointer;
+    float: right;
+    color: grey;
+  }
+
+  #info-text {
+    margin: 0;
+    float: left;
+    color: grey;
+    text-decoration: none;
+  }
+
+  .separator {
+    width: 0px;
+    height: 350px;
+    border: 1px solid #ff7d4f;
+    border-radius: 50%;
+  }
+
+  .qr-instruction {
+    color: black;
+    font-size: 16px;
+    margin-top: 8px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+</style>
+
+<div id="modal-overlay" class="modal-overlay" onclick="document.getElementById('modal-overlay').style.display='none'">
+  <div class="modal-content animate__fadeInUp" onclick="event.stopPropagation()">
+    <div class="header">
+      <img src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/6458f00e1462140aca5e9f19_mySHOEFITTER%20Logo-p-800.png" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
+      <span class="close" onclick="document.getElementById('modal-overlay').style.display='none'">&times;</span>
+    </div>
+    <div class="inner-content">
+      <div class="left-section">
+        <h4>Deine perfekte Schuhgröße wartet schon auf dich! 🚀</h4>
+        <p>Wenn du schon eine <b>ID</b> hast, kannst du sie unten <b>eingeben</b> und kommst so direkt zu deiner perfekten Größe. Falls du noch keine Messung durchgeführt hast, <b>scanne den QR-Code</b> und folge den Anweisungen. <br> <br> Falls du deine <b>ID vergessen</b> hast, kannst du sie über deine Mail herausfinden. </p>
+        <div class="form" id="form">
+          <div class="form-fields">
+            <input type="text" id="id-field" name="idFormField" placeholder="Enter your ID">
+            <input type="text" id="email-field" name="emailField" placeholder="Enter your Email" style="display:none">
+            <button id="submit-btn" class="submit-btn">Senden</button>
           </div>
-        </td>
-        <td>
-        <hr style="width:0px;height:350px;margin-left:50px;margin-right:50px;border:1px solid #ff7d4f;border-radius:50%;" />
-        </td>
-        <td>
-          <div id="qr-code" class="qr-code"> </div>
-          <center style="color:#33333375; font-family:'Circular std',sans-serif; font-size:14px">QrCode mit dem Smartphone scannen</center>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-    <table class="firstmodal-content" onclick="event.stopPropagation()">
-      <tbody>
-        <tr>
-          <td>
-            <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
-          </td>
-          <td colspan="4">
-            <span colspan="4" onclick="document.getElementById('firstModal').style.display='none'" class="firstclose">&times;</span>
-          </td>
-        </tr>
-  
-        <tr>
-          <td>
-            <p style="position:relative;z-index:1;font-family: 'Circular std',sans-serif;" align="top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita porro voluptas nihil ipsam labore sunt maxime incidunt officiis aspernatur non praesentium iusto veritatis, exercitationem delectus velit reiciendis cupiditate eos accusamus.</p>
-          </td>
-  
-          <td>
-            <hr style="width:0px;height:350px;margin-left:50px;margin-right:50px;border:1px solid #ff7d4f;border-radius:50%;" />
-          </td>
-  
-          <td>
-            <p style="position:relative;z-index:1;font-family: 'Circular std',sans-serif;" align="top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita porro voluptas nihil ipsam labore sunt maxime incidunt officiis aspernatur non praesentium iusto veritatis, exercitationem delectus velit reiciendis cupiditate eos accusamus.</p>
-          </td>
-  
-          <td>
-            <hr style="width:0px;height:350px;margin-left:50px;margin-right:50px;border:1px solid #ff7d4f;border-radius:50%;" />
-          </td>
-   
-          <td>
-            <p style="position:relative;z-index:1;font-family: 'Circular std',sans-serif;" align="top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita porro voluptas nihil ipsam labore sunt maxime incidunt officiis aspernatur non praesentium iusto veritatis, exercitationem delectus velit reiciendis cupiditate eos accusamus.</p>
-          </td>
-        </tr>
-            
-           <tr>
-           <td></td><td></td>
-            <td colspan="5" style = "display: flex;justify-content: center;width:100%" >
-              <button id="continueBtn" class="continueBtn">Fortfahren</button>
-            </td>
-            <td></td><td></td>
-          </tr>
-  
-      </tbody>
-    </table>
+          <div class="form-footer">
+            <a id="forgot-button">ID vergessen?</a>
+            <p id="info-text"></p>
+          </div>
+        </div>
+      </div>
+      <div class="separator"></div>
+      <div class="right-section">
+        <div id="qr-code" class="qr-code"></div>
+        <center class="qr-instruction">Scan mich mit deinem Smartphone :-)</center>
+      </div>
+    </div>
   </div>
-
-  <style>
-  @import url('https://fonts.cdnfonts.com/css/circular-std');
-  
-    th, td{
-    border: 0px !important;
-    }
-
-    .close {
-      color: #aaaaaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      margin-top: -35px;
-    }
-  
-    .close:hover,
-    .close:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
-  
-    .modal {
-      display: flex;
-      position: fixed;
-      left: 0;
-      top: 0;
-      z-index: 9999;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
-      -webkit-transition: 0.5s;
-      overflow: auto;
-      transition: all 0.3s linear;
-      backdrop-filter: blur(15px);
-      font-family: 'Circular std',sans-serif;
-    }
-  
-    .modal-content {
-      width: fit-content;
-      background-image: linear-gradient(to right, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffdfc9, #ffe6d5, #ffede2, #fff4ee);
-      margin-top: auto;
-      margin-bottom: auto;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 30px;
-      border: 0px;
-      border-radius: 20px;
-      box-sizing: content-box;
-      font-family: 'Circular std',sans-serif;
-      color: #333333;
-    }
-  
-    .inner-content {
-      align-items: center;
-      justify-content: space-between;
-      font-family: 'Circular std',sans-serif;
-      margin: auto;
-      width: 420px;
-    }
-  
-    .qr-code {
-      margin-left: 25px;
-      margin-top: -20px;
-      margin-bottom: 15px;
-    }
-  
-    .Form {
-      position:relative;
-      font-family: 'Circular std',sans-serif;
-      display: block;
-    }
-  
-    .submitBtn {
-      width: 90%;
-      background-color: #ff7d4f;
-      padding: 12px;
-      font-family: 'Circular std',sans-serif;
-      font-size: 14px;
-      color: #ffffff;
-      border-radius: 20px;
-      border: 1px solid #ff7d4f;
-    }
-  
-    .submitBtn:hover {
-      background-color: white;
-      border:1px solid #fff;
-      box-shadow: 0px 0px 32px 0 #f8f8f850;
-      color: #ff7d4f;
-      transition-duration: 250ms;
-    }
-  
-    input {
-      width: 85%;
-      margin-top: 5px;
-      margin-bottom: 10px;
-      padding-top: 12px;
-      padding-bottom: 12px;
-      padding-left: 16px;
-      border: 1px solid #d2d9e4;
-      border-radius: 20px;
-      background-color: white;
-      font-family: 'Circular std',sans-serif;
-    }
-  </style>
-  `;
-
-  modal.innerHTML = `
+</div>
 
   `;
 }
@@ -601,16 +488,15 @@ else {
 
 document.querySelector("#mySF_Widget_Button").onclick = function() {
   firstModal.style.display = "flex";
-  document.querySelector(".firstmodal-content").style.display = "flex";
-  document.querySelector(".modal-content").style.display = "none";
+  document.querySelector(".modal-content").style.display = "flex";
   if (!isMobile){
   draw();
   }
 };
 
-document.querySelector("#submitBtn").onclick = function() {
-  var idField = document.querySelector("#idField");
-  var emailField = document.querySelector("#emailField");
+document.querySelector("#submit-btn").onclick = function() {
+  var idField = document.querySelector("#id-field");
+  var emailField = document.querySelector("#email-field");
 
   var userCode = idField.value;
   var userEmail = emailField.value;
@@ -624,36 +510,48 @@ document.querySelector("#submitBtn").onclick = function() {
       console.log("Email submitted!");
   }
   if (sentMail) {
-    document.getElementById("forgotButton").textContent = "ID vergessen?";
-    document.getElementById("emailField").style.display = "none";
-    document.getElementById("idField").style.display = "flex";
+    document.getElementById("forgot-button").textContent = "ID vergessen?";
+    document.getElementById("email-field").style.display = "none";
+    document.getElementById("id-field").style.display = "flex";
   }
 };
 
-document.addEventListener("DOMContentLoaded", function() {
-document.querySelector("#continueBtn").onclick = function() {
-  document.querySelector(".firstmodal-content").style.display = "none";
-  document.querySelector(".modal-content").style.display = "flex";
-  draw();
-};});
 
 if(isMobile)  {
-document.querySelector("#continueBtn2").onclick = function() {
-  window.open(url, '_blank');
-};
+  document.querySelector("#continue-btn2").onclick = function() {
+    window.open(url, '_blank');
+  };
 
-document.querySelector("#forgotButton").onclick = function() {
-  document.querySelector("#emailField").style.display = "flex";
-  document.querySelector("#idField").style.display = "none";
-  document.querySelector("#forgotButton").textContent = " ";
-  document.querySelector("#infoText").textContent = " ";
-  sentMail = true;
-};
+  document.querySelector("#continue-btn").onclick = function() {
+    document.getElementById("mysf_mob").style.display = "none";
+    document.getElementById("mysf_input").style.display = "block";
+  };
 }
 
+var back = false;
 
-document.querySelector("#idField").onclick = function() {
-  document.querySelector("#infoText").textContent = " ";
+document.querySelector("#forgot-button").onclick = function() {
+ if(!back){
+  document.querySelector("#email-field").style.display = "flex";
+  document.querySelector("#id-field").style.display = "none";
+  //document.querySelector("#forgotButton").textContent = "ㅤ";
+  document.querySelector("#forgot-button").textContent = "ID eingeben";
+  document.querySelector("#info-text").textContent = " ";
+  back=true;
+  sentMail = true;  
+}else{
+  document.querySelector("#email-field").style.display = "none";
+  document.querySelector("#id-field").style.display = "flex";
+  document.querySelector("#forgot-button").textContent = "ID vergessen?";
+  document.querySelector("#info-text").textContent = " ";
+  back=false;
+}
+};
+
+
+
+document.querySelector("#id-field").onclick = function() {
+  document.querySelector("#info-text").textContent = " ";
 };
 
 window.addEventListener('resize', function () {
@@ -694,11 +592,11 @@ function fetchCode(Code) {
           //note: response is json array
           const Data = result[0].size;
           console.log(Data);
-          document.querySelector("#infoText").textContent = "ID gesendet!";
+          document.querySelector("#info-text").textContent = "ID gesendet!";
       })
       .catch(error => {
           console.log('error', error);
-          document.querySelector("#infoText").textContent = "Dieser Code exisitert nicht!";
+          document.querySelector("#info-text").textContent = "Dieser Code exisitert nicht!";
       });
 }
 
@@ -727,16 +625,16 @@ function fetchEmail(Email) {
       })
       .catch(error => {
         console.log('error', error);
-        document.querySelector("#infoText").textContent = "Email nicht gefunden";
+        document.querySelector("#info-text").textContent = "Email nicht gefunden";
     });
 }
 
 function draw() {
-  var testbox = document.querySelector("#inner-content");
+  var box = document.querySelector(".inner-content");
   if (!isMobile) {
       document.querySelector("#qr-code").innerHTML = "";
       //console.log("Width is " + testbox.offsetWidth);
-      var x = testbox.clientWidth * .75;
+      var x = box.clientWidth * .333;
       QrCreator.render({
               text: url,
               radius: qrRadius, // 0.0 to 0.5

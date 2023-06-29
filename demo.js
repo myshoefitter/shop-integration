@@ -1,58 +1,58 @@
 (function() {
-	const t = document.createElement("link").relList;
-	if (t && t.supports && t.supports("modulepreload")) return;
-	for (const s of document.querySelectorAll('link[rel="modulepreload"]')) i(s);
+	const e = document.createElement("link").relList;
+	if (e && e.supports && e.supports("modulepreload")) return;
+	for (const s of document.querySelectorAll('link[rel="modulepreload"]')) r(s);
 	new MutationObserver(s => {
 	  for (const l of s)
 		if (l.type === "childList")
-		  for (const m of l.addedNodes) m.tagName === "LINK" && m.rel === "modulepreload" && i(m)
+		  for (const m of l.addedNodes) m.tagName === "LINK" && m.rel === "modulepreload" && r(m)
 	}).observe(document, {
 	  childList: !0,
 	  subtree: !0
 	});
   
-	function e(s) {
+	function t(s) {
 	  const l = {};
 	  return s.integrity && (l.integrity = s.integrity), s.referrerPolicy && (l.referrerPolicy = s.referrerPolicy), s.crossOrigin === "use-credentials" ? l.credentials = "include" : s.crossOrigin === "anonymous" ? l.credentials = "omit" : l.credentials = "same-origin", l
 	}
   
-	function i(s) {
+	function r(s) {
 	  if (s.ep) return;
 	  s.ep = !0;
-	  const l = e(s);
+	  const l = t(s);
 	  fetch(s.href, l)
 	}
   })();
-  let bt = null;
-  class xt {}
-  xt.render = function(n, t) {
-	bt(n, t)
+  let we = null;
+  class Ee {}
+  Ee.render = function(n, e) {
+	we(n, e)
   };
-  self.QrCreator = xt;
+  self.QrCreator = Ee;
   (function(n) {
-	function t(v, a, c, p) {
+	function e(v, a, c, p) {
 	  var o = {},
-		r = n(c, a);
-	  r.u(v), r.J(), p = p || 0;
-	  var u = r.h(),
-		d = r.h() + 2 * p;
-	  return o.text = v, o.level = a, o.version = c, o.O = d, o.a = function(y, B) {
-		return y -= p, B -= p, 0 > y || y >= u || 0 > B || B >= u ? !1 : r.a(y, B)
+		i = n(c, a);
+	  i.u(v), i.J(), p = p || 0;
+	  var h = i.h(),
+		f = i.h() + 2 * p;
+	  return o.text = v, o.level = a, o.version = c, o.O = f, o.a = function(y, _) {
+		return y -= p, _ -= p, 0 > y || y >= h || 0 > _ || _ >= h ? !1 : i.a(y, _)
 	  }, o
 	}
   
-	function e(v, a, c, p, o, r, u, d, y, B) {
-	  function T(g, b, f, h, w, _, k) {
-		g ? (v.lineTo(b + _, f + k), v.arcTo(b, f, h, w, r)) : v.lineTo(b, f)
+	function t(v, a, c, p, o, i, h, f, y, _) {
+	  function A(g, b, u, d, w, S, B) {
+		g ? (v.lineTo(b + S, u + B), v.arcTo(b, u, d, w, i)) : v.lineTo(b, u)
 	  }
-	  u ? v.moveTo(a + r, c) : v.moveTo(a, c), T(d, p, c, p, o, -r, 0), T(y, p, o, a, o, 0, -r), T(B, a, o, a, c, r, 0), T(u, a, c, p, c, 0, r)
+	  h ? v.moveTo(a + i, c) : v.moveTo(a, c), A(f, p, c, p, o, -i, 0), A(y, p, o, a, o, 0, -i), A(_, a, o, a, c, i, 0), A(h, a, c, p, c, 0, i)
 	}
   
-	function i(v, a, c, p, o, r, u, d, y, B) {
-	  function T(g, b, f, h) {
-		v.moveTo(g + f, b), v.lineTo(g, b), v.lineTo(g, b + h), v.arcTo(g, b, g + f, b, r)
+	function r(v, a, c, p, o, i, h, f, y, _) {
+	  function A(g, b, u, d) {
+		v.moveTo(g + u, b), v.lineTo(g, b), v.lineTo(g, b + d), v.arcTo(g, b, g + u, b, i)
 	  }
-	  u && T(a, c, r, r), d && T(p, c, -r, r), y && T(p, o, -r, -r), B && T(a, o, r, -r)
+	  h && A(a, c, i, i), f && A(p, c, -i, i), y && A(p, o, -i, -i), _ && A(a, o, i, -i)
 	}
   
 	function s(v, a) {
@@ -61,50 +61,50 @@
 	  else {
 		var p = c.type,
 		  o = c.colorStops;
-		if (c = c.position.map(u => Math.round(u * a.size)), p === "linear-gradient") var r = v.createLinearGradient.apply(v, c);
-		else if (p === "radial-gradient") r = v.createRadialGradient.apply(v, c);
+		if (c = c.position.map(h => Math.round(h * a.size)), p === "linear-gradient") var i = v.createLinearGradient.apply(v, c);
+		else if (p === "radial-gradient") i = v.createRadialGradient.apply(v, c);
 		else throw Error("Unsupported fill");
-		o.forEach(([u, d]) => {
-		  r.addColorStop(u, d)
-		}), v.fillStyle = r
+		o.forEach(([h, f]) => {
+		  i.addColorStop(h, f)
+		}), v.fillStyle = i
 	  }
 	}
   
 	function l(v, a) {
-	  t: {
+	  e: {
 		var c = a.text,
 		  p = a.v,
 		  o = a.N,
-		  r = a.K,
-		  u = a.P;
-		for (o = Math.max(1, o || 1), r = Math.min(40, r || 40); o <= r; o += 1) try {
-		  var d = t(c, p, o, u);
-		  break t
+		  i = a.K,
+		  h = a.P;
+		for (o = Math.max(1, o || 1), i = Math.min(40, i || 40); o <= i; o += 1) try {
+		  var f = e(c, p, o, h);
+		  break e
 		} catch {}
-		d = void 0
+		f = void 0
 	  }
-	  if (!d) return null;
-	  for (c = v.getContext("2d"), a.background && (c.fillStyle = a.background, c.fillRect(a.left, a.top, a.size, a.size)), p = d.O, r = a.size / p, c.beginPath(), u = 0; u < p; u += 1)
+	  if (!f) return null;
+	  for (c = v.getContext("2d"), a.background && (c.fillStyle = a.background, c.fillRect(a.left, a.top, a.size, a.size)), p = f.O, i = a.size / p, c.beginPath(), h = 0; h < p; h += 1)
 		for (o = 0; o < p; o += 1) {
 		  var y = c,
-			B = a.left + o * r,
-			T = a.top + u * r,
-			g = u,
+			_ = a.left + o * i,
+			A = a.top + h * i,
+			g = h,
 			b = o,
-			f = d.a,
-			h = B + r,
-			w = T + r,
-			_ = g - 1,
-			k = g + 1,
+			u = f.a,
+			d = _ + i,
+			w = A + i,
+			S = g - 1,
+			B = g + 1,
 			E = b - 1,
 			x = b + 1,
-			N = Math.floor(Math.min(.5, Math.max(0, a.R)) * r),
-			P = f(g, b),
-			z = f(_, E),
-			W = f(_, b);
-		  _ = f(_, x);
-		  var $ = f(g, x);
-		  x = f(k, x), b = f(k, b), k = f(k, E), g = f(g, E), B = Math.round(B), T = Math.round(T), h = Math.round(h), w = Math.round(w), P ? e(y, B, T, h, w, N, !W && !g, !W && !$, !b && !$, !b && !g) : i(y, B, T, h, w, N, W && g && z, W && $ && _, b && $ && x, b && g && k)
+			N = Math.floor(Math.min(.5, Math.max(0, a.R)) * i),
+			I = u(g, b),
+			F = u(S, E),
+			U = u(S, b);
+		  S = u(S, x);
+		  var K = u(g, x);
+		  x = u(B, x), b = u(B, b), B = u(B, E), g = u(g, E), _ = Math.round(_), A = Math.round(A), d = Math.round(d), w = Math.round(w), I ? t(y, _, A, d, w, N, !U && !g, !U && !K, !b && !K, !b && !g) : r(y, _, A, d, w, N, U && g && F, U && K && S, b && K && x, b && g && B)
 		}
 	  return s(c, a),
 	  c.fill(),
@@ -123,13 +123,13 @@
 	  radius: .5,
 	  quiet: 0
 	};
-	bt = function(v, a) {
+	we = function(v, a) {
 	  var c = {};
 	  Object.assign(c, m, v), c.N = c.minVersion, c.K = c.maxVersion, c.v = c.ecLevel, c.left = c.left, c.top = c.top, c.size = c.size, c.fill = c.fill, c.background = c.background, c.text = c.text, c.R = c.radius, c.P = c.quiet, a instanceof HTMLCanvasElement ? ((a.width !== c.size || a.height !== c.size) && (a.width = c.size, a.height = c.size), a.getContext("2d").clearRect(0, 0, a.width, a.height), l(a, c)) : (v = document.createElement("canvas"), v.width = c.size, v.height = c.size, c = l(v, c), a.appendChild(c))
 	}
   })(function() {
 	function n(a) {
-	  var c = e.s(a);
+	  var c = t.s(a);
 	  return {
 		S: function() {
 		  return 4
@@ -143,7 +143,7 @@
 	  }
 	}
   
-	function t() {
+	function e() {
 	  var a = [],
 		c = 0,
 		p = {
@@ -153,133 +153,133 @@
 		  c: function(o) {
 			return (a[Math.floor(o / 8)] >>> 7 - o % 8 & 1) == 1
 		  },
-		  put: function(o, r) {
-			for (var u = 0; u < r; u += 1) p.m((o >>> r - u - 1 & 1) == 1)
+		  put: function(o, i) {
+			for (var h = 0; h < i; h += 1) p.m((o >>> i - h - 1 & 1) == 1)
 		  },
 		  f: function() {
 			return c
 		  },
 		  m: function(o) {
-			var r = Math.floor(c / 8);
-			a.length <= r && a.push(0), o && (a[r] |= 128 >>> c % 8), c += 1
+			var i = Math.floor(c / 8);
+			a.length <= i && a.push(0), o && (a[i] |= 128 >>> c % 8), c += 1
 		  }
 		};
 	  return p
 	}
   
-	function e(a, c) {
+	function t(a, c) {
 	  function p(g, b) {
-		for (var f = -1; 7 >= f; f += 1)
-		  if (!(-1 >= g + f || d <= g + f))
-			for (var h = -1; 7 >= h; h += 1) - 1 >= b + h || d <= b + h || (u[g + f][b + h] = 0 <= f && 6 >= f && (h == 0 || h == 6) || 0 <= h && 6 >= h && (f == 0 || f == 6) || 2 <= f && 4 >= f && 2 <= h && 4 >= h)
+		for (var u = -1; 7 >= u; u += 1)
+		  if (!(-1 >= g + u || f <= g + u))
+			for (var d = -1; 7 >= d; d += 1) - 1 >= b + d || f <= b + d || (h[g + u][b + d] = 0 <= u && 6 >= u && (d == 0 || d == 6) || 0 <= d && 6 >= d && (u == 0 || u == 6) || 2 <= u && 4 >= u && 2 <= d && 4 >= d)
 	  }
   
 	  function o(g, b) {
-		for (var f = d = 4 * a + 17, h = Array(f), w = 0; w < f; w += 1) {
-		  h[w] = Array(f);
-		  for (var _ = 0; _ < f; _ += 1) h[w][_] = null
+		for (var u = f = 4 * a + 17, d = Array(u), w = 0; w < u; w += 1) {
+		  d[w] = Array(u);
+		  for (var S = 0; S < u; S += 1) d[w][S] = null
 		}
-		for (u = h, p(0, 0), p(d - 7, 0), p(0, d - 7), f = l.G(a), h = 0; h < f.length; h += 1)
-		  for (w = 0; w < f.length; w += 1) {
-			_ = f[h];
-			var k = f[w];
-			if (u[_][k] == null)
+		for (h = d, p(0, 0), p(f - 7, 0), p(0, f - 7), u = l.G(a), d = 0; d < u.length; d += 1)
+		  for (w = 0; w < u.length; w += 1) {
+			S = u[d];
+			var B = u[w];
+			if (h[S][B] == null)
 			  for (var E = -2; 2 >= E; E += 1)
-				for (var x = -2; 2 >= x; x += 1) u[_ + E][k + x] = E == -2 || E == 2 || x == -2 || x == 2 || E == 0 && x == 0
+				for (var x = -2; 2 >= x; x += 1) h[S + E][B + x] = E == -2 || E == 2 || x == -2 || x == 2 || E == 0 && x == 0
 		  }
-		for (f = 8; f < d - 8; f += 1) u[f][6] == null && (u[f][6] = f % 2 == 0);
-		for (f = 8; f < d - 8; f += 1) u[6][f] == null && (u[6][f] = f % 2 == 0);
-		for (f = l.w(r << 3 | b), h = 0; 15 > h; h += 1) w = !g && (f >> h & 1) == 1, u[6 > h ? h : 8 > h ? h + 1 : d - 15 + h][8] = w, u[8][8 > h ? d - h - 1 : 9 > h ? 15 - h : 14 - h] = w;
-		if (u[d - 8][8] = !g, 7 <= a) {
-		  for (f = l.A(a), h = 0; 18 > h; h += 1) w = !g && (f >> h & 1) == 1, u[Math.floor(h / 3)][h % 3 + d - 8 - 3] = w;
-		  for (h = 0; 18 > h; h += 1) w = !g && (f >> h & 1) == 1, u[h % 3 + d - 8 - 3][Math.floor(h / 3)] = w
+		for (u = 8; u < f - 8; u += 1) h[u][6] == null && (h[u][6] = u % 2 == 0);
+		for (u = 8; u < f - 8; u += 1) h[6][u] == null && (h[6][u] = u % 2 == 0);
+		for (u = l.w(i << 3 | b), d = 0; 15 > d; d += 1) w = !g && (u >> d & 1) == 1, h[6 > d ? d : 8 > d ? d + 1 : f - 15 + d][8] = w, h[8][8 > d ? f - d - 1 : 9 > d ? 15 - d : 14 - d] = w;
+		if (h[f - 8][8] = !g, 7 <= a) {
+		  for (u = l.A(a), d = 0; 18 > d; d += 1) w = !g && (u >> d & 1) == 1, h[Math.floor(d / 3)][d % 3 + f - 8 - 3] = w;
+		  for (d = 0; 18 > d; d += 1) w = !g && (u >> d & 1) == 1, h[d % 3 + f - 8 - 3][Math.floor(d / 3)] = w
 		}
 		if (y == null) {
-		  for (g = v.I(a, r), f = t(), h = 0; h < B.length; h += 1) w = B[h], f.put(4, 4), f.put(w.b(), l.f(4, a)), w.write(f);
-		  for (h = w = 0; h < g.length; h += 1) w += g[h].j;
-		  if (f.f() > 8 * w) throw Error("code length overflow. (" + f.f() + ">" + 8 * w + ")");
-		  for (f.f() + 4 <= 8 * w && f.put(0, 4); f.f() % 8 != 0;) f.m(!1);
-		  for (; !(f.f() >= 8 * w) && (f.put(236, 8), !(f.f() >= 8 * w));) f.put(17, 8);
+		  for (g = v.I(a, i), u = e(), d = 0; d < _.length; d += 1) w = _[d], u.put(4, 4), u.put(w.b(), l.f(4, a)), w.write(u);
+		  for (d = w = 0; d < g.length; d += 1) w += g[d].j;
+		  if (u.f() > 8 * w) throw Error("code length overflow. (" + u.f() + ">" + 8 * w + ")");
+		  for (u.f() + 4 <= 8 * w && u.put(0, 4); u.f() % 8 != 0;) u.m(!1);
+		  for (; !(u.f() >= 8 * w) && (u.put(236, 8), !(u.f() >= 8 * w));) u.put(17, 8);
 		  var N = 0;
-		  for (w = h = 0, _ = Array(g.length), k = Array(g.length), E = 0; E < g.length; E += 1) {
-			var P = g[E].j,
-			  z = g[E].o - P;
-			for (h = Math.max(h, P), w = Math.max(w, z), _[E] = Array(P), x = 0; x < _[E].length; x += 1) _[E][x] = 255 & f.B()[x + N];
-			for (N += P, x = l.C(z), P = i(_[E], x.b() - 1).l(x), k[E] = Array(x.b() - 1), x = 0; x < k[E].length; x += 1) z = x + P.b() - k[E].length, k[E][x] = 0 <= z ? P.c(z) : 0
+		  for (w = d = 0, S = Array(g.length), B = Array(g.length), E = 0; E < g.length; E += 1) {
+			var I = g[E].j,
+			  F = g[E].o - I;
+			for (d = Math.max(d, I), w = Math.max(w, F), S[E] = Array(I), x = 0; x < S[E].length; x += 1) S[E][x] = 255 & u.B()[x + N];
+			for (N += I, x = l.C(F), I = r(S[E], x.b() - 1).l(x), B[E] = Array(x.b() - 1), x = 0; x < B[E].length; x += 1) F = x + I.b() - B[E].length, B[E][x] = 0 <= F ? I.c(F) : 0
 		  }
-		  for (x = f = 0; x < g.length; x += 1) f += g[x].o;
-		  for (f = Array(f), x = N = 0; x < h; x += 1)
-			for (E = 0; E < g.length; E += 1) x < _[E].length && (f[N] = _[E][x], N += 1);
+		  for (x = u = 0; x < g.length; x += 1) u += g[x].o;
+		  for (u = Array(u), x = N = 0; x < d; x += 1)
+			for (E = 0; E < g.length; E += 1) x < S[E].length && (u[N] = S[E][x], N += 1);
 		  for (x = 0; x < w; x += 1)
-			for (E = 0; E < g.length; E += 1) x < k[E].length && (f[N] = k[E][x], N += 1);
-		  y = f
+			for (E = 0; E < g.length; E += 1) x < B[E].length && (u[N] = B[E][x], N += 1);
+		  y = u
 		}
-		for (g = y, f = -1, h = d - 1, w = 7, _ = 0, b = l.F(b), k = d - 1; 0 < k; k -= 2)
-		  for (k == 6 && --k;;) {
-			for (E = 0; 2 > E; E += 1) u[h][k - E] == null && (x = !1, _ < g.length && (x = (g[_] >>> w & 1) == 1), b(h, k - E) && (x = !x), u[h][k - E] = x, --w, w == -1 && (_ += 1, w = 7));
-			if (h += f, 0 > h || d <= h) {
-			  h -= f, f = -f;
+		for (g = y, u = -1, d = f - 1, w = 7, S = 0, b = l.F(b), B = f - 1; 0 < B; B -= 2)
+		  for (B == 6 && --B;;) {
+			for (E = 0; 2 > E; E += 1) h[d][B - E] == null && (x = !1, S < g.length && (x = (g[S] >>> w & 1) == 1), b(d, B - E) && (x = !x), h[d][B - E] = x, --w, w == -1 && (S += 1, w = 7));
+			if (d += u, 0 > d || f <= d) {
+			  d -= u, u = -u;
 			  break
 			}
 		  }
 	  }
-	  var r = s[c],
-		u = null,
-		d = 0,
+	  var i = s[c],
+		h = null,
+		f = 0,
 		y = null,
-		B = [],
-		T = {
+		_ = [],
+		A = {
 		  u: function(g) {
-			g = n(g), B.push(g), y = null
+			g = n(g), _.push(g), y = null
 		  },
 		  a: function(g, b) {
-			if (0 > g || d <= g || 0 > b || d <= b) throw Error(g + "," + b);
-			return u[g][b]
+			if (0 > g || f <= g || 0 > b || f <= b) throw Error(g + "," + b);
+			return h[g][b]
 		  },
 		  h: function() {
-			return d
+			return f
 		  },
 		  J: function() {
-			for (var g = 0, b = 0, f = 0; 8 > f; f += 1) {
-			  o(!0, f);
-			  var h = l.D(T);
-			  (f == 0 || g > h) && (g = h, b = f)
+			for (var g = 0, b = 0, u = 0; 8 > u; u += 1) {
+			  o(!0, u);
+			  var d = l.D(A);
+			  (u == 0 || g > d) && (g = d, b = u)
 			}
 			o(!1, b)
 		  }
 		};
-	  return T
+	  return A
 	}
   
-	function i(a, c) {
+	function r(a, c) {
 	  if (typeof a.length > "u") throw Error(a.length + "/" + c);
 	  var p = function() {
-		  for (var r = 0; r < a.length && a[r] == 0;) r += 1;
-		  for (var u = Array(a.length - r + c), d = 0; d < a.length - r; d += 1) u[d] = a[d + r];
-		  return u
+		  for (var i = 0; i < a.length && a[i] == 0;) i += 1;
+		  for (var h = Array(a.length - i + c), f = 0; f < a.length - i; f += 1) h[f] = a[f + i];
+		  return h
 		}(),
 		o = {
-		  c: function(r) {
-			return p[r]
+		  c: function(i) {
+			return p[i]
 		  },
 		  b: function() {
 			return p.length
 		  },
-		  multiply: function(r) {
-			for (var u = Array(o.b() + r.b() - 1), d = 0; d < o.b(); d += 1)
-			  for (var y = 0; y < r.b(); y += 1) u[d + y] ^= m.i(m.g(o.c(d)) + m.g(r.c(y)));
-			return i(u, 0)
+		  multiply: function(i) {
+			for (var h = Array(o.b() + i.b() - 1), f = 0; f < o.b(); f += 1)
+			  for (var y = 0; y < i.b(); y += 1) h[f + y] ^= m.i(m.g(o.c(f)) + m.g(i.c(y)));
+			return r(h, 0)
 		  },
-		  l: function(r) {
-			if (0 > o.b() - r.b()) return o;
-			for (var u = m.g(o.c(0)) - m.g(r.c(0)), d = Array(o.b()), y = 0; y < o.b(); y += 1) d[y] = o.c(y);
-			for (y = 0; y < r.b(); y += 1) d[y] ^= m.i(m.g(r.c(y)) + u);
-			return i(d, 0).l(r)
+		  l: function(i) {
+			if (0 > o.b() - i.b()) return o;
+			for (var h = m.g(o.c(0)) - m.g(i.c(0)), f = Array(o.b()), y = 0; y < o.b(); y += 1) f[y] = o.c(y);
+			for (y = 0; y < i.b(); y += 1) f[y] ^= m.i(m.g(i.c(y)) + h);
+			return r(f, 0).l(i)
 		  }
 		};
 	  return o
 	}
-	e.s = function(a) {
+	t.s = function(a) {
 	  for (var c = [], p = 0; p < a.length; p++) {
 		var o = a.charCodeAt(p);
 		128 > o ? c.push(o) : 2048 > o ? c.push(192 | o >> 6, 128 | o & 63) : 55296 > o || 57344 <= o ? c.push(224 | o >> 12, 128 | o >> 6 & 63, 128 | o & 63) : (p++, o = 65536 + ((o & 1023) << 10 | a.charCodeAt(p) & 1023), c.push(240 | o >> 18, 128 | o >> 12 & 63, 128 | o >> 6 & 63, 128 | o & 63))
@@ -294,8 +294,8 @@
 	  },
 	  l = function() {
 		function a(o) {
-		  for (var r = 0; o != 0;) r += 1, o >>>= 1;
-		  return r
+		  for (var i = 0; o != 0;) i += 1, o >>>= 1;
+		  return i
 		}
 		var c = [
 			[],
@@ -341,12 +341,12 @@
 		  ],
 		  p = {
 			w: function(o) {
-			  for (var r = o << 10; 0 <= a(r) - a(1335);) r ^= 1335 << a(r) - a(1335);
-			  return (o << 10 | r) ^ 21522
+			  for (var i = o << 10; 0 <= a(i) - a(1335);) i ^= 1335 << a(i) - a(1335);
+			  return (o << 10 | i) ^ 21522
 			},
 			A: function(o) {
-			  for (var r = o << 12; 0 <= a(r) - a(7973);) r ^= 7973 << a(r) - a(7973);
-			  return o << 12 | r
+			  for (var i = o << 12; 0 <= a(i) - a(7973);) i ^= 7973 << a(i) - a(7973);
+			  return o << 12 | i
 			},
 			G: function(o) {
 			  return c[o - 1]
@@ -354,66 +354,66 @@
 			F: function(o) {
 			  switch (o) {
 				case 0:
-				  return function(r, u) {
-					return (r + u) % 2 == 0
+				  return function(i, h) {
+					return (i + h) % 2 == 0
 				  };
 				case 1:
-				  return function(r) {
-					return r % 2 == 0
+				  return function(i) {
+					return i % 2 == 0
 				  };
 				case 2:
-				  return function(r, u) {
-					return u % 3 == 0
+				  return function(i, h) {
+					return h % 3 == 0
 				  };
 				case 3:
-				  return function(r, u) {
-					return (r + u) % 3 == 0
+				  return function(i, h) {
+					return (i + h) % 3 == 0
 				  };
 				case 4:
-				  return function(r, u) {
-					return (Math.floor(r / 2) + Math.floor(u / 3)) % 2 == 0
+				  return function(i, h) {
+					return (Math.floor(i / 2) + Math.floor(h / 3)) % 2 == 0
 				  };
 				case 5:
-				  return function(r, u) {
-					return r * u % 2 + r * u % 3 == 0
+				  return function(i, h) {
+					return i * h % 2 + i * h % 3 == 0
 				  };
 				case 6:
-				  return function(r, u) {
-					return (r * u % 2 + r * u % 3) % 2 == 0
+				  return function(i, h) {
+					return (i * h % 2 + i * h % 3) % 2 == 0
 				  };
 				case 7:
-				  return function(r, u) {
-					return (r * u % 3 + (r + u) % 2) % 2 == 0
+				  return function(i, h) {
+					return (i * h % 3 + (i + h) % 2) % 2 == 0
 				  };
 				default:
 				  throw Error("bad maskPattern:" + o)
 			  }
 			},
 			C: function(o) {
-			  for (var r = i([1], 0), u = 0; u < o; u += 1) r = r.multiply(i([1, m.i(u)], 0));
-			  return r
+			  for (var i = r([1], 0), h = 0; h < o; h += 1) i = i.multiply(r([1, m.i(h)], 0));
+			  return i
 			},
-			f: function(o, r) {
-			  if (o != 4 || 1 > r || 40 < r) throw Error("mode: " + o + "; type: " + r);
-			  return 10 > r ? 8 : 16
+			f: function(o, i) {
+			  if (o != 4 || 1 > i || 40 < i) throw Error("mode: " + o + "; type: " + i);
+			  return 10 > i ? 8 : 16
 			},
 			D: function(o) {
-			  for (var r = o.h(), u = 0, d = 0; d < r; d += 1)
-				for (var y = 0; y < r; y += 1) {
-				  for (var B = 0, T = o.a(d, y), g = -1; 1 >= g; g += 1)
-					if (!(0 > d + g || r <= d + g))
-					  for (var b = -1; 1 >= b; b += 1) 0 > y + b || r <= y + b || (g != 0 || b != 0) && T == o.a(d + g, y + b) && (B += 1);
-				  5 < B && (u += 3 + B - 5)
+			  for (var i = o.h(), h = 0, f = 0; f < i; f += 1)
+				for (var y = 0; y < i; y += 1) {
+				  for (var _ = 0, A = o.a(f, y), g = -1; 1 >= g; g += 1)
+					if (!(0 > f + g || i <= f + g))
+					  for (var b = -1; 1 >= b; b += 1) 0 > y + b || i <= y + b || (g != 0 || b != 0) && A == o.a(f + g, y + b) && (_ += 1);
+				  5 < _ && (h += 3 + _ - 5)
 				}
-			  for (d = 0; d < r - 1; d += 1)
-				for (y = 0; y < r - 1; y += 1) B = 0, o.a(d, y) && (B += 1), o.a(d + 1, y) && (B += 1), o.a(d, y + 1) && (B += 1), o.a(d + 1, y + 1) && (B += 1), (B == 0 || B == 4) && (u += 3);
-			  for (d = 0; d < r; d += 1)
-				for (y = 0; y < r - 6; y += 1) o.a(d, y) && !o.a(d, y + 1) && o.a(d, y + 2) && o.a(d, y + 3) && o.a(d, y + 4) && !o.a(d, y + 5) && o.a(d, y + 6) && (u += 40);
-			  for (y = 0; y < r; y += 1)
-				for (d = 0; d < r - 6; d += 1) o.a(d, y) && !o.a(d + 1, y) && o.a(d + 2, y) && o.a(d + 3, y) && o.a(d + 4, y) && !o.a(d + 5, y) && o.a(d + 6, y) && (u += 40);
-			  for (y = B = 0; y < r; y += 1)
-				for (d = 0; d < r; d += 1) o.a(d, y) && (B += 1);
-			  return u += Math.abs(100 * B / r / r - 50) / 5 * 10
+			  for (f = 0; f < i - 1; f += 1)
+				for (y = 0; y < i - 1; y += 1) _ = 0, o.a(f, y) && (_ += 1), o.a(f + 1, y) && (_ += 1), o.a(f, y + 1) && (_ += 1), o.a(f + 1, y + 1) && (_ += 1), (_ == 0 || _ == 4) && (h += 3);
+			  for (f = 0; f < i; f += 1)
+				for (y = 0; y < i - 6; y += 1) o.a(f, y) && !o.a(f, y + 1) && o.a(f, y + 2) && o.a(f, y + 3) && o.a(f, y + 4) && !o.a(f, y + 5) && o.a(f, y + 6) && (h += 40);
+			  for (y = 0; y < i; y += 1)
+				for (f = 0; f < i - 6; f += 1) o.a(f, y) && !o.a(f + 1, y) && o.a(f + 2, y) && o.a(f + 3, y) && o.a(f + 4, y) && !o.a(f + 5, y) && o.a(f + 6, y) && (h += 40);
+			  for (y = _ = 0; y < i; y += 1)
+				for (f = 0; f < i; f += 1) o.a(f, y) && (_ += 1);
+			  return h += Math.abs(100 * _ / i / i - 50) / 5 * 10
 			}
 		  };
 		return p
@@ -435,8 +435,8 @@
 		}
 	  }(),
 	  v = function() {
-		function a(o, r) {
-		  switch (r) {
+		function a(o, i) {
+		  switch (i) {
 			case s.L:
 			  return c[4 * (o - 1)];
 			case s.M:
@@ -610,24 +610,24 @@
 			[20, 45, 15, 61, 46, 16]
 		  ],
 		  p = {
-			I: function(o, r) {
-			  var u = a(o, r);
-			  if (typeof u > "u") throw Error("bad rs block @ typeNumber:" + o + "/errorCorrectLevel:" + r);
-			  o = u.length / 3, r = [];
-			  for (var d = 0; d < o; d += 1)
-				for (var y = u[3 * d], B = u[3 * d + 1], T = u[3 * d + 2], g = 0; g < y; g += 1) {
-				  var b = T,
-					f = {};
-				  f.o = B, f.j = b, r.push(f)
+			I: function(o, i) {
+			  var h = a(o, i);
+			  if (typeof h > "u") throw Error("bad rs block @ typeNumber:" + o + "/errorCorrectLevel:" + i);
+			  o = h.length / 3, i = [];
+			  for (var f = 0; f < o; f += 1)
+				for (var y = h[3 * f], _ = h[3 * f + 1], A = h[3 * f + 2], g = 0; g < y; g += 1) {
+				  var b = A,
+					u = {};
+				  u.o = _, u.j = b, i.push(u)
 				}
-			  return r
+			  return i
 			}
 		  };
 		return p
 	  }();
-	return e
+	return t
   }());
-  const Kt = QrCreator,
+  const Ke = QrCreator,
 	M = Object.create(null);
   M.open = "0";
   M.close = "1";
@@ -636,70 +636,70 @@
   M.message = "4";
   M.upgrade = "5";
   M.noop = "6";
-  const J = Object.create(null);
+  const Y = Object.create(null);
   Object.keys(M).forEach(n => {
-	J[M[n]] = n
+	Y[M[n]] = n
   });
-  const Wt = {
+  const We = {
 	  type: "error",
 	  data: "parser error"
 	},
-	$t = typeof Blob == "function" || typeof Blob < "u" && Object.prototype.toString.call(Blob) === "[object BlobConstructor]",
-	Yt = typeof ArrayBuffer == "function",
-	Qt = n => typeof ArrayBuffer.isView == "function" ? ArrayBuffer.isView(n) : n && n.buffer instanceof ArrayBuffer,
-	wt = ({
+	$e = typeof Blob == "function" || typeof Blob < "u" && Object.prototype.toString.call(Blob) === "[object BlobConstructor]",
+	je = typeof ArrayBuffer == "function",
+	Ye = n => typeof ArrayBuffer.isView == "function" ? ArrayBuffer.isView(n) : n && n.buffer instanceof ArrayBuffer,
+	ke = ({
 	  type: n,
-	  data: t
-	}, e, i) => $t && t instanceof Blob ? e ? i(t) : ft(t, i) : Yt && (t instanceof ArrayBuffer || Qt(t)) ? e ? i(t) : ft(new Blob([t]), i) : i(M[n] + (t || "")),
-	ft = (n, t) => {
-	  const e = new FileReader;
-	  return e.onload = function() {
-		const i = e.result.split(",")[1];
-		t("b" + (i || ""))
-	  }, e.readAsDataURL(n)
+	  data: e
+	}, t, r) => $e && e instanceof Blob ? t ? r(e) : fe(e, r) : je && (e instanceof ArrayBuffer || Ye(e)) ? t ? r(e) : fe(new Blob([e]), r) : r(M[n] + (e || "")),
+	fe = (n, e) => {
+	  const t = new FileReader;
+	  return t.onload = function() {
+		const r = t.result.split(",")[1];
+		e("b" + (r || ""))
+	  }, t.readAsDataURL(n)
 	},
-	dt = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",
-	K = typeof Uint8Array > "u" ? [] : new Uint8Array(256);
-  for (let n = 0; n < dt.length; n++) K[dt.charCodeAt(n)] = n;
-  const jt = n => {
-	  let t = n.length * .75,
-		e = n.length,
-		i, s = 0,
+	he = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",
+	H = typeof Uint8Array > "u" ? [] : new Uint8Array(256);
+  for (let n = 0; n < he.length; n++) H[he.charCodeAt(n)] = n;
+  const Je = n => {
+	  let e = n.length * .75,
+		t = n.length,
+		r, s = 0,
 		l, m, v, a;
-	  n[n.length - 1] === "=" && (t--, n[n.length - 2] === "=" && t--);
-	  const c = new ArrayBuffer(t),
+	  n[n.length - 1] === "=" && (e--, n[n.length - 2] === "=" && e--);
+	  const c = new ArrayBuffer(e),
 		p = new Uint8Array(c);
-	  for (i = 0; i < e; i += 4) l = K[n.charCodeAt(i)], m = K[n.charCodeAt(i + 1)], v = K[n.charCodeAt(i + 2)], a = K[n.charCodeAt(i + 3)], p[s++] = l << 2 | m >> 4, p[s++] = (m & 15) << 4 | v >> 2, p[s++] = (v & 3) << 6 | a & 63;
+	  for (r = 0; r < t; r += 4) l = H[n.charCodeAt(r)], m = H[n.charCodeAt(r + 1)], v = H[n.charCodeAt(r + 2)], a = H[n.charCodeAt(r + 3)], p[s++] = l << 2 | m >> 4, p[s++] = (m & 15) << 4 | v >> 2, p[s++] = (v & 3) << 6 | a & 63;
 	  return c
 	},
-	Jt = typeof ArrayBuffer == "function",
-	Et = (n, t) => {
+	Qe = typeof ArrayBuffer == "function",
+	_e = (n, e) => {
 	  if (typeof n != "string") return {
 		type: "message",
-		data: Ct(n, t)
+		data: Se(n, e)
 	  };
-	  const e = n.charAt(0);
-	  return e === "b" ? {
+	  const t = n.charAt(0);
+	  return t === "b" ? {
 		type: "message",
-		data: Xt(n.substring(1), t)
-	  } : J[e] ? n.length > 1 ? {
-		type: J[e],
+		data: Xe(n.substring(1), e)
+	  } : Y[t] ? n.length > 1 ? {
+		type: Y[t],
 		data: n.substring(1)
 	  } : {
-		type: J[e]
-	  } : Wt
+		type: Y[t]
+	  } : We
 	},
-	Xt = (n, t) => {
-	  if (Jt) {
-		const e = jt(n);
-		return Ct(e, t)
+	Xe = (n, e) => {
+	  if (Qe) {
+		const t = Je(n);
+		return Se(t, e)
 	  } else return {
 		base64: !0,
 		data: n
 	  }
 	},
-	Ct = (n, t) => {
-	  switch (t) {
+	Se = (n, e) => {
+	  switch (e) {
 		case "blob":
 		  return n instanceof ArrayBuffer ? new Blob([n]) : n;
 		case "arraybuffer":
@@ -707,106 +707,106 @@
 		  return n
 	  }
 	},
-	Bt = String.fromCharCode(30),
-	Gt = (n, t) => {
-	  const e = n.length,
-		i = new Array(e);
+	Be = String.fromCharCode(30),
+	Ge = (n, e) => {
+	  const t = n.length,
+		r = new Array(t);
 	  let s = 0;
 	  n.forEach((l, m) => {
-		wt(l, !1, v => {
-		  i[m] = v, ++s === e && t(i.join(Bt))
+		ke(l, !1, v => {
+		  r[m] = v, ++s === t && e(r.join(Be))
 		})
 	  })
 	},
-	Zt = (n, t) => {
-	  const e = n.split(Bt),
-		i = [];
-	  for (let s = 0; s < e.length; s++) {
-		const l = Et(e[s], t);
-		if (i.push(l), l.type === "error") break
+	Ze = (n, e) => {
+	  const t = n.split(Be),
+		r = [];
+	  for (let s = 0; s < t.length; s++) {
+		const l = _e(t[s], e);
+		if (r.push(l), l.type === "error") break
 	  }
-	  return i
+	  return r
 	},
-	_t = 4;
+	Ae = 4;
   
-  function A(n) {
-	if (n) return te(n)
+  function C(n) {
+	if (n) return et(n)
   }
   
-  function te(n) {
-	for (var t in A.prototype) n[t] = A.prototype[t];
+  function et(n) {
+	for (var e in C.prototype) n[e] = C.prototype[e];
 	return n
   }
-  A.prototype.on = A.prototype.addEventListener = function(n, t) {
-	return this._callbacks = this._callbacks || {}, (this._callbacks["$" + n] = this._callbacks["$" + n] || []).push(t), this
+  C.prototype.on = C.prototype.addEventListener = function(n, e) {
+	return this._callbacks = this._callbacks || {}, (this._callbacks["$" + n] = this._callbacks["$" + n] || []).push(e), this
   };
-  A.prototype.once = function(n, t) {
-	function e() {
-	  this.off(n, e), t.apply(this, arguments)
+  C.prototype.once = function(n, e) {
+	function t() {
+	  this.off(n, t), e.apply(this, arguments)
 	}
-	return e.fn = t, this.on(n, e), this
+	return t.fn = e, this.on(n, t), this
   };
-  A.prototype.off = A.prototype.removeListener = A.prototype.removeAllListeners = A.prototype.removeEventListener = function(n, t) {
+  C.prototype.off = C.prototype.removeListener = C.prototype.removeAllListeners = C.prototype.removeEventListener = function(n, e) {
 	if (this._callbacks = this._callbacks || {}, arguments.length == 0) return this._callbacks = {}, this;
-	var e = this._callbacks["$" + n];
-	if (!e) return this;
+	var t = this._callbacks["$" + n];
+	if (!t) return this;
 	if (arguments.length == 1) return delete this._callbacks["$" + n], this;
-	for (var i, s = 0; s < e.length; s++)
-	  if (i = e[s], i === t || i.fn === t) {
-		e.splice(s, 1);
+	for (var r, s = 0; s < t.length; s++)
+	  if (r = t[s], r === e || r.fn === e) {
+		t.splice(s, 1);
 		break
-	  } return e.length === 0 && delete this._callbacks["$" + n], this
+	  } return t.length === 0 && delete this._callbacks["$" + n], this
   };
-  A.prototype.emit = function(n) {
+  C.prototype.emit = function(n) {
 	this._callbacks = this._callbacks || {};
-	for (var t = new Array(arguments.length - 1), e = this._callbacks["$" + n], i = 1; i < arguments.length; i++) t[i - 1] = arguments[i];
-	if (e) {
-	  e = e.slice(0);
-	  for (var i = 0, s = e.length; i < s; ++i) e[i].apply(this, t)
+	for (var e = new Array(arguments.length - 1), t = this._callbacks["$" + n], r = 1; r < arguments.length; r++) e[r - 1] = arguments[r];
+	if (t) {
+	  t = t.slice(0);
+	  for (var r = 0, s = t.length; r < s; ++r) t[r].apply(this, e)
 	}
 	return this
   };
-  A.prototype.emitReserved = A.prototype.emit;
-  A.prototype.listeners = function(n) {
+  C.prototype.emitReserved = C.prototype.emit;
+  C.prototype.listeners = function(n) {
 	return this._callbacks = this._callbacks || {}, this._callbacks["$" + n] || []
   };
-  A.prototype.hasListeners = function(n) {
+  C.prototype.hasListeners = function(n) {
 	return !!this.listeners(n).length
   };
-  const R = (() => typeof self < "u" ? self : typeof window < "u" ? window : Function("return this")())();
+  const O = (() => typeof self < "u" ? self : typeof window < "u" ? window : Function("return this")())();
   
-  function kt(n, ...t) {
-	return t.reduce((e, i) => (n.hasOwnProperty(i) && (e[i] = n[i]), e), {})
+  function Ce(n, ...e) {
+	return e.reduce((t, r) => (n.hasOwnProperty(r) && (t[r] = n[r]), t), {})
   }
-  const ee = R.setTimeout,
-	ne = R.clearTimeout;
+  const tt = O.setTimeout,
+	nt = O.clearTimeout;
   
-  function Z(n, t) {
-	t.useNativeTimers ? (n.setTimeoutFn = ee.bind(R), n.clearTimeoutFn = ne.bind(R)) : (n.setTimeoutFn = R.setTimeout.bind(R), n.clearTimeoutFn = R.clearTimeout.bind(R))
+  function Q(n, e) {
+	e.useNativeTimers ? (n.setTimeoutFn = tt.bind(O), n.clearTimeoutFn = nt.bind(O)) : (n.setTimeoutFn = O.setTimeout.bind(O), n.clearTimeoutFn = O.clearTimeout.bind(O))
   }
-  const ie = 1.33;
+  const rt = 1.33;
   
-  function re(n) {
-	return typeof n == "string" ? se(n) : Math.ceil((n.byteLength || n.size) * ie)
+  function it(n) {
+	return typeof n == "string" ? st(n) : Math.ceil((n.byteLength || n.size) * rt)
   }
   
-  function se(n) {
-	let t = 0,
-	  e = 0;
-	for (let i = 0, s = n.length; i < s; i++) t = n.charCodeAt(i), t < 128 ? e += 1 : t < 2048 ? e += 2 : t < 55296 || t >= 57344 ? e += 3 : (i++, e += 4);
-	return e
+  function st(n) {
+	let e = 0,
+	  t = 0;
+	for (let r = 0, s = n.length; r < s; r++) e = n.charCodeAt(r), e < 128 ? t += 1 : e < 2048 ? t += 2 : e < 55296 || e >= 57344 ? t += 3 : (r++, t += 4);
+	return t
   }
-  class oe extends Error {
-	constructor(t, e, i) {
-	  super(t), this.description = e, this.context = i, this.type = "TransportError"
+  class ot extends Error {
+	constructor(e, t, r) {
+	  super(e), this.description = t, this.context = r, this.type = "TransportError"
 	}
   }
-  class Tt extends A {
-	constructor(t) {
-	  super(), this.writable = !1, Z(this, t), this.opts = t, this.query = t.query, this.socket = t.socket
+  class Te extends C {
+	constructor(e) {
+	  super(), this.writable = !1, Q(this, e), this.opts = e, this.query = e.query, this.socket = e.socket
 	}
-	onError(t, e, i) {
-	  return super.emitReserved("error", new oe(t, e, i)), this
+	onError(e, t, r) {
+	  return super.emitReserved("error", new ot(e, t, r)), this
 	}
 	open() {
 	  return this.readyState = "opening", this.doOpen(), this
@@ -814,89 +814,89 @@
 	close() {
 	  return (this.readyState === "opening" || this.readyState === "open") && (this.doClose(), this.onClose()), this
 	}
-	send(t) {
-	  this.readyState === "open" && this.write(t)
+	send(e) {
+	  this.readyState === "open" && this.write(e)
 	}
 	onOpen() {
 	  this.readyState = "open", this.writable = !0, super.emitReserved("open")
 	}
-	onData(t) {
-	  const e = Et(t, this.socket.binaryType);
-	  this.onPacket(e)
+	onData(e) {
+	  const t = _e(e, this.socket.binaryType);
+	  this.onPacket(t)
 	}
-	onPacket(t) {
-	  super.emitReserved("packet", t)
+	onPacket(e) {
+	  super.emitReserved("packet", e)
 	}
-	onClose(t) {
-	  this.readyState = "closed", super.emitReserved("close", t)
+	onClose(e) {
+	  this.readyState = "closed", super.emitReserved("close", e)
 	}
-	pause(t) {}
+	pause(e) {}
   }
-  const At = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_".split(""),
-	it = 64,
-	ae = {};
-  let ut = 0,
-	Y = 0,
-	ht;
+  const Oe = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_".split(""),
+	ne = 64,
+	at = {};
+  let de = 0,
+	W = 0,
+	pe;
   
-  function pt(n) {
-	let t = "";
-	do t = At[n % it] + t, n = Math.floor(n / it); while (n > 0);
-	return t
-  }
-  
-  function St() {
-	const n = pt(+new Date);
-	return n !== ht ? (ut = 0, ht = n) : n + "." + pt(ut++)
-  }
-  for (; Y < it; Y++) ae[At[Y]] = Y;
-  
-  function Ot(n) {
-	let t = "";
-	for (let e in n) n.hasOwnProperty(e) && (t.length && (t += "&"), t += encodeURIComponent(e) + "=" + encodeURIComponent(n[e]));
-	return t
+  function me(n) {
+	let e = "";
+	do e = Oe[n % ne] + e, n = Math.floor(n / ne); while (n > 0);
+	return e
   }
   
-  function ce(n) {
-	let t = {},
-	  e = n.split("&");
-	for (let i = 0, s = e.length; i < s; i++) {
-	  let l = e[i].split("=");
-	  t[decodeURIComponent(l[0])] = decodeURIComponent(l[1])
-	}
-	return t
+  function Re() {
+	const n = me(+new Date);
+	return n !== pe ? (de = 0, pe = n) : n + "." + me(de++)
   }
-  let Rt = !1;
+  for (; W < ne; W++) at[Oe[W]] = W;
+  
+  function Ne(n) {
+	let e = "";
+	for (let t in n) n.hasOwnProperty(t) && (e.length && (e += "&"), e += encodeURIComponent(t) + "=" + encodeURIComponent(n[t]));
+	return e
+  }
+  
+  function ct(n) {
+	let e = {},
+	  t = n.split("&");
+	for (let r = 0, s = t.length; r < s; r++) {
+	  let l = t[r].split("=");
+	  e[decodeURIComponent(l[0])] = decodeURIComponent(l[1])
+	}
+	return e
+  }
+  let Le = !1;
   try {
-	Rt = typeof XMLHttpRequest < "u" && "withCredentials" in new XMLHttpRequest
+	Le = typeof XMLHttpRequest < "u" && "withCredentials" in new XMLHttpRequest
   } catch {}
-  const le = Rt;
+  const lt = Le;
   
-  function Lt(n) {
-	const t = n.xdomain;
+  function Me(n) {
+	const e = n.xdomain;
 	try {
-	  if (typeof XMLHttpRequest < "u" && (!t || le)) return new XMLHttpRequest
+	  if (typeof XMLHttpRequest < "u" && (!e || lt)) return new XMLHttpRequest
 	} catch {}
-	if (!t) try {
-	  return new R[["Active"].concat("Object").join("X")]("Microsoft.XMLHTTP")
+	if (!e) try {
+	  return new O[["Active"].concat("Object").join("X")]("Microsoft.XMLHTTP")
 	} catch {}
   }
   
-  function fe() {}
-  const de = function() {
-	return new Lt({
+  function ut() {}
+  const ft = function() {
+	return new Me({
 	  xdomain: !1
 	}).responseType != null
   }();
-  class ue extends Tt {
-	constructor(t) {
-	  if (super(t), this.polling = !1, typeof location < "u") {
-		const i = location.protocol === "https:";
+  class ht extends Te {
+	constructor(e) {
+	  if (super(e), this.polling = !1, typeof location < "u") {
+		const r = location.protocol === "https:";
 		let s = location.port;
-		s || (s = i ? "443" : "80"), this.xd = typeof location < "u" && t.hostname !== location.hostname || s !== t.port, this.xs = t.secure !== i
+		s || (s = r ? "443" : "80"), this.xd = typeof location < "u" && e.hostname !== location.hostname || s !== e.port, this.xs = e.secure !== r
 	  }
-	  const e = t && t.forceBase64;
-	  this.supportsBinary = de && !e
+	  const t = e && e.forceBase64;
+	  this.supportsBinary = ft && !t
 	}
 	get name() {
 	  return "polling"
@@ -904,189 +904,189 @@
 	doOpen() {
 	  this.poll()
 	}
-	pause(t) {
+	pause(e) {
 	  this.readyState = "pausing";
-	  const e = () => {
-		this.readyState = "paused", t()
+	  const t = () => {
+		this.readyState = "paused", e()
 	  };
 	  if (this.polling || !this.writable) {
-		let i = 0;
-		this.polling && (i++, this.once("pollComplete", function() {
-		  --i || e()
-		})), this.writable || (i++, this.once("drain", function() {
-		  --i || e()
+		let r = 0;
+		this.polling && (r++, this.once("pollComplete", function() {
+		  --r || t()
+		})), this.writable || (r++, this.once("drain", function() {
+		  --r || t()
 		}))
-	  } else e()
+	  } else t()
 	}
 	poll() {
 	  this.polling = !0, this.doPoll(), this.emitReserved("poll")
 	}
-	onData(t) {
-	  const e = i => {
-		if (this.readyState === "opening" && i.type === "open" && this.onOpen(), i.type === "close") return this.onClose({
+	onData(e) {
+	  const t = r => {
+		if (this.readyState === "opening" && r.type === "open" && this.onOpen(), r.type === "close") return this.onClose({
 		  description: "transport closed by the server"
 		}), !1;
-		this.onPacket(i)
+		this.onPacket(r)
 	  };
-	  Zt(t, this.socket.binaryType).forEach(e), this.readyState !== "closed" && (this.polling = !1, this.emitReserved("pollComplete"), this.readyState === "open" && this.poll())
+	  Ze(e, this.socket.binaryType).forEach(t), this.readyState !== "closed" && (this.polling = !1, this.emitReserved("pollComplete"), this.readyState === "open" && this.poll())
 	}
 	doClose() {
-	  const t = () => {
+	  const e = () => {
 		this.write([{
 		  type: "close"
 		}])
 	  };
-	  this.readyState === "open" ? t() : this.once("open", t)
+	  this.readyState === "open" ? e() : this.once("open", e)
 	}
-	write(t) {
-	  this.writable = !1, Gt(t, e => {
-		this.doWrite(e, () => {
+	write(e) {
+	  this.writable = !1, Ge(e, t => {
+		this.doWrite(t, () => {
 		  this.writable = !0, this.emitReserved("drain")
 		})
 	  })
 	}
 	uri() {
-	  let t = this.query || {};
-	  const e = this.opts.secure ? "https" : "http";
-	  let i = "";
-	  this.opts.timestampRequests !== !1 && (t[this.opts.timestampParam] = St()), !this.supportsBinary && !t.sid && (t.b64 = 1), this.opts.port && (e === "https" && Number(this.opts.port) !== 443 || e === "http" && Number(this.opts.port) !== 80) && (i = ":" + this.opts.port);
-	  const s = Ot(t),
+	  let e = this.query || {};
+	  const t = this.opts.secure ? "https" : "http";
+	  let r = "";
+	  this.opts.timestampRequests !== !1 && (e[this.opts.timestampParam] = Re()), !this.supportsBinary && !e.sid && (e.b64 = 1), this.opts.port && (t === "https" && Number(this.opts.port) !== 443 || t === "http" && Number(this.opts.port) !== 80) && (r = ":" + this.opts.port);
+	  const s = Ne(e),
 		l = this.opts.hostname.indexOf(":") !== -1;
-	  return e + "://" + (l ? "[" + this.opts.hostname + "]" : this.opts.hostname) + i + this.opts.path + (s.length ? "?" + s : "")
+	  return t + "://" + (l ? "[" + this.opts.hostname + "]" : this.opts.hostname) + r + this.opts.path + (s.length ? "?" + s : "")
 	}
-	request(t = {}) {
-	  return Object.assign(t, {
+	request(e = {}) {
+	  return Object.assign(e, {
 		xd: this.xd,
 		xs: this.xs
-	  }, this.opts), new I(this.uri(), t)
+	  }, this.opts), new L(this.uri(), e)
 	}
-	doWrite(t, e) {
-	  const i = this.request({
+	doWrite(e, t) {
+	  const r = this.request({
 		method: "POST",
-		data: t
+		data: e
 	  });
-	  i.on("success", e), i.on("error", (s, l) => {
+	  r.on("success", t), r.on("error", (s, l) => {
 		this.onError("xhr post error", s, l)
 	  })
 	}
 	doPoll() {
-	  const t = this.request();
-	  t.on("data", this.onData.bind(this)), t.on("error", (e, i) => {
-		this.onError("xhr poll error", e, i)
-	  }), this.pollXhr = t
+	  const e = this.request();
+	  e.on("data", this.onData.bind(this)), e.on("error", (t, r) => {
+		this.onError("xhr poll error", t, r)
+	  }), this.pollXhr = e
 	}
   }
-  class I extends A {
-	constructor(t, e) {
-	  super(), Z(this, e), this.opts = e, this.method = e.method || "GET", this.uri = t, this.async = e.async !== !1, this.data = e.data !== void 0 ? e.data : null, this.create()
+  class L extends C {
+	constructor(e, t) {
+	  super(), Q(this, t), this.opts = t, this.method = t.method || "GET", this.uri = e, this.async = t.async !== !1, this.data = t.data !== void 0 ? t.data : null, this.create()
 	}
 	create() {
-	  const t = kt(this.opts, "agent", "pfx", "key", "passphrase", "cert", "ca", "ciphers", "rejectUnauthorized", "autoUnref");
-	  t.xdomain = !!this.opts.xd, t.xscheme = !!this.opts.xs;
-	  const e = this.xhr = new Lt(t);
+	  const e = Ce(this.opts, "agent", "pfx", "key", "passphrase", "cert", "ca", "ciphers", "rejectUnauthorized", "autoUnref");
+	  e.xdomain = !!this.opts.xd, e.xscheme = !!this.opts.xs;
+	  const t = this.xhr = new Me(e);
 	  try {
-		e.open(this.method, this.uri, this.async);
+		t.open(this.method, this.uri, this.async);
 		try {
 		  if (this.opts.extraHeaders) {
-			e.setDisableHeaderCheck && e.setDisableHeaderCheck(!0);
-			for (let i in this.opts.extraHeaders) this.opts.extraHeaders.hasOwnProperty(i) && e.setRequestHeader(i, this.opts.extraHeaders[i])
+			t.setDisableHeaderCheck && t.setDisableHeaderCheck(!0);
+			for (let r in this.opts.extraHeaders) this.opts.extraHeaders.hasOwnProperty(r) && t.setRequestHeader(r, this.opts.extraHeaders[r])
 		  }
 		} catch {}
 		if (this.method === "POST") try {
-		  e.setRequestHeader("Content-type", "text/plain;charset=UTF-8")
+		  t.setRequestHeader("Content-type", "text/plain;charset=UTF-8")
 		} catch {}
 		try {
-		  e.setRequestHeader("Accept", "*/*")
+		  t.setRequestHeader("Accept", "*/*")
 		} catch {}
-		"withCredentials" in e && (e.withCredentials = this.opts.withCredentials), this.opts.requestTimeout && (e.timeout = this.opts.requestTimeout), e.onreadystatechange = () => {
-		  e.readyState === 4 && (e.status === 200 || e.status === 1223 ? this.onLoad() : this.setTimeoutFn(() => {
-			this.onError(typeof e.status == "number" ? e.status : 0)
+		"withCredentials" in t && (t.withCredentials = this.opts.withCredentials), this.opts.requestTimeout && (t.timeout = this.opts.requestTimeout), t.onreadystatechange = () => {
+		  t.readyState === 4 && (t.status === 200 || t.status === 1223 ? this.onLoad() : this.setTimeoutFn(() => {
+			this.onError(typeof t.status == "number" ? t.status : 0)
 		  }, 0))
-		}, e.send(this.data)
-	  } catch (i) {
+		}, t.send(this.data)
+	  } catch (r) {
 		this.setTimeoutFn(() => {
-		  this.onError(i)
+		  this.onError(r)
 		}, 0);
 		return
 	  }
-	  typeof document < "u" && (this.index = I.requestsCount++, I.requests[this.index] = this)
+	  typeof document < "u" && (this.index = L.requestsCount++, L.requests[this.index] = this)
 	}
-	onError(t) {
-	  this.emitReserved("error", t, this.xhr), this.cleanup(!0)
+	onError(e) {
+	  this.emitReserved("error", e, this.xhr), this.cleanup(!0)
 	}
-	cleanup(t) {
+	cleanup(e) {
 	  if (!(typeof this.xhr > "u" || this.xhr === null)) {
-		if (this.xhr.onreadystatechange = fe, t) try {
+		if (this.xhr.onreadystatechange = ut, e) try {
 		  this.xhr.abort()
 		} catch {}
-		typeof document < "u" && delete I.requests[this.index], this.xhr = null
+		typeof document < "u" && delete L.requests[this.index], this.xhr = null
 	  }
 	}
 	onLoad() {
-	  const t = this.xhr.responseText;
-	  t !== null && (this.emitReserved("data", t), this.emitReserved("success"), this.cleanup())
+	  const e = this.xhr.responseText;
+	  e !== null && (this.emitReserved("data", e), this.emitReserved("success"), this.cleanup())
 	}
 	abort() {
 	  this.cleanup()
 	}
   }
-  I.requestsCount = 0;
-  I.requests = {};
+  L.requestsCount = 0;
+  L.requests = {};
   if (typeof document < "u") {
-	if (typeof attachEvent == "function") attachEvent("onunload", mt);
+	if (typeof attachEvent == "function") attachEvent("onunload", ye);
 	else if (typeof addEventListener == "function") {
-	  const n = "onpagehide" in R ? "pagehide" : "unload";
-	  addEventListener(n, mt, !1)
+	  const n = "onpagehide" in O ? "pagehide" : "unload";
+	  addEventListener(n, ye, !1)
 	}
   }
   
-  function mt() {
-	for (let n in I.requests) I.requests.hasOwnProperty(n) && I.requests[n].abort()
+  function ye() {
+	for (let n in L.requests) L.requests.hasOwnProperty(n) && L.requests[n].abort()
   }
-  const Nt = (() => typeof Promise == "function" && typeof Promise.resolve == "function" ? t => Promise.resolve().then(t) : (t, e) => e(t, 0))(),
-	Q = R.WebSocket || R.MozWebSocket,
-	yt = !0,
-	he = "arraybuffer",
-	gt = typeof navigator < "u" && typeof navigator.product == "string" && navigator.product.toLowerCase() === "reactnative";
-  class pe extends Tt {
-	constructor(t) {
-	  super(t), this.supportsBinary = !t.forceBase64
+  const Ie = (() => typeof Promise == "function" && typeof Promise.resolve == "function" ? e => Promise.resolve().then(e) : (e, t) => t(e, 0))(),
+	$ = O.WebSocket || O.MozWebSocket,
+	ge = !0,
+	dt = "arraybuffer",
+	ve = typeof navigator < "u" && typeof navigator.product == "string" && navigator.product.toLowerCase() === "reactnative";
+  class pt extends Te {
+	constructor(e) {
+	  super(e), this.supportsBinary = !e.forceBase64
 	}
 	get name() {
 	  return "websocket"
 	}
 	doOpen() {
 	  if (!this.check()) return;
-	  const t = this.uri(),
-		e = this.opts.protocols,
-		i = gt ? {} : kt(this.opts, "agent", "perMessageDeflate", "pfx", "key", "passphrase", "cert", "ca", "ciphers", "rejectUnauthorized", "localAddress", "protocolVersion", "origin", "maxPayload", "family", "checkServerIdentity");
-	  this.opts.extraHeaders && (i.headers = this.opts.extraHeaders);
+	  const e = this.uri(),
+		t = this.opts.protocols,
+		r = ve ? {} : Ce(this.opts, "agent", "perMessageDeflate", "pfx", "key", "passphrase", "cert", "ca", "ciphers", "rejectUnauthorized", "localAddress", "protocolVersion", "origin", "maxPayload", "family", "checkServerIdentity");
+	  this.opts.extraHeaders && (r.headers = this.opts.extraHeaders);
 	  try {
-		this.ws = yt && !gt ? e ? new Q(t, e) : new Q(t) : new Q(t, e, i)
+		this.ws = ge && !ve ? t ? new $(e, t) : new $(e) : new $(e, t, r)
 	  } catch (s) {
 		return this.emitReserved("error", s)
 	  }
-	  this.ws.binaryType = this.socket.binaryType || he, this.addEventListeners()
+	  this.ws.binaryType = this.socket.binaryType || dt, this.addEventListeners()
 	}
 	addEventListeners() {
 	  this.ws.onopen = () => {
 		this.opts.autoUnref && this.ws._socket.unref(), this.onOpen()
-	  }, this.ws.onclose = t => this.onClose({
+	  }, this.ws.onclose = e => this.onClose({
 		description: "websocket connection closed",
-		context: t
-	  }), this.ws.onmessage = t => this.onData(t.data), this.ws.onerror = t => this.onError("websocket error", t)
+		context: e
+	  }), this.ws.onmessage = e => this.onData(e.data), this.ws.onerror = e => this.onError("websocket error", e)
 	}
-	write(t) {
+	write(e) {
 	  this.writable = !1;
-	  for (let e = 0; e < t.length; e++) {
-		const i = t[e],
-		  s = e === t.length - 1;
-		wt(i, this.supportsBinary, l => {
+	  for (let t = 0; t < e.length; t++) {
+		const r = e[t],
+		  s = t === e.length - 1;
+		ke(r, this.supportsBinary, l => {
 		  const m = {};
 		  try {
-			yt && this.ws.send(l)
+			ge && this.ws.send(l)
 		  } catch {}
-		  s && Nt(() => {
+		  s && Ie(() => {
 			this.writable = !0, this.emitReserved("drain")
 		  }, this.setTimeoutFn)
 		})
@@ -1096,52 +1096,52 @@
 	  typeof this.ws < "u" && (this.ws.close(), this.ws = null)
 	}
 	uri() {
-	  let t = this.query || {};
-	  const e = this.opts.secure ? "wss" : "ws";
-	  let i = "";
-	  this.opts.port && (e === "wss" && Number(this.opts.port) !== 443 || e === "ws" && Number(this.opts.port) !== 80) && (i = ":" + this.opts.port), this.opts.timestampRequests && (t[this.opts.timestampParam] = St()), this.supportsBinary || (t.b64 = 1);
-	  const s = Ot(t),
+	  let e = this.query || {};
+	  const t = this.opts.secure ? "wss" : "ws";
+	  let r = "";
+	  this.opts.port && (t === "wss" && Number(this.opts.port) !== 443 || t === "ws" && Number(this.opts.port) !== 80) && (r = ":" + this.opts.port), this.opts.timestampRequests && (e[this.opts.timestampParam] = Re()), this.supportsBinary || (e.b64 = 1);
+	  const s = Ne(e),
 		l = this.opts.hostname.indexOf(":") !== -1;
-	  return e + "://" + (l ? "[" + this.opts.hostname + "]" : this.opts.hostname) + i + this.opts.path + (s.length ? "?" + s : "")
+	  return t + "://" + (l ? "[" + this.opts.hostname + "]" : this.opts.hostname) + r + this.opts.path + (s.length ? "?" + s : "")
 	}
 	check() {
-	  return !!Q
+	  return !!$
 	}
   }
-  const me = {
-	  websocket: pe,
-	  polling: ue
+  const mt = {
+	  websocket: pt,
+	  polling: ht
 	},
-	ye = /^(?:(?![^:@\/?#]+:[^:@\/]*@)(http|https|ws|wss):\/\/)?((?:(([^:@\/?#]*)(?::([^:@\/?#]*))?)?@)?((?:[a-f0-9]{0,4}:){2,7}[a-f0-9]{0,4}|[^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/,
-	ge = ["source", "protocol", "authority", "userInfo", "user", "password", "host", "port", "relative", "path", "directory", "file", "query", "anchor"];
+	yt = /^(?:(?![^:@\/?#]+:[^:@\/]*@)(http|https|ws|wss):\/\/)?((?:(([^:@\/?#]*)(?::([^:@\/?#]*))?)?@)?((?:[a-f0-9]{0,4}:){2,7}[a-f0-9]{0,4}|[^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/,
+	gt = ["source", "protocol", "authority", "userInfo", "user", "password", "host", "port", "relative", "path", "directory", "file", "query", "anchor"];
   
-  function rt(n) {
-	const t = n,
-	  e = n.indexOf("["),
-	  i = n.indexOf("]");
-	e != -1 && i != -1 && (n = n.substring(0, e) + n.substring(e, i).replace(/:/g, ";") + n.substring(i, n.length));
-	let s = ye.exec(n || ""),
+  function re(n) {
+	const e = n,
+	  t = n.indexOf("["),
+	  r = n.indexOf("]");
+	t != -1 && r != -1 && (n = n.substring(0, t) + n.substring(t, r).replace(/:/g, ";") + n.substring(r, n.length));
+	let s = yt.exec(n || ""),
 	  l = {},
 	  m = 14;
-	for (; m--;) l[ge[m]] = s[m] || "";
-	return e != -1 && i != -1 && (l.source = t, l.host = l.host.substring(1, l.host.length - 1).replace(/;/g, ":"), l.authority = l.authority.replace("[", "").replace("]", "").replace(/;/g, ":"), l.ipv6uri = !0), l.pathNames = ve(l, l.path), l.queryKey = be(l, l.query), l
+	for (; m--;) l[gt[m]] = s[m] || "";
+	return t != -1 && r != -1 && (l.source = e, l.host = l.host.substring(1, l.host.length - 1).replace(/;/g, ":"), l.authority = l.authority.replace("[", "").replace("]", "").replace(/;/g, ":"), l.ipv6uri = !0), l.pathNames = vt(l, l.path), l.queryKey = bt(l, l.query), l
   }
   
-  function ve(n, t) {
-	const e = /\/{2,9}/g,
-	  i = t.replace(e, "/").split("/");
-	return (t.slice(0, 1) == "/" || t.length === 0) && i.splice(0, 1), t.slice(-1) == "/" && i.splice(i.length - 1, 1), i
+  function vt(n, e) {
+	const t = /\/{2,9}/g,
+	  r = e.replace(t, "/").split("/");
+	return (e.slice(0, 1) == "/" || e.length === 0) && r.splice(0, 1), e.slice(-1) == "/" && r.splice(r.length - 1, 1), r
   }
   
-  function be(n, t) {
-	const e = {};
-	return t.replace(/(?:^|&)([^&=]*)=?([^&]*)/g, function(i, s, l) {
-	  s && (e[s] = l)
-	}), e
+  function bt(n, e) {
+	const t = {};
+	return e.replace(/(?:^|&)([^&=]*)=?([^&]*)/g, function(r, s, l) {
+	  s && (t[s] = l)
+	}), t
   }
-  let It = class D extends A {
-	constructor(t, e = {}) {
-	  super(), this.writeBuffer = [], t && typeof t == "object" && (e = t, t = null), t ? (t = rt(t), e.hostname = t.host, e.secure = t.protocol === "https" || t.protocol === "wss", e.port = t.port, t.query && (e.query = t.query)) : e.host && (e.hostname = rt(e.host).host), Z(this, e), this.secure = e.secure != null ? e.secure : typeof location < "u" && location.protocol === "https:", e.hostname && !e.port && (e.port = this.secure ? "443" : "80"), this.hostname = e.hostname || (typeof location < "u" ? location.hostname : "localhost"), this.port = e.port || (typeof location < "u" && location.port ? location.port : this.secure ? "443" : "80"), this.transports = e.transports || ["polling", "websocket"], this.writeBuffer = [], this.prevBufferLen = 0, this.opts = Object.assign({
+  let Pe = class z extends C {
+	constructor(e, t = {}) {
+	  super(), this.writeBuffer = [], e && typeof e == "object" && (t = e, e = null), e ? (e = re(e), t.hostname = e.host, t.secure = e.protocol === "https" || e.protocol === "wss", t.port = e.port, e.query && (t.query = e.query)) : t.host && (t.hostname = re(t.host).host), Q(this, t), this.secure = t.secure != null ? t.secure : typeof location < "u" && location.protocol === "https:", t.hostname && !t.port && (t.port = this.secure ? "443" : "80"), this.hostname = t.hostname || (typeof location < "u" ? location.hostname : "localhost"), this.port = t.port || (typeof location < "u" && location.port ? location.port : this.secure ? "443" : "80"), this.transports = t.transports || ["polling", "websocket"], this.writeBuffer = [], this.prevBufferLen = 0, this.opts = Object.assign({
 		path: "/engine.io",
 		agent: !1,
 		withCredentials: !1,
@@ -1155,7 +1155,7 @@
 		},
 		transportOptions: {},
 		closeOnBeforeunload: !0
-	  }, e), this.opts.path = this.opts.path.replace(/\/$/, "") + (this.opts.addTrailingSlash ? "/" : ""), typeof this.opts.query == "string" && (this.opts.query = ce(this.opts.query)), this.id = null, this.upgrades = null, this.pingInterval = null, this.pingTimeout = null, this.pingTimeoutTimer = null, typeof addEventListener == "function" && (this.opts.closeOnBeforeunload && (this.beforeunloadEventListener = () => {
+	  }, t), this.opts.path = this.opts.path.replace(/\/$/, "") + (this.opts.addTrailingSlash ? "/" : ""), typeof this.opts.query == "string" && (this.opts.query = ct(this.opts.query)), this.id = null, this.upgrades = null, this.pingInterval = null, this.pingTimeout = null, this.pingTimeoutTimer = null, typeof addEventListener == "function" && (this.opts.closeOnBeforeunload && (this.beforeunloadEventListener = () => {
 		this.transport && (this.transport.removeAllListeners(), this.transport.close())
 	  }, addEventListener("beforeunload", this.beforeunloadEventListener, !1)), this.hostname !== "localhost" && (this.offlineEventListener = () => {
 		this.onClose("transport close", {
@@ -1163,69 +1163,69 @@
 		})
 	  }, addEventListener("offline", this.offlineEventListener, !1))), this.open()
 	}
-	createTransport(t) {
-	  const e = Object.assign({}, this.opts.query);
-	  e.EIO = _t, e.transport = t, this.id && (e.sid = this.id);
-	  const i = Object.assign({}, this.opts.transportOptions[t], this.opts, {
-		query: e,
+	createTransport(e) {
+	  const t = Object.assign({}, this.opts.query);
+	  t.EIO = Ae, t.transport = e, this.id && (t.sid = this.id);
+	  const r = Object.assign({}, this.opts.transportOptions[e], this.opts, {
+		query: t,
 		socket: this,
 		hostname: this.hostname,
 		secure: this.secure,
 		port: this.port
 	  });
-	  return new me[t](i)
+	  return new mt[e](r)
 	}
 	open() {
-	  let t;
-	  if (this.opts.rememberUpgrade && D.priorWebsocketSuccess && this.transports.indexOf("websocket") !== -1) t = "websocket";
+	  let e;
+	  if (this.opts.rememberUpgrade && z.priorWebsocketSuccess && this.transports.indexOf("websocket") !== -1) e = "websocket";
 	  else if (this.transports.length === 0) {
 		this.setTimeoutFn(() => {
 		  this.emitReserved("error", "No transports available")
 		}, 0);
 		return
-	  } else t = this.transports[0];
+	  } else e = this.transports[0];
 	  this.readyState = "opening";
 	  try {
-		t = this.createTransport(t)
+		e = this.createTransport(e)
 	  } catch {
 		this.transports.shift(), this.open();
 		return
 	  }
-	  t.open(), this.setTransport(t)
+	  e.open(), this.setTransport(e)
 	}
-	setTransport(t) {
-	  this.transport && this.transport.removeAllListeners(), this.transport = t, t.on("drain", this.onDrain.bind(this)).on("packet", this.onPacket.bind(this)).on("error", this.onError.bind(this)).on("close", e => this.onClose("transport close", e))
+	setTransport(e) {
+	  this.transport && this.transport.removeAllListeners(), this.transport = e, e.on("drain", this.onDrain.bind(this)).on("packet", this.onPacket.bind(this)).on("error", this.onError.bind(this)).on("close", t => this.onClose("transport close", t))
 	}
-	probe(t) {
-	  let e = this.createTransport(t),
-		i = !1;
-	  D.priorWebsocketSuccess = !1;
+	probe(e) {
+	  let t = this.createTransport(e),
+		r = !1;
+	  z.priorWebsocketSuccess = !1;
 	  const s = () => {
-		i || (e.send([{
+		r || (t.send([{
 		  type: "ping",
 		  data: "probe"
-		}]), e.once("packet", o => {
-		  if (!i)
+		}]), t.once("packet", o => {
+		  if (!r)
 			if (o.type === "pong" && o.data === "probe") {
-			  if (this.upgrading = !0, this.emitReserved("upgrading", e), !e) return;
-			  D.priorWebsocketSuccess = e.name === "websocket", this.transport.pause(() => {
-				i || this.readyState !== "closed" && (p(), this.setTransport(e), e.send([{
+			  if (this.upgrading = !0, this.emitReserved("upgrading", t), !t) return;
+			  z.priorWebsocketSuccess = t.name === "websocket", this.transport.pause(() => {
+				r || this.readyState !== "closed" && (p(), this.setTransport(t), t.send([{
 				  type: "upgrade"
-				}]), this.emitReserved("upgrade", e), e = null, this.upgrading = !1, this.flush())
+				}]), this.emitReserved("upgrade", t), t = null, this.upgrading = !1, this.flush())
 			  })
 			} else {
-			  const r = new Error("probe error");
-			  r.transport = e.name, this.emitReserved("upgradeError", r)
+			  const i = new Error("probe error");
+			  i.transport = t.name, this.emitReserved("upgradeError", i)
 			}
 		}))
 	  };
   
 	  function l() {
-		i || (i = !0, p(), e.close(), e = null)
+		r || (r = !0, p(), t.close(), t = null)
 	  }
 	  const m = o => {
-		const r = new Error("probe error: " + o);
-		r.transport = e.name, l(), this.emitReserved("upgradeError", r)
+		const i = new Error("probe error: " + o);
+		i.transport = t.name, l(), this.emitReserved("upgradeError", i)
 	  };
   
 	  function v() {
@@ -1237,39 +1237,39 @@
 	  }
   
 	  function c(o) {
-		e && o.name !== e.name && l()
+		t && o.name !== t.name && l()
 	  }
 	  const p = () => {
-		e.removeListener("open", s), e.removeListener("error", m), e.removeListener("close", v), this.off("close", a), this.off("upgrading", c)
+		t.removeListener("open", s), t.removeListener("error", m), t.removeListener("close", v), this.off("close", a), this.off("upgrading", c)
 	  };
-	  e.once("open", s), e.once("error", m), e.once("close", v), this.once("close", a), this.once("upgrading", c), e.open()
+	  t.once("open", s), t.once("error", m), t.once("close", v), this.once("close", a), this.once("upgrading", c), t.open()
 	}
 	onOpen() {
-	  if (this.readyState = "open", D.priorWebsocketSuccess = this.transport.name === "websocket", this.emitReserved("open"), this.flush(), this.readyState === "open" && this.opts.upgrade) {
-		let t = 0;
-		const e = this.upgrades.length;
-		for (; t < e; t++) this.probe(this.upgrades[t])
+	  if (this.readyState = "open", z.priorWebsocketSuccess = this.transport.name === "websocket", this.emitReserved("open"), this.flush(), this.readyState === "open" && this.opts.upgrade) {
+		let e = 0;
+		const t = this.upgrades.length;
+		for (; e < t; e++) this.probe(this.upgrades[e])
 	  }
 	}
-	onPacket(t) {
-	  if (this.readyState === "opening" || this.readyState === "open" || this.readyState === "closing") switch (this.emitReserved("packet", t), this.emitReserved("heartbeat"), t.type) {
+	onPacket(e) {
+	  if (this.readyState === "opening" || this.readyState === "open" || this.readyState === "closing") switch (this.emitReserved("packet", e), this.emitReserved("heartbeat"), e.type) {
 		case "open":
-		  this.onHandshake(JSON.parse(t.data));
+		  this.onHandshake(JSON.parse(e.data));
 		  break;
 		case "ping":
 		  this.resetPingTimeout(), this.sendPacket("pong"), this.emitReserved("ping"), this.emitReserved("pong");
 		  break;
 		case "error":
-		  const e = new Error("server error");
-		  e.code = t.data, this.onError(e);
+		  const t = new Error("server error");
+		  t.code = e.data, this.onError(t);
 		  break;
 		case "message":
-		  this.emitReserved("data", t.data), this.emitReserved("message", t.data);
+		  this.emitReserved("data", e.data), this.emitReserved("message", e.data);
 		  break
 	  }
 	}
-	onHandshake(t) {
-	  this.emitReserved("handshake", t), this.id = t.sid, this.transport.query.sid = t.sid, this.upgrades = this.filterUpgrades(t.upgrades), this.pingInterval = t.pingInterval, this.pingTimeout = t.pingTimeout, this.maxPayload = t.maxPayload, this.onOpen(), this.readyState !== "closed" && this.resetPingTimeout()
+	onHandshake(e) {
+	  this.emitReserved("handshake", e), this.id = e.sid, this.transport.query.sid = e.sid, this.upgrades = this.filterUpgrades(e.upgrades), this.pingInterval = e.pingInterval, this.pingTimeout = e.pingTimeout, this.maxPayload = e.maxPayload, this.onOpen(), this.readyState !== "closed" && this.resetPingTimeout()
 	}
 	resetPingTimeout() {
 	  this.clearTimeoutFn(this.pingTimeoutTimer), this.pingTimeoutTimer = this.setTimeoutFn(() => {
@@ -1281,258 +1281,263 @@
 	}
 	flush() {
 	  if (this.readyState !== "closed" && this.transport.writable && !this.upgrading && this.writeBuffer.length) {
-		const t = this.getWritablePackets();
-		this.transport.send(t), this.prevBufferLen = t.length, this.emitReserved("flush")
+		const e = this.getWritablePackets();
+		this.transport.send(e), this.prevBufferLen = e.length, this.emitReserved("flush")
 	  }
 	}
 	getWritablePackets() {
 	  if (!(this.maxPayload && this.transport.name === "polling" && this.writeBuffer.length > 1)) return this.writeBuffer;
-	  let e = 1;
-	  for (let i = 0; i < this.writeBuffer.length; i++) {
-		const s = this.writeBuffer[i].data;
-		if (s && (e += re(s)), i > 0 && e > this.maxPayload) return this.writeBuffer.slice(0, i);
-		e += 2
+	  let t = 1;
+	  for (let r = 0; r < this.writeBuffer.length; r++) {
+		const s = this.writeBuffer[r].data;
+		if (s && (t += it(s)), r > 0 && t > this.maxPayload) return this.writeBuffer.slice(0, r);
+		t += 2
 	  }
 	  return this.writeBuffer
 	}
-	write(t, e, i) {
-	  return this.sendPacket("message", t, e, i), this
+	write(e, t, r) {
+	  return this.sendPacket("message", e, t, r), this
 	}
-	send(t, e, i) {
-	  return this.sendPacket("message", t, e, i), this
+	send(e, t, r) {
+	  return this.sendPacket("message", e, t, r), this
 	}
-	sendPacket(t, e, i, s) {
-	  if (typeof e == "function" && (s = e, e = void 0), typeof i == "function" && (s = i, i = null), this.readyState === "closing" || this.readyState === "closed") return;
-	  i = i || {}, i.compress = i.compress !== !1;
+	sendPacket(e, t, r, s) {
+	  if (typeof t == "function" && (s = t, t = void 0), typeof r == "function" && (s = r, r = null), this.readyState === "closing" || this.readyState === "closed") return;
+	  r = r || {}, r.compress = r.compress !== !1;
 	  const l = {
-		type: t,
-		data: e,
-		options: i
+		type: e,
+		data: t,
+		options: r
 	  };
 	  this.emitReserved("packetCreate", l), this.writeBuffer.push(l), s && this.once("flush", s), this.flush()
 	}
 	close() {
-	  const t = () => {
+	  const e = () => {
 		  this.onClose("forced close"), this.transport.close()
 		},
-		e = () => {
-		  this.off("upgrade", e), this.off("upgradeError", e), t()
+		t = () => {
+		  this.off("upgrade", t), this.off("upgradeError", t), e()
 		},
-		i = () => {
-		  this.once("upgrade", e), this.once("upgradeError", e)
+		r = () => {
+		  this.once("upgrade", t), this.once("upgradeError", t)
 		};
 	  return (this.readyState === "opening" || this.readyState === "open") && (this.readyState = "closing", this.writeBuffer.length ? this.once("drain", () => {
-		this.upgrading ? i() : t()
-	  }) : this.upgrading ? i() : t()), this
+		this.upgrading ? r() : e()
+	  }) : this.upgrading ? r() : e()), this
 	}
-	onError(t) {
-	  D.priorWebsocketSuccess = !1, this.emitReserved("error", t), this.onClose("transport error", t)
+	onError(e) {
+	  z.priorWebsocketSuccess = !1, this.emitReserved("error", e), this.onClose("transport error", e)
 	}
-	onClose(t, e) {
-	  (this.readyState === "opening" || this.readyState === "open" || this.readyState === "closing") && (this.clearTimeoutFn(this.pingTimeoutTimer), this.transport.removeAllListeners("close"), this.transport.close(), this.transport.removeAllListeners(), typeof removeEventListener == "function" && (removeEventListener("beforeunload", this.beforeunloadEventListener, !1), removeEventListener("offline", this.offlineEventListener, !1)), this.readyState = "closed", this.id = null, this.emitReserved("close", t, e), this.writeBuffer = [], this.prevBufferLen = 0)
+	onClose(e, t) {
+	  (this.readyState === "opening" || this.readyState === "open" || this.readyState === "closing") && (this.clearTimeoutFn(this.pingTimeoutTimer), this.transport.removeAllListeners("close"), this.transport.close(), this.transport.removeAllListeners(), typeof removeEventListener == "function" && (removeEventListener("beforeunload", this.beforeunloadEventListener, !1), removeEventListener("offline", this.offlineEventListener, !1)), this.readyState = "closed", this.id = null, this.emitReserved("close", e, t), this.writeBuffer = [], this.prevBufferLen = 0)
 	}
-	filterUpgrades(t) {
-	  const e = [];
-	  let i = 0;
-	  const s = t.length;
-	  for (; i < s; i++) ~this.transports.indexOf(t[i]) && e.push(t[i]);
-	  return e
+	filterUpgrades(e) {
+	  const t = [];
+	  let r = 0;
+	  const s = e.length;
+	  for (; r < s; r++) ~this.transports.indexOf(e[r]) && t.push(e[r]);
+	  return t
 	}
   };
-  It.protocol = _t;
+  Pe.protocol = Ae;
   
-  function xe(n, t = "", e) {
-	let i = n;
-	e = e || typeof location < "u" && location, n == null && (n = e.protocol + "//" + e.host), typeof n == "string" && (n.charAt(0) === "/" && (n.charAt(1) === "/" ? n = e.protocol + n : n = e.host + n), /^(https?|wss?):\/\//.test(n) || (typeof e < "u" ? n = e.protocol + "//" + n : n = "https://" + n), i = rt(n)), i.port || (/^(http|ws)$/.test(i.protocol) ? i.port = "80" : /^(http|ws)s$/.test(i.protocol) && (i.port = "443")), i.path = i.path || "/";
-	const l = i.host.indexOf(":") !== -1 ? "[" + i.host + "]" : i.host;
-	return i.id = i.protocol + "://" + l + ":" + i.port + t, i.href = i.protocol + "://" + l + (e && e.port === i.port ? "" : ":" + i.port), i
+  function xt(n, e = "", t) {
+	let r = n;
+	t = t || typeof location < "u" && location, n == null && (n = t.protocol + "//" + t.host), typeof n == "string" && (n.charAt(0) === "/" && (n.charAt(1) === "/" ? n = t.protocol + n : n = t.host + n), /^(https?|wss?):\/\//.test(n) || (typeof t < "u" ? n = t.protocol + "//" + n : n = "https://" + n), r = re(n)), r.port || (/^(http|ws)$/.test(r.protocol) ? r.port = "80" : /^(http|ws)s$/.test(r.protocol) && (r.port = "443")), r.path = r.path || "/";
+	const l = r.host.indexOf(":") !== -1 ? "[" + r.host + "]" : r.host;
+	return r.id = r.protocol + "://" + l + ":" + r.port + e, r.href = r.protocol + "://" + l + (t && t.port === r.port ? "" : ":" + r.port), r
   }
-  const we = typeof ArrayBuffer == "function",
-	Ee = n => typeof ArrayBuffer.isView == "function" ? ArrayBuffer.isView(n) : n.buffer instanceof ArrayBuffer,
-	Mt = Object.prototype.toString,
-	Ce = typeof Blob == "function" || typeof Blob < "u" && Mt.call(Blob) === "[object BlobConstructor]",
-	Be = typeof File == "function" || typeof File < "u" && Mt.call(File) === "[object FileConstructor]";
+  const wt = typeof ArrayBuffer == "function",
+	Et = n => typeof ArrayBuffer.isView == "function" ? ArrayBuffer.isView(n) : n.buffer instanceof ArrayBuffer,
+	Fe = Object.prototype.toString,
+	kt = typeof Blob == "function" || typeof Blob < "u" && Fe.call(Blob) === "[object BlobConstructor]",
+	_t = typeof File == "function" || typeof File < "u" && Fe.call(File) === "[object FileConstructor]";
   
-  function ct(n) {
-	return we && (n instanceof ArrayBuffer || Ee(n)) || Ce && n instanceof Blob || Be && n instanceof File
+  function ae(n) {
+	return wt && (n instanceof ArrayBuffer || Et(n)) || kt && n instanceof Blob || _t && n instanceof File
   }
   
-  function X(n, t) {
+  function J(n, e) {
 	if (!n || typeof n != "object") return !1;
 	if (Array.isArray(n)) {
-	  for (let e = 0, i = n.length; e < i; e++)
-		if (X(n[e])) return !0;
+	  for (let t = 0, r = n.length; t < r; t++)
+		if (J(n[t])) return !0;
 	  return !1
 	}
-	if (ct(n)) return !0;
-	if (n.toJSON && typeof n.toJSON == "function" && arguments.length === 1) return X(n.toJSON(), !0);
-	for (const e in n)
-	  if (Object.prototype.hasOwnProperty.call(n, e) && X(n[e])) return !0;
+	if (ae(n)) return !0;
+	if (n.toJSON && typeof n.toJSON == "function" && arguments.length === 1) return J(n.toJSON(), !0);
+	for (const t in n)
+	  if (Object.prototype.hasOwnProperty.call(n, t) && J(n[t])) return !0;
 	return !1
   }
   
-  function _e(n) {
-	const t = [],
-	  e = n.data,
-	  i = n;
-	return i.data = st(e, t), i.attachments = t.length, {
-	  packet: i,
-	  buffers: t
+  function St(n) {
+	const e = [],
+	  t = n.data,
+	  r = n;
+	return r.data = ie(t, e), r.attachments = e.length, {
+	  packet: r,
+	  buffers: e
 	}
   }
   
-  function st(n, t) {
+  function ie(n, e) {
 	if (!n) return n;
-	if (ct(n)) {
-	  const e = {
+	if (ae(n)) {
+	  const t = {
 		_placeholder: !0,
-		num: t.length
+		num: e.length
 	  };
-	  return t.push(n), e
+	  return e.push(n), t
 	} else if (Array.isArray(n)) {
-	  const e = new Array(n.length);
-	  for (let i = 0; i < n.length; i++) e[i] = st(n[i], t);
-	  return e
+	  const t = new Array(n.length);
+	  for (let r = 0; r < n.length; r++) t[r] = ie(n[r], e);
+	  return t
 	} else if (typeof n == "object" && !(n instanceof Date)) {
-	  const e = {};
-	  for (const i in n) Object.prototype.hasOwnProperty.call(n, i) && (e[i] = st(n[i], t));
-	  return e
+	  const t = {};
+	  for (const r in n) Object.prototype.hasOwnProperty.call(n, r) && (t[r] = ie(n[r], e));
+	  return t
 	}
 	return n
   }
   
-  function ke(n, t) {
-	return n.data = ot(n.data, t), delete n.attachments, n
+  function Bt(n, e) {
+	return n.data = se(n.data, e), delete n.attachments, n
   }
   
-  function ot(n, t) {
+  function se(n, e) {
 	if (!n) return n;
 	if (n && n._placeholder === !0) {
-	  if (typeof n.num == "number" && n.num >= 0 && n.num < t.length) return t[n.num];
+	  if (typeof n.num == "number" && n.num >= 0 && n.num < e.length) return e[n.num];
 	  throw new Error("illegal attachments")
 	} else if (Array.isArray(n))
-	  for (let e = 0; e < n.length; e++) n[e] = ot(n[e], t);
+	  for (let t = 0; t < n.length; t++) n[t] = se(n[t], e);
 	else if (typeof n == "object")
-	  for (const e in n) Object.prototype.hasOwnProperty.call(n, e) && (n[e] = ot(n[e], t));
+	  for (const t in n) Object.prototype.hasOwnProperty.call(n, t) && (n[t] = se(n[t], e));
 	return n
   }
-  const Te = 5;
-  var C;
+  const At = ["connect", "connect_error", "disconnect", "disconnecting", "newListener", "removeListener"],
+	Ct = 5;
+  var k;
   (function(n) {
 	n[n.CONNECT = 0] = "CONNECT", n[n.DISCONNECT = 1] = "DISCONNECT", n[n.EVENT = 2] = "EVENT", n[n.ACK = 3] = "ACK", n[n.CONNECT_ERROR = 4] = "CONNECT_ERROR", n[n.BINARY_EVENT = 5] = "BINARY_EVENT", n[n.BINARY_ACK = 6] = "BINARY_ACK"
-  })(C || (C = {}));
-  class Ae {
-	constructor(t) {
-	  this.replacer = t
+  })(k || (k = {}));
+  class Tt {
+	constructor(e) {
+	  this.replacer = e
 	}
-	encode(t) {
-	  return (t.type === C.EVENT || t.type === C.ACK) && X(t) ? this.encodeAsBinary({
-		type: t.type === C.EVENT ? C.BINARY_EVENT : C.BINARY_ACK,
-		nsp: t.nsp,
-		data: t.data,
-		id: t.id
-	  }) : [this.encodeAsString(t)]
+	encode(e) {
+	  return (e.type === k.EVENT || e.type === k.ACK) && J(e) ? this.encodeAsBinary({
+		type: e.type === k.EVENT ? k.BINARY_EVENT : k.BINARY_ACK,
+		nsp: e.nsp,
+		data: e.data,
+		id: e.id
+	  }) : [this.encodeAsString(e)]
 	}
-	encodeAsString(t) {
-	  let e = "" + t.type;
-	  return (t.type === C.BINARY_EVENT || t.type === C.BINARY_ACK) && (e += t.attachments + "-"), t.nsp && t.nsp !== "/" && (e += t.nsp + ","), t.id != null && (e += t.id), t.data != null && (e += JSON.stringify(t.data, this.replacer)), e
+	encodeAsString(e) {
+	  let t = "" + e.type;
+	  return (e.type === k.BINARY_EVENT || e.type === k.BINARY_ACK) && (t += e.attachments + "-"), e.nsp && e.nsp !== "/" && (t += e.nsp + ","), e.id != null && (t += e.id), e.data != null && (t += JSON.stringify(e.data, this.replacer)), t
 	}
-	encodeAsBinary(t) {
-	  const e = _e(t),
-		i = this.encodeAsString(e.packet),
-		s = e.buffers;
-	  return s.unshift(i), s
+	encodeAsBinary(e) {
+	  const t = St(e),
+		r = this.encodeAsString(t.packet),
+		s = t.buffers;
+	  return s.unshift(r), s
 	}
   }
-  class lt extends A {
-	constructor(t) {
-	  super(), this.reviver = t
+  
+  function be(n) {
+	return Object.prototype.toString.call(n) === "[object Object]"
+  }
+  class ce extends C {
+	constructor(e) {
+	  super(), this.reviver = e
 	}
-	add(t) {
-	  let e;
-	  if (typeof t == "string") {
+	add(e) {
+	  let t;
+	  if (typeof e == "string") {
 		if (this.reconstructor) throw new Error("got plaintext data when reconstructing a packet");
-		e = this.decodeString(t);
-		const i = e.type === C.BINARY_EVENT;
-		i || e.type === C.BINARY_ACK ? (e.type = i ? C.EVENT : C.ACK, this.reconstructor = new Se(e), e.attachments === 0 && super.emitReserved("decoded", e)) : super.emitReserved("decoded", e)
-	  } else if (ct(t) || t.base64)
-		if (this.reconstructor) e = this.reconstructor.takeBinaryData(t), e && (this.reconstructor = null, super.emitReserved("decoded", e));
+		t = this.decodeString(e);
+		const r = t.type === k.BINARY_EVENT;
+		r || t.type === k.BINARY_ACK ? (t.type = r ? k.EVENT : k.ACK, this.reconstructor = new Ot(t), t.attachments === 0 && super.emitReserved("decoded", t)) : super.emitReserved("decoded", t)
+	  } else if (ae(e) || e.base64)
+		if (this.reconstructor) t = this.reconstructor.takeBinaryData(e), t && (this.reconstructor = null, super.emitReserved("decoded", t));
 		else throw new Error("got binary data when not reconstructing a packet");
-	  else throw new Error("Unknown type: " + t)
+	  else throw new Error("Unknown type: " + e)
 	}
-	decodeString(t) {
-	  let e = 0;
-	  const i = {
-		type: Number(t.charAt(0))
+	decodeString(e) {
+	  let t = 0;
+	  const r = {
+		type: Number(e.charAt(0))
 	  };
-	  if (C[i.type] === void 0) throw new Error("unknown packet type " + i.type);
-	  if (i.type === C.BINARY_EVENT || i.type === C.BINARY_ACK) {
-		const l = e + 1;
-		for (; t.charAt(++e) !== "-" && e != t.length;);
-		const m = t.substring(l, e);
-		if (m != Number(m) || t.charAt(e) !== "-") throw new Error("Illegal attachments");
-		i.attachments = Number(m)
+	  if (k[r.type] === void 0) throw new Error("unknown packet type " + r.type);
+	  if (r.type === k.BINARY_EVENT || r.type === k.BINARY_ACK) {
+		const l = t + 1;
+		for (; e.charAt(++t) !== "-" && t != e.length;);
+		const m = e.substring(l, t);
+		if (m != Number(m) || e.charAt(t) !== "-") throw new Error("Illegal attachments");
+		r.attachments = Number(m)
 	  }
-	  if (t.charAt(e + 1) === "/") {
-		const l = e + 1;
-		for (; ++e && !(t.charAt(e) === "," || e === t.length););
-		i.nsp = t.substring(l, e)
-	  } else i.nsp = "/";
-	  const s = t.charAt(e + 1);
+	  if (e.charAt(t + 1) === "/") {
+		const l = t + 1;
+		for (; ++t && !(e.charAt(t) === "," || t === e.length););
+		r.nsp = e.substring(l, t)
+	  } else r.nsp = "/";
+	  const s = e.charAt(t + 1);
 	  if (s !== "" && Number(s) == s) {
-		const l = e + 1;
-		for (; ++e;) {
-		  const m = t.charAt(e);
+		const l = t + 1;
+		for (; ++t;) {
+		  const m = e.charAt(t);
 		  if (m == null || Number(m) != m) {
-			--e;
+			--t;
 			break
 		  }
-		  if (e === t.length) break
+		  if (t === e.length) break
 		}
-		i.id = Number(t.substring(l, e + 1))
+		r.id = Number(e.substring(l, t + 1))
 	  }
-	  if (t.charAt(++e)) {
-		const l = this.tryParse(t.substr(e));
-		if (lt.isPayloadValid(i.type, l)) i.data = l;
+	  if (e.charAt(++t)) {
+		const l = this.tryParse(e.substr(t));
+		if (ce.isPayloadValid(r.type, l)) r.data = l;
 		else throw new Error("invalid payload")
 	  }
-	  return i
+	  return r
 	}
-	tryParse(t) {
+	tryParse(e) {
 	  try {
-		return JSON.parse(t, this.reviver)
+		return JSON.parse(e, this.reviver)
 	  } catch {
 		return !1
 	  }
 	}
-	static isPayloadValid(t, e) {
-	  switch (t) {
-		case C.CONNECT:
-		  return typeof e == "object";
-		case C.DISCONNECT:
-		  return e === void 0;
-		case C.CONNECT_ERROR:
-		  return typeof e == "string" || typeof e == "object";
-		case C.EVENT:
-		case C.BINARY_EVENT:
-		  return Array.isArray(e) && e.length > 0;
-		case C.ACK:
-		case C.BINARY_ACK:
-		  return Array.isArray(e)
+	static isPayloadValid(e, t) {
+	  switch (e) {
+		case k.CONNECT:
+		  return be(t);
+		case k.DISCONNECT:
+		  return t === void 0;
+		case k.CONNECT_ERROR:
+		  return typeof t == "string" || be(t);
+		case k.EVENT:
+		case k.BINARY_EVENT:
+		  return Array.isArray(t) && (typeof t[0] == "number" || typeof t[0] == "string" && At.indexOf(t[0]) === -1);
+		case k.ACK:
+		case k.BINARY_ACK:
+		  return Array.isArray(t)
 	  }
 	}
 	destroy() {
 	  this.reconstructor && (this.reconstructor.finishedReconstruction(), this.reconstructor = null)
 	}
   }
-  class Se {
-	constructor(t) {
-	  this.packet = t, this.buffers = [], this.reconPack = t
+  class Ot {
+	constructor(e) {
+	  this.packet = e, this.buffers = [], this.reconPack = e
 	}
-	takeBinaryData(t) {
-	  if (this.buffers.push(t), this.buffers.length === this.reconPack.attachments) {
-		const e = ke(this.reconPack, this.buffers);
-		return this.finishedReconstruction(), e
+	takeBinaryData(e) {
+	  if (this.buffers.push(e), this.buffers.length === this.reconPack.attachments) {
+		const t = Bt(this.reconPack, this.buffers);
+		return this.finishedReconstruction(), t
 	  }
 	  return null
 	}
@@ -1540,25 +1545,25 @@
 	  this.reconPack = null, this.buffers = []
 	}
   }
-  const Oe = Object.freeze(Object.defineProperty({
+  const Rt = Object.freeze(Object.defineProperty({
 	__proto__: null,
-	Decoder: lt,
-	Encoder: Ae,
+	Decoder: ce,
+	Encoder: Tt,
 	get PacketType() {
-	  return C
+	  return k
 	},
-	protocol: Te
+	protocol: Ct
   }, Symbol.toStringTag, {
 	value: "Module"
   }));
   
-  function L(n, t, e) {
-	return n.on(t, e),
+  function R(n, e, t) {
+	return n.on(e, t),
 	  function() {
-		n.off(t, e)
+		n.off(e, t)
 	  }
   }
-  const Re = Object.freeze({
+  const Nt = Object.freeze({
 	connect: 1,
 	connect_error: 1,
 	disconnect: 1,
@@ -1566,17 +1571,17 @@
 	newListener: 1,
 	removeListener: 1
   });
-  class Pt extends A {
-	constructor(t, e, i) {
-	  super(), this.connected = !1, this.recovered = !1, this.receiveBuffer = [], this.sendBuffer = [], this._queue = [], this._queueSeq = 0, this.ids = 0, this.acks = {}, this.flags = {}, this.io = t, this.nsp = e, i && i.auth && (this.auth = i.auth), this._opts = Object.assign({}, i), this.io._autoConnect && this.open()
+  class ze extends C {
+	constructor(e, t, r) {
+	  super(), this.connected = !1, this.recovered = !1, this.receiveBuffer = [], this.sendBuffer = [], this._queue = [], this._queueSeq = 0, this.ids = 0, this.acks = {}, this.flags = {}, this.io = e, this.nsp = t, r && r.auth && (this.auth = r.auth), this._opts = Object.assign({}, r), this.io._autoConnect && this.open()
 	}
 	get disconnected() {
 	  return !this.connected
 	}
 	subEvents() {
 	  if (this.subs) return;
-	  const t = this.io;
-	  this.subs = [L(t, "open", this.onopen.bind(this)), L(t, "packet", this.onpacket.bind(this)), L(t, "error", this.onerror.bind(this)), L(t, "close", this.onclose.bind(this))]
+	  const e = this.io;
+	  this.subs = [R(e, "open", this.onopen.bind(this)), R(e, "packet", this.onpacket.bind(this)), R(e, "error", this.onerror.bind(this)), R(e, "close", this.onclose.bind(this))]
 	}
 	get active() {
 	  return !!this.subs
@@ -1587,288 +1592,288 @@
 	open() {
 	  return this.connect()
 	}
-	send(...t) {
-	  return t.unshift("message"), this.emit.apply(this, t), this
+	send(...e) {
+	  return e.unshift("message"), this.emit.apply(this, e), this
 	}
-	emit(t, ...e) {
-	  if (Re.hasOwnProperty(t)) throw new Error('"' + t.toString() + '" is a reserved event name');
-	  if (e.unshift(t), this._opts.retries && !this.flags.fromQueue && !this.flags.volatile) return this._addToQueue(e), this;
-	  const i = {
-		type: C.EVENT,
-		data: e
+	emit(e, ...t) {
+	  if (Nt.hasOwnProperty(e)) throw new Error('"' + e.toString() + '" is a reserved event name');
+	  if (t.unshift(e), this._opts.retries && !this.flags.fromQueue && !this.flags.volatile) return this._addToQueue(t), this;
+	  const r = {
+		type: k.EVENT,
+		data: t
 	  };
-	  if (i.options = {}, i.options.compress = this.flags.compress !== !1, typeof e[e.length - 1] == "function") {
+	  if (r.options = {}, r.options.compress = this.flags.compress !== !1, typeof t[t.length - 1] == "function") {
 		const m = this.ids++,
-		  v = e.pop();
-		this._registerAckCallback(m, v), i.id = m
+		  v = t.pop();
+		this._registerAckCallback(m, v), r.id = m
 	  }
 	  const s = this.io.engine && this.io.engine.transport && this.io.engine.transport.writable;
-	  return this.flags.volatile && (!s || !this.connected) || (this.connected ? (this.notifyOutgoingListeners(i), this.packet(i)) : this.sendBuffer.push(i)), this.flags = {}, this
+	  return this.flags.volatile && (!s || !this.connected) || (this.connected ? (this.notifyOutgoingListeners(r), this.packet(r)) : this.sendBuffer.push(r)), this.flags = {}, this
 	}
-	_registerAckCallback(t, e) {
-	  var i;
-	  const s = (i = this.flags.timeout) !== null && i !== void 0 ? i : this._opts.ackTimeout;
+	_registerAckCallback(e, t) {
+	  var r;
+	  const s = (r = this.flags.timeout) !== null && r !== void 0 ? r : this._opts.ackTimeout;
 	  if (s === void 0) {
-		this.acks[t] = e;
+		this.acks[e] = t;
 		return
 	  }
 	  const l = this.io.setTimeoutFn(() => {
-		delete this.acks[t];
-		for (let m = 0; m < this.sendBuffer.length; m++) this.sendBuffer[m].id === t && this.sendBuffer.splice(m, 1);
-		e.call(this, new Error("operation has timed out"))
+		delete this.acks[e];
+		for (let m = 0; m < this.sendBuffer.length; m++) this.sendBuffer[m].id === e && this.sendBuffer.splice(m, 1);
+		t.call(this, new Error("operation has timed out"))
 	  }, s);
-	  this.acks[t] = (...m) => {
-		this.io.clearTimeoutFn(l), e.apply(this, [null, ...m])
+	  this.acks[e] = (...m) => {
+		this.io.clearTimeoutFn(l), t.apply(this, [null, ...m])
 	  }
 	}
-	emitWithAck(t, ...e) {
-	  const i = this.flags.timeout !== void 0 || this._opts.ackTimeout !== void 0;
+	emitWithAck(e, ...t) {
+	  const r = this.flags.timeout !== void 0 || this._opts.ackTimeout !== void 0;
 	  return new Promise((s, l) => {
-		e.push((m, v) => i ? m ? l(m) : s(v) : s(m)), this.emit(t, ...e)
+		t.push((m, v) => r ? m ? l(m) : s(v) : s(m)), this.emit(e, ...t)
 	  })
 	}
-	_addToQueue(t) {
-	  let e;
-	  typeof t[t.length - 1] == "function" && (e = t.pop());
-	  const i = {
+	_addToQueue(e) {
+	  let t;
+	  typeof e[e.length - 1] == "function" && (t = e.pop());
+	  const r = {
 		id: this._queueSeq++,
 		tryCount: 0,
 		pending: !1,
-		args: t,
+		args: e,
 		flags: Object.assign({
 		  fromQueue: !0
 		}, this.flags)
 	  };
-	  t.push((s, ...l) => i !== this._queue[0] ? void 0 : (s !== null ? i.tryCount > this._opts.retries && (this._queue.shift(), e && e(s)) : (this._queue.shift(), e && e(null, ...l)), i.pending = !1, this._drainQueue())), this._queue.push(i), this._drainQueue()
+	  e.push((s, ...l) => r !== this._queue[0] ? void 0 : (s !== null ? r.tryCount > this._opts.retries && (this._queue.shift(), t && t(s)) : (this._queue.shift(), t && t(null, ...l)), r.pending = !1, this._drainQueue())), this._queue.push(r), this._drainQueue()
 	}
-	_drainQueue(t = !1) {
+	_drainQueue(e = !1) {
 	  if (!this.connected || this._queue.length === 0) return;
-	  const e = this._queue[0];
-	  e.pending && !t || (e.pending = !0, e.tryCount++, this.flags = e.flags, this.emit.apply(this, e.args))
+	  const t = this._queue[0];
+	  t.pending && !e || (t.pending = !0, t.tryCount++, this.flags = t.flags, this.emit.apply(this, t.args))
 	}
-	packet(t) {
-	  t.nsp = this.nsp, this.io._packet(t)
+	packet(e) {
+	  e.nsp = this.nsp, this.io._packet(e)
 	}
 	onopen() {
-	  typeof this.auth == "function" ? this.auth(t => {
-		this._sendConnectPacket(t)
+	  typeof this.auth == "function" ? this.auth(e => {
+		this._sendConnectPacket(e)
 	  }) : this._sendConnectPacket(this.auth)
 	}
-	_sendConnectPacket(t) {
+	_sendConnectPacket(e) {
 	  this.packet({
-		type: C.CONNECT,
+		type: k.CONNECT,
 		data: this._pid ? Object.assign({
 		  pid: this._pid,
 		  offset: this._lastOffset
-		}, t) : t
+		}, e) : e
 	  })
 	}
-	onerror(t) {
-	  this.connected || this.emitReserved("connect_error", t)
+	onerror(e) {
+	  this.connected || this.emitReserved("connect_error", e)
 	}
-	onclose(t, e) {
-	  this.connected = !1, delete this.id, this.emitReserved("disconnect", t, e)
+	onclose(e, t) {
+	  this.connected = !1, delete this.id, this.emitReserved("disconnect", e, t)
 	}
-	onpacket(t) {
-	  if (t.nsp === this.nsp) switch (t.type) {
-		case C.CONNECT:
-		  t.data && t.data.sid ? this.onconnect(t.data.sid, t.data.pid) : this.emitReserved("connect_error", new Error("It seems you are trying to reach a Socket.IO server in v2.x with a v3.x client, but they are not compatible (more information here: https://socket.io/docs/v3/migrating-from-2-x-to-3-0/)"));
+	onpacket(e) {
+	  if (e.nsp === this.nsp) switch (e.type) {
+		case k.CONNECT:
+		  e.data && e.data.sid ? this.onconnect(e.data.sid, e.data.pid) : this.emitReserved("connect_error", new Error("It seems you are trying to reach a Socket.IO server in v2.x with a v3.x client, but they are not compatible (more information here: https://socket.io/docs/v3/migrating-from-2-x-to-3-0/)"));
 		  break;
-		case C.EVENT:
-		case C.BINARY_EVENT:
-		  this.onevent(t);
+		case k.EVENT:
+		case k.BINARY_EVENT:
+		  this.onevent(e);
 		  break;
-		case C.ACK:
-		case C.BINARY_ACK:
-		  this.onack(t);
+		case k.ACK:
+		case k.BINARY_ACK:
+		  this.onack(e);
 		  break;
-		case C.DISCONNECT:
+		case k.DISCONNECT:
 		  this.ondisconnect();
 		  break;
-		case C.CONNECT_ERROR:
+		case k.CONNECT_ERROR:
 		  this.destroy();
-		  const i = new Error(t.data.message);
-		  i.data = t.data.data, this.emitReserved("connect_error", i);
+		  const r = new Error(e.data.message);
+		  r.data = e.data.data, this.emitReserved("connect_error", r);
 		  break
 	  }
 	}
-	onevent(t) {
-	  const e = t.data || [];
-	  t.id != null && e.push(this.ack(t.id)), this.connected ? this.emitEvent(e) : this.receiveBuffer.push(Object.freeze(e))
+	onevent(e) {
+	  const t = e.data || [];
+	  e.id != null && t.push(this.ack(e.id)), this.connected ? this.emitEvent(t) : this.receiveBuffer.push(Object.freeze(t))
 	}
-	emitEvent(t) {
+	emitEvent(e) {
 	  if (this._anyListeners && this._anyListeners.length) {
-		const e = this._anyListeners.slice();
-		for (const i of e) i.apply(this, t)
+		const t = this._anyListeners.slice();
+		for (const r of t) r.apply(this, e)
 	  }
-	  super.emit.apply(this, t), this._pid && t.length && typeof t[t.length - 1] == "string" && (this._lastOffset = t[t.length - 1])
+	  super.emit.apply(this, e), this._pid && e.length && typeof e[e.length - 1] == "string" && (this._lastOffset = e[e.length - 1])
 	}
-	ack(t) {
-	  const e = this;
-	  let i = !1;
+	ack(e) {
+	  const t = this;
+	  let r = !1;
 	  return function(...s) {
-		i || (i = !0, e.packet({
-		  type: C.ACK,
-		  id: t,
+		r || (r = !0, t.packet({
+		  type: k.ACK,
+		  id: e,
 		  data: s
 		}))
 	  }
 	}
-	onack(t) {
-	  const e = this.acks[t.id];
-	  typeof e == "function" && (e.apply(this, t.data), delete this.acks[t.id])
+	onack(e) {
+	  const t = this.acks[e.id];
+	  typeof t == "function" && (t.apply(this, e.data), delete this.acks[e.id])
 	}
-	onconnect(t, e) {
-	  this.id = t, this.recovered = e && this._pid === e, this._pid = e, this.connected = !0, this.emitBuffered(), this.emitReserved("connect"), this._drainQueue(!0)
+	onconnect(e, t) {
+	  this.id = e, this.recovered = t && this._pid === t, this._pid = t, this.connected = !0, this.emitBuffered(), this.emitReserved("connect"), this._drainQueue(!0)
 	}
 	emitBuffered() {
-	  this.receiveBuffer.forEach(t => this.emitEvent(t)), this.receiveBuffer = [], this.sendBuffer.forEach(t => {
-		this.notifyOutgoingListeners(t), this.packet(t)
+	  this.receiveBuffer.forEach(e => this.emitEvent(e)), this.receiveBuffer = [], this.sendBuffer.forEach(e => {
+		this.notifyOutgoingListeners(e), this.packet(e)
 	  }), this.sendBuffer = []
 	}
 	ondisconnect() {
 	  this.destroy(), this.onclose("io server disconnect")
 	}
 	destroy() {
-	  this.subs && (this.subs.forEach(t => t()), this.subs = void 0), this.io._destroy(this)
+	  this.subs && (this.subs.forEach(e => e()), this.subs = void 0), this.io._destroy(this)
 	}
 	disconnect() {
 	  return this.connected && this.packet({
-		type: C.DISCONNECT
+		type: k.DISCONNECT
 	  }), this.destroy(), this.connected && this.onclose("io client disconnect"), this
 	}
 	close() {
 	  return this.disconnect()
 	}
-	compress(t) {
-	  return this.flags.compress = t, this
+	compress(e) {
+	  return this.flags.compress = e, this
 	}
 	get volatile() {
 	  return this.flags.volatile = !0, this
 	}
-	timeout(t) {
-	  return this.flags.timeout = t, this
+	timeout(e) {
+	  return this.flags.timeout = e, this
 	}
-	onAny(t) {
-	  return this._anyListeners = this._anyListeners || [], this._anyListeners.push(t), this
+	onAny(e) {
+	  return this._anyListeners = this._anyListeners || [], this._anyListeners.push(e), this
 	}
-	prependAny(t) {
-	  return this._anyListeners = this._anyListeners || [], this._anyListeners.unshift(t), this
+	prependAny(e) {
+	  return this._anyListeners = this._anyListeners || [], this._anyListeners.unshift(e), this
 	}
-	offAny(t) {
+	offAny(e) {
 	  if (!this._anyListeners) return this;
-	  if (t) {
-		const e = this._anyListeners;
-		for (let i = 0; i < e.length; i++)
-		  if (t === e[i]) return e.splice(i, 1), this
+	  if (e) {
+		const t = this._anyListeners;
+		for (let r = 0; r < t.length; r++)
+		  if (e === t[r]) return t.splice(r, 1), this
 	  } else this._anyListeners = [];
 	  return this
 	}
 	listenersAny() {
 	  return this._anyListeners || []
 	}
-	onAnyOutgoing(t) {
-	  return this._anyOutgoingListeners = this._anyOutgoingListeners || [], this._anyOutgoingListeners.push(t), this
+	onAnyOutgoing(e) {
+	  return this._anyOutgoingListeners = this._anyOutgoingListeners || [], this._anyOutgoingListeners.push(e), this
 	}
-	prependAnyOutgoing(t) {
-	  return this._anyOutgoingListeners = this._anyOutgoingListeners || [], this._anyOutgoingListeners.unshift(t), this
+	prependAnyOutgoing(e) {
+	  return this._anyOutgoingListeners = this._anyOutgoingListeners || [], this._anyOutgoingListeners.unshift(e), this
 	}
-	offAnyOutgoing(t) {
+	offAnyOutgoing(e) {
 	  if (!this._anyOutgoingListeners) return this;
-	  if (t) {
-		const e = this._anyOutgoingListeners;
-		for (let i = 0; i < e.length; i++)
-		  if (t === e[i]) return e.splice(i, 1), this
+	  if (e) {
+		const t = this._anyOutgoingListeners;
+		for (let r = 0; r < t.length; r++)
+		  if (e === t[r]) return t.splice(r, 1), this
 	  } else this._anyOutgoingListeners = [];
 	  return this
 	}
 	listenersAnyOutgoing() {
 	  return this._anyOutgoingListeners || []
 	}
-	notifyOutgoingListeners(t) {
+	notifyOutgoingListeners(e) {
 	  if (this._anyOutgoingListeners && this._anyOutgoingListeners.length) {
-		const e = this._anyOutgoingListeners.slice();
-		for (const i of e) i.apply(this, t.data)
+		const t = this._anyOutgoingListeners.slice();
+		for (const r of t) r.apply(this, e.data)
 	  }
 	}
   }
   
-  function H(n) {
+  function D(n) {
 	n = n || {}, this.ms = n.min || 100, this.max = n.max || 1e4, this.factor = n.factor || 2, this.jitter = n.jitter > 0 && n.jitter <= 1 ? n.jitter : 0, this.attempts = 0
   }
-  H.prototype.duration = function() {
+  D.prototype.duration = function() {
 	var n = this.ms * Math.pow(this.factor, this.attempts++);
 	if (this.jitter) {
-	  var t = Math.random(),
-		e = Math.floor(t * this.jitter * n);
-	  n = Math.floor(t * 10) & 1 ? n + e : n - e
+	  var e = Math.random(),
+		t = Math.floor(e * this.jitter * n);
+	  n = Math.floor(e * 10) & 1 ? n + t : n - t
 	}
 	return Math.min(n, this.max) | 0
   };
-  H.prototype.reset = function() {
+  D.prototype.reset = function() {
 	this.attempts = 0
   };
-  H.prototype.setMin = function(n) {
+  D.prototype.setMin = function(n) {
 	this.ms = n
   };
-  H.prototype.setMax = function(n) {
+  D.prototype.setMax = function(n) {
 	this.max = n
   };
-  H.prototype.setJitter = function(n) {
+  D.prototype.setJitter = function(n) {
 	this.jitter = n
   };
-  class at extends A {
-	constructor(t, e) {
-	  var i;
-	  super(), this.nsps = {}, this.subs = [], t && typeof t == "object" && (e = t, t = void 0), e = e || {}, e.path = e.path || "/socket.io", this.opts = e, Z(this, e), this.reconnection(e.reconnection !== !1), this.reconnectionAttempts(e.reconnectionAttempts || 1 / 0), this.reconnectionDelay(e.reconnectionDelay || 1e3), this.reconnectionDelayMax(e.reconnectionDelayMax || 5e3), this.randomizationFactor((i = e.randomizationFactor) !== null && i !== void 0 ? i : .5), this.backoff = new H({
+  class oe extends C {
+	constructor(e, t) {
+	  var r;
+	  super(), this.nsps = {}, this.subs = [], e && typeof e == "object" && (t = e, e = void 0), t = t || {}, t.path = t.path || "/socket.io", this.opts = t, Q(this, t), this.reconnection(t.reconnection !== !1), this.reconnectionAttempts(t.reconnectionAttempts || 1 / 0), this.reconnectionDelay(t.reconnectionDelay || 1e3), this.reconnectionDelayMax(t.reconnectionDelayMax || 5e3), this.randomizationFactor((r = t.randomizationFactor) !== null && r !== void 0 ? r : .5), this.backoff = new D({
 		min: this.reconnectionDelay(),
 		max: this.reconnectionDelayMax(),
 		jitter: this.randomizationFactor()
-	  }), this.timeout(e.timeout == null ? 2e4 : e.timeout), this._readyState = "closed", this.uri = t;
-	  const s = e.parser || Oe;
-	  this.encoder = new s.Encoder, this.decoder = new s.Decoder, this._autoConnect = e.autoConnect !== !1, this._autoConnect && this.open()
+	  }), this.timeout(t.timeout == null ? 2e4 : t.timeout), this._readyState = "closed", this.uri = e;
+	  const s = t.parser || Rt;
+	  this.encoder = new s.Encoder, this.decoder = new s.Decoder, this._autoConnect = t.autoConnect !== !1, this._autoConnect && this.open()
 	}
-	reconnection(t) {
-	  return arguments.length ? (this._reconnection = !!t, this) : this._reconnection
+	reconnection(e) {
+	  return arguments.length ? (this._reconnection = !!e, this) : this._reconnection
 	}
-	reconnectionAttempts(t) {
-	  return t === void 0 ? this._reconnectionAttempts : (this._reconnectionAttempts = t, this)
+	reconnectionAttempts(e) {
+	  return e === void 0 ? this._reconnectionAttempts : (this._reconnectionAttempts = e, this)
 	}
-	reconnectionDelay(t) {
-	  var e;
-	  return t === void 0 ? this._reconnectionDelay : (this._reconnectionDelay = t, (e = this.backoff) === null || e === void 0 || e.setMin(t), this)
+	reconnectionDelay(e) {
+	  var t;
+	  return e === void 0 ? this._reconnectionDelay : (this._reconnectionDelay = e, (t = this.backoff) === null || t === void 0 || t.setMin(e), this)
 	}
-	randomizationFactor(t) {
-	  var e;
-	  return t === void 0 ? this._randomizationFactor : (this._randomizationFactor = t, (e = this.backoff) === null || e === void 0 || e.setJitter(t), this)
+	randomizationFactor(e) {
+	  var t;
+	  return e === void 0 ? this._randomizationFactor : (this._randomizationFactor = e, (t = this.backoff) === null || t === void 0 || t.setJitter(e), this)
 	}
-	reconnectionDelayMax(t) {
-	  var e;
-	  return t === void 0 ? this._reconnectionDelayMax : (this._reconnectionDelayMax = t, (e = this.backoff) === null || e === void 0 || e.setMax(t), this)
+	reconnectionDelayMax(e) {
+	  var t;
+	  return e === void 0 ? this._reconnectionDelayMax : (this._reconnectionDelayMax = e, (t = this.backoff) === null || t === void 0 || t.setMax(e), this)
 	}
-	timeout(t) {
-	  return arguments.length ? (this._timeout = t, this) : this._timeout
+	timeout(e) {
+	  return arguments.length ? (this._timeout = e, this) : this._timeout
 	}
 	maybeReconnectOnOpen() {
 	  !this._reconnecting && this._reconnection && this.backoff.attempts === 0 && this.reconnect()
 	}
-	open(t) {
+	open(e) {
 	  if (~this._readyState.indexOf("open")) return this;
-	  this.engine = new It(this.uri, this.opts);
-	  const e = this.engine,
-		i = this;
+	  this.engine = new Pe(this.uri, this.opts);
+	  const t = this.engine,
+		r = this;
 	  this._readyState = "opening", this.skipReconnect = !1;
-	  const s = L(e, "open", function() {
-		  i.onopen(), t && t()
+	  const s = R(t, "open", function() {
+		  r.onopen(), e && e()
 		}),
-		l = L(e, "error", m => {
-		  i.cleanup(), i._readyState = "closed", this.emitReserved("error", m), t ? t(m) : i.maybeReconnectOnOpen()
+		l = R(t, "error", m => {
+		  r.cleanup(), r._readyState = "closed", this.emitReserved("error", m), e ? e(m) : r.maybeReconnectOnOpen()
 		});
 	  if (this._timeout !== !1) {
 		const m = this._timeout;
 		m === 0 && s();
 		const v = this.setTimeoutFn(() => {
-		  s(), e.close(), e.emit("error", new Error("timeout"))
+		  s(), t.close(), t.emit("error", new Error("timeout"))
 		}, m);
 		this.opts.autoUnref && v.unref(), this.subs.push(function() {
 		  clearTimeout(v)
@@ -1876,48 +1881,48 @@
 	  }
 	  return this.subs.push(s), this.subs.push(l), this
 	}
-	connect(t) {
-	  return this.open(t)
+	connect(e) {
+	  return this.open(e)
 	}
 	onopen() {
 	  this.cleanup(), this._readyState = "open", this.emitReserved("open");
-	  const t = this.engine;
-	  this.subs.push(L(t, "ping", this.onping.bind(this)), L(t, "data", this.ondata.bind(this)), L(t, "error", this.onerror.bind(this)), L(t, "close", this.onclose.bind(this)), L(this.decoder, "decoded", this.ondecoded.bind(this)))
+	  const e = this.engine;
+	  this.subs.push(R(e, "ping", this.onping.bind(this)), R(e, "data", this.ondata.bind(this)), R(e, "error", this.onerror.bind(this)), R(e, "close", this.onclose.bind(this)), R(this.decoder, "decoded", this.ondecoded.bind(this)))
 	}
 	onping() {
 	  this.emitReserved("ping")
 	}
-	ondata(t) {
+	ondata(e) {
 	  try {
-		this.decoder.add(t)
-	  } catch (e) {
-		this.onclose("parse error", e)
+		this.decoder.add(e)
+	  } catch (t) {
+		this.onclose("parse error", t)
 	  }
 	}
-	ondecoded(t) {
-	  Nt(() => {
-		this.emitReserved("packet", t)
+	ondecoded(e) {
+	  Ie(() => {
+		this.emitReserved("packet", e)
 	  }, this.setTimeoutFn)
 	}
-	onerror(t) {
-	  this.emitReserved("error", t)
+	onerror(e) {
+	  this.emitReserved("error", e)
 	}
-	socket(t, e) {
-	  let i = this.nsps[t];
-	  return i ? this._autoConnect && !i.active && i.connect() : (i = new Pt(this, t, e), this.nsps[t] = i), i
+	socket(e, t) {
+	  let r = this.nsps[e];
+	  return r ? this._autoConnect && !r.active && r.connect() : (r = new ze(this, e, t), this.nsps[e] = r), r
 	}
-	_destroy(t) {
-	  const e = Object.keys(this.nsps);
-	  for (const i of e)
-		if (this.nsps[i].active) return;
+	_destroy(e) {
+	  const t = Object.keys(this.nsps);
+	  for (const r of t)
+		if (this.nsps[r].active) return;
 	  this._close()
 	}
-	_packet(t) {
-	  const e = this.encoder.encode(t);
-	  for (let i = 0; i < e.length; i++) this.engine.write(e[i], t.options)
+	_packet(e) {
+	  const t = this.encoder.encode(e);
+	  for (let r = 0; r < t.length; r++) this.engine.write(t[r], e.options)
 	}
 	cleanup() {
-	  this.subs.forEach(t => t()), this.subs.length = 0, this.decoder.destroy()
+	  this.subs.forEach(e => e()), this.subs.length = 0, this.decoder.destroy()
 	}
 	_close() {
 	  this.skipReconnect = !0, this._reconnecting = !1, this.onclose("forced close"), this.engine && this.engine.close()
@@ -1925,266 +1930,270 @@
 	disconnect() {
 	  return this._close()
 	}
-	onclose(t, e) {
-	  this.cleanup(), this.backoff.reset(), this._readyState = "closed", this.emitReserved("close", t, e), this._reconnection && !this.skipReconnect && this.reconnect()
+	onclose(e, t) {
+	  this.cleanup(), this.backoff.reset(), this._readyState = "closed", this.emitReserved("close", e, t), this._reconnection && !this.skipReconnect && this.reconnect()
 	}
 	reconnect() {
 	  if (this._reconnecting || this.skipReconnect) return this;
-	  const t = this;
+	  const e = this;
 	  if (this.backoff.attempts >= this._reconnectionAttempts) this.backoff.reset(), this.emitReserved("reconnect_failed"), this._reconnecting = !1;
 	  else {
-		const e = this.backoff.duration();
+		const t = this.backoff.duration();
 		this._reconnecting = !0;
-		const i = this.setTimeoutFn(() => {
-		  t.skipReconnect || (this.emitReserved("reconnect_attempt", t.backoff.attempts), !t.skipReconnect && t.open(s => {
-			s ? (t._reconnecting = !1, t.reconnect(), this.emitReserved("reconnect_error", s)) : t.onreconnect()
+		const r = this.setTimeoutFn(() => {
+		  e.skipReconnect || (this.emitReserved("reconnect_attempt", e.backoff.attempts), !e.skipReconnect && e.open(s => {
+			s ? (e._reconnecting = !1, e.reconnect(), this.emitReserved("reconnect_error", s)) : e.onreconnect()
 		  }))
-		}, e);
-		this.opts.autoUnref && i.unref(), this.subs.push(function() {
-		  clearTimeout(i)
+		}, t);
+		this.opts.autoUnref && r.unref(), this.subs.push(function() {
+		  clearTimeout(r)
 		})
 	  }
 	}
 	onreconnect() {
-	  const t = this.backoff.attempts;
-	  this._reconnecting = !1, this.backoff.reset(), this.emitReserved("reconnect", t)
+	  const e = this.backoff.attempts;
+	  this._reconnecting = !1, this.backoff.reset(), this.emitReserved("reconnect", e)
 	}
   }
-  const U = {};
+  const V = {};
   
-  function G(n, t) {
-	typeof n == "object" && (t = n, n = void 0), t = t || {};
-	const e = xe(n, t.path || "/socket.io"),
-	  i = e.source,
-	  s = e.id,
-	  l = e.path,
-	  m = U[s] && l in U[s].nsps,
-	  v = t.forceNew || t["force new connection"] || t.multiplex === !1 || m;
+  function X(n, e) {
+	typeof n == "object" && (e = n, n = void 0), e = e || {};
+	const t = xt(n, e.path || "/socket.io"),
+	  r = t.source,
+	  s = t.id,
+	  l = t.path,
+	  m = V[s] && l in V[s].nsps,
+	  v = e.forceNew || e["force new connection"] || e.multiplex === !1 || m;
 	let a;
-	return v ? a = new at(i, t) : (U[s] || (U[s] = new at(i, t)), a = U[s]), e.query && !t.query && (t.query = e.queryKey), a.socket(e.path, t)
+	return v ? a = new oe(r, e) : (V[s] || (V[s] = new oe(r, e)), a = V[s]), t.query && !e.query && (e.query = t.queryKey), a.socket(t.path, e)
   }
-  Object.assign(G, {
-	Manager: at,
-	Socket: Pt,
-	io: G,
-	connect: G
+  Object.assign(X, {
+	Manager: oe,
+	Socket: ze,
+	io: X,
+	connect: X
   });
   let j;
-  const Le = new Uint8Array(16);
+  const Lt = new Uint8Array(16);
   
-  function Ne() {
+  function Mt() {
 	if (!j && (j = typeof crypto < "u" && crypto.getRandomValues && crypto.getRandomValues.bind(crypto), !j)) throw new Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");
-	return j(Le)
+	return j(Lt)
   }
-  const S = [];
-  for (let n = 0; n < 256; ++n) S.push((n + 256).toString(16).slice(1));
+  const T = [];
+  for (let n = 0; n < 256; ++n) T.push((n + 256).toString(16).slice(1));
   
-  function Ie(n, t = 0) {
-	return (S[n[t + 0]] + S[n[t + 1]] + S[n[t + 2]] + S[n[t + 3]] + "-" + S[n[t + 4]] + S[n[t + 5]] + "-" + S[n[t + 6]] + S[n[t + 7]] + "-" + S[n[t + 8]] + S[n[t + 9]] + "-" + S[n[t + 10]] + S[n[t + 11]] + S[n[t + 12]] + S[n[t + 13]] + S[n[t + 14]] + S[n[t + 15]]).toLowerCase()
+  function It(n, e = 0) {
+	return (T[n[e + 0]] + T[n[e + 1]] + T[n[e + 2]] + T[n[e + 3]] + "-" + T[n[e + 4]] + T[n[e + 5]] + "-" + T[n[e + 6]] + T[n[e + 7]] + "-" + T[n[e + 8]] + T[n[e + 9]] + "-" + T[n[e + 10]] + T[n[e + 11]] + T[n[e + 12]] + T[n[e + 13]] + T[n[e + 14]] + T[n[e + 15]]).toLowerCase()
   }
-  let vt, tt, et = 0,
-	nt = 0;
+  let xe, G, Z = 0,
+	ee = 0;
   
-  function Me(n, t, e) {
-	let i = t && e || 0;
-	const s = t || new Array(16);
+  function Pt(n, e, t) {
+	let r = e && t || 0;
+	const s = e || new Array(16);
 	n = n || {};
-	let l = n.node || vt,
-	  m = n.clockseq !== void 0 ? n.clockseq : tt;
+	let l = n.node || xe,
+	  m = n.clockseq !== void 0 ? n.clockseq : G;
 	if (l == null || m == null) {
-	  const r = n.random || (n.rng || Ne)();
-	  l == null && (l = vt = [r[0] | 1, r[1], r[2], r[3], r[4], r[5]]), m == null && (m = tt = (r[6] << 8 | r[7]) & 16383)
+	  const i = n.random || (n.rng || Mt)();
+	  l == null && (l = xe = [i[0] | 1, i[1], i[2], i[3], i[4], i[5]]), m == null && (m = G = (i[6] << 8 | i[7]) & 16383)
 	}
 	let v = n.msecs !== void 0 ? n.msecs : Date.now(),
-	  a = n.nsecs !== void 0 ? n.nsecs : nt + 1;
-	const c = v - et + (a - nt) / 1e4;
-	if (c < 0 && n.clockseq === void 0 && (m = m + 1 & 16383), (c < 0 || v > et) && n.nsecs === void 0 && (a = 0), a >= 1e4) throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
-	et = v, nt = a, tt = m, v += 122192928e5;
+	  a = n.nsecs !== void 0 ? n.nsecs : ee + 1;
+	const c = v - Z + (a - ee) / 1e4;
+	if (c < 0 && n.clockseq === void 0 && (m = m + 1 & 16383), (c < 0 || v > Z) && n.nsecs === void 0 && (a = 0), a >= 1e4) throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
+	Z = v, ee = a, G = m, v += 122192928e5;
 	const p = ((v & 268435455) * 1e4 + a) % 4294967296;
-	s[i++] = p >>> 24 & 255, s[i++] = p >>> 16 & 255, s[i++] = p >>> 8 & 255, s[i++] = p & 255;
+	s[r++] = p >>> 24 & 255, s[r++] = p >>> 16 & 255, s[r++] = p >>> 8 & 255, s[r++] = p & 255;
 	const o = v / 4294967296 * 1e4 & 268435455;
-	s[i++] = o >>> 8 & 255, s[i++] = o & 255, s[i++] = o >>> 24 & 15 | 16, s[i++] = o >>> 16 & 255, s[i++] = m >>> 8 | 128, s[i++] = m & 255;
-	for (let r = 0; r < 6; ++r) s[i + r] = l[r];
-	return t || Ie(s)
+	s[r++] = o >>> 8 & 255, s[r++] = o & 255, s[r++] = o >>> 24 & 15 | 16, s[r++] = o >>> 16 & 255, s[r++] = m >>> 8 | 128, s[r++] = m & 255;
+	for (let i = 0; i < 6; ++i) s[r + i] = l[i];
+	return e || It(s)
   }
-  const Ft = G("https://mysf.fly.dev/");
-  Ft.on("connect", () => {
-	console.log("Connected to server")
-  });
-  Ft.on("disconnect", () => {
-	console.log("Disconnected from server")
-  });
-  var Pe = .5,
-	Fe = "H",
-	ze = "#333333",
-	De = window.location.protocol + "//" + window.location.host,
-	qe = "testshop",
-	Ve = Me(),
-	He = "testmodel",
-	Ue = "testManu";
-  const Ke = {
-	  uid: Ve,
-	  host: De,
-	  shop: qe,
-	  manufacturer: Ue,
-	  model: He
-	},
-	We = JSON.stringify(Ke),
-	$e = btoa(We),
-	zt = `https://mysf.fly.dev/?hash=${$e}`;
-  var F = !1,
-	Dt = !1,
-	q = document.createElement("div");
+  var P = !1,
+	qe = !1,
+	De;
+  screen.width <= 768 ? (P = !0, console.log("MOBILE DEVICE VIEW"), De = "mobile") : (console.log("DESKTOP DEVICE VIEW"), P = !1);
+  var Ft = .8,
+	zt = "H",
+	qt = "#333333",
+	le, Dt = window.location.protocol + "//" + window.location.host,
+	Vt = Pt();
+  const mySF = function() {
+	function setvalues(e, t, r) {
+	  Ut(r, e, t)
+	}
+	return {
+	  setvalues: setvalues
+	}
+  }();
+  
+  function Ut(n, e, t) {
+	const s = JSON.stringify({
+	  uid: Vt,
+	  host: Dt,
+	  shop: n,
+	  manufacturer: e,
+	  model: t,
+	  client: De
+	});
+	le = `https://mysf.vercel.app/?hash=${btoa(s)}`
+  }
+  var ue = document.createElement("div");
+  document.body.appendChild(ue);
+  ue.id = "mySF_User_Modal";
+  ue.style.display = "none";
+  var Ve = document.createElement("button");
+  document.getElementById("mySF_User_Modal").appendChild(Ve);
+  Ve.id = "close";
+  var q = document.createElement("div");
   document.body.appendChild(q);
-  q.id = "myModal";
+  q.id = "firstModal";
   q.style.display = "none";
-  var qt = document.createElement("button");
-  document.getElementById("myModal").appendChild(qt);
-  qt.id = "close";
-  var O = document.createElement("button");
-  document.body.appendChild(O);
-  O.textContent = "Modal Test";
-  O.id = "firstButton";
-  O.class = "firstButton";
-  O.style.backgroundColor = "#ff7d4f";
-  O.style.padding = "12px";
-  O.style.fontFamily = "'Circular Std', sans-serif";
-  O.style.fontSize = "16px";
-  O.style.color = "#ffffff";
-  O.style.borderRadius = "10px";
-  O.style.border = "1px solid #ff7d4f";
-  O.style.left = "25%";
-  O.style.top = "50%";
-  O.style.position = "absolute";
-  O.style.width = "50%";
-  var V = document.createElement("div");
-  document.body.appendChild(V);
-  V.id = "firstModal";
-  V.style.display = "none";
-  var Vt = document.createElement("button");
-  document.getElementById("firstModal").appendChild(Vt);
-  Vt.id = "firstclose";
-  var Ht = document.createElement("button");
-  document.getElementById("firstModal").appendChild(Ht);
-  Ht.id = "continueBtn";
-  screen.width <= 768 ? (F = !0, console.log("MOBILE DEVICE VIEW")) : (console.log("DESKTOP DEVICE VIEW"), F = !1);
-  F ? (V.innerHTML = `
+  var He = document.createElement("button");
+  document.getElementById("firstModal").appendChild(He);
+  He.id = "firstclose";
+  var Ue = document.createElement("button");
+  document.getElementById("firstModal").appendChild(Ue);
+  Ue.id = "continueBtn";
+  P ? q.innerHTML = `
   <style>
-  @import url('https://fonts.cdnfonts.com/css/circular-std');
+	@import url('https://fonts.cdnfonts.com/css/montserrat');
   
-	.firstclose {
-	  color: #aaaaaa;
-	  float: right;
-	  font-size: 28px;
-	  font-weight: bold;
-	  margin-top: -35px;
-	  margin-left: -20px;
-	}
+	  th,
+	  td {
+		border: 0px !important;
+	  }
   
-	.firstclose:hover,
-	.firstclose:focus {
-	  color: #000;
-	  text-decoration: none;
-	  cursor: pointer;
-	}
+	  .firstclose {
+		color: #aaaaaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+		margin-top: -10px;
+	  }
   
-	.firstModal {
-	  display: flex;
-	  position: fixed;
-	  left: 0;
-	  top: 0;
-	  z-index: 9999;
-	  width: 100%;
-	  height: 100%;
-	  background-color: rgba(0, 0, 0, 0.4);
-	  -webkit-transition: 0.5s;
-	  overflow: auto;
-	  transition: all 0.3s linear;
-	  backdrop-filter: blur(15px);
-	  font-family: 'Circular std',sans-serif;
-	}
+	  .firstclose:hover,
+	  .firstclose:focus {
+		color: #000;
+		text-decoration: none;
+		cursor: pointer;
+	  }
   
-	.firstmodal-content {
-	  width:70%;
-	  background-image: linear-gradient(to right, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffdfc9, #ffe6d5, #ffede2, #fff4ee);
-	  margin-top: auto;
-	  margin-bottom: auto;
-	  margin-left: auto;
-	  margin-right: auto;
-	  padding: 2em;
-	  padding-right:2em;
-	  padding-left:2em;
-	  border: 1px;
-	  border-radius: 20px;
-	  box-sizing: content-box;
-	  font-family: 'Circular std',sans-serif;
-	  color: #333333;
-	}
+	  .firstModal {
+		display: flex;
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 9999;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.4);
+		-webkit-transition: 0.5s;
+		overflow: auto;
+		transition: all 0.3s linear;
+		backdrop-filter: blur(15px);
+		font-family: 'Montserrat', sans-serif;
+	  }
   
-	.continueBtn2 {
-	  width: 90%;
-	  background-color: #ff7d4f;
-	  padding: 12px;
-	  font-family: 'Circular std',sans-serif;
-	  font-size: 14px;
-	  color: #ffffff;
-	  border-radius: 20px;
-	  border: 1px solid #ff7d4f;
-	}
-	.continueBtn {
-	  width: 90%;
-	  background-color: transparent;
-	  padding: 12px;
-	  font-family: 'Circular std',sans-serif;
-	  font-size: 14px;
-	  color: #ff7d4f;
-	  border-radius: 20px;
-	  border: 1px solid #ff7d4f;
-	}
+	  .firstmodal-content {
+		width: 70%;
+		background-color:white;
+		background-image: url('https://drive.google.com/file/d/1Iy0CAhHPxLxudZtxkr35WW7UxMuQfAHb/view?usp=sharing');
+		background-repeat: no-repeat;
+		background-size: 100%;      margin-top: auto;
+		margin-bottom: auto;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 2em;
+		padding-right: 2em;
+		padding-left: 2em;
+		border: 0px;
+		border-radius: 20px;
+		box-sizing: content-box;
+		font-family: 'Montserrat', sans-serif;
+		color: #333333;
+		display: flex;
+		flex-direction: column;
+	  }
   
-	.continueBtn2:hover {
-	  background-color: white;
-	  border:1px solid #fff;
-	  box-shadow: 0px 0px 32px 0 #f8f8f850;
-	  color: #ff7d4f;
-	  transition-duration: 250ms;
-	}
+	  .continueBtn2 {
+		width: 100%;
+		background-color: #ff7d4f;
+		padding: 12px;
+		font-family: 'Montserrat', sans-serif;
+		font-size: 14px;
+		color: #ffffff;
+		border-radius: 20px;
+		border: 1px solid #ff7d4f;
+	  }
   
-  </style>
+	  .continueBtn {
+		width: 100%;
+		background-color: transparent;
+		padding: 12px;
+		font-family: 'Montserrat', sans-serif;
+		font-size: 14px;
+		color: #ff7d4f;
+		border-radius: 20px;
+		border: 1px solid #ff7d4f;
+	  }
+  
+	  .continueBtn2:hover {
+		background-color: white;
+		box-shadow: 0px 0px 32px 0 #f8f8f850;
+		color: #ff7d4f;
+		transition-duration: 250ms;
+	  }
+  
+	</style>
   
   <div id="firstModal" class="firstModal" onclick="document.getElementById('firstModal').style.display='none'">
-	<table class="firstmodal-content" onclick="event.stopPropagation()">
-	  <tbody>
-		<tr>
-		  <td>
-			<img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
-		  </td>
-		  <td colspan="4">
-			<span colspan="4" onclick="document.getElementById('firstModal').style.display='none'" class="firstclose">&times;</span>
-		  </td>
-		</tr>
-		<tr style="height: 2em;"></tr>
-		<tr>
-		  <td colspan="6" style="text-align: center;">
-			<button id="continueBtn2" class="continueBtn2" style="display: block; margin: 0 auto;">Fortfahren</button>
-			<br>
-			<button id="continueBtn" class="continueBtn" style="display: block; margin: 0 auto;">ID eingeben</button>
-		  </td>
-		</tr>
-	  </tbody>
-	</table>
+  
+  <div class="modal-content" onclick="event.stopPropagation()">
+	<div>
+	  <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/6458f00e1462140aca5e9f19_mySHOEFITTER%20Logo-p-800.png" width="150px">
+	  <span colspan="2" onclick="{document.getElementById('firstModal').style.display='none';document.getElementById('mysf_input').style.display='none';document.getElementById('mysf_mob').style.display='block'}" class="close">×</span>
+	</div>
+	<br>
+	  <div id="mysf_input" style="display:none">
+		<div class="Form" id="Form">
+		  <div style="display:flex;flex-direction:row;border:1px solid #d2d9e4;padding:1px; border-radius:20px;background:#fff;">
+		  <input type="text" id="idField" name="idFormField" placeholder="Enter your ID" style="font-family: 'Montserrat',sans-serif;">
+		  <input type="text" id="emailField" name="emailField" placeholder="Enter your Email" style="display:none;font-family: 'Montserrat',sans-serif;">
+		  <button id="submitBtn" class="submitBtn">Senden</button>
+		</div>
+		  <div style="background-color: transparent;;width:100%;margin-top:.5em ;margin-bottom:1em">
+			<a style="cursor:pointer;float:right; color:grey;" id="forgotButton">ID vergessen?</a>
+			<p style="margin: 0;float:left; color:grey;  text-decoration: none;" id="infoText"></p>
+		  </div>
+		</div>
+		</div>
+  
+	<div id="mysf_mob">
+	<h4>Deine perfekte Schuhgröße wartet schon auf dich! 🚀</h4>
+	<p>Wenn du schon eine <b>ID</b> hast, kannst du sie unten <b>eingeben</b> und kommst so direkt zu deiner perfekten Größe, <b>oder</b> falls du noch keine Messung durchgeführt hast, klicke auf <b>"Jetzt Fuß vermessen"</b> und folge den Anweisungen.</p>  <br>
+	  <button id="continueBtn2" class="continueBtn2" style="display: block; margin: 0 auto;">Jetzt Fuß vermessen</button>
+	  <br>
+	  <button id="continueBtn" class="continueBtn" style="display: block; margin: 0 auto;">ID eingeben</button>
+	</div>
   </div>
   
-  `, q.innerHTML = `
+  
+  </div>
+  
+  
   <style>
-  @import url('https://fonts.cdnfonts.com/css/circular-std');
+	@import url('https://fonts.cdnfonts.com/css/montserrat');
   
 	.close {
 	  color: #aaaaaa;
 	  float: right;
 	  font-size: 28px;
 	  font-weight: bold;
-	  margin-top: -35px;
+	  margin-top: -10px;
 	}
   
 	.close:hover,
@@ -2194,57 +2203,44 @@
 	  cursor: pointer;
 	}
   
-	.modal {
-	  display: flex;
-	  position: fixed;
-	  left: 0;
-	  top: 0;
-	  z-index: 9999;
-	  width: 100%;
-	  height: 100%;
-	  background-color: rgba(0, 0, 0, 0.4);
-	  -webkit-transition: 0.5s;
-	  overflow: auto;
-	  transition: all 0.3s linear;
-	  backdrop-filter: blur(15px);
-	  font-family: 'Circular std',sans-serif;
-	}
-  
 	.modal-content {
-	  background-image: linear-gradient(to right, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffdfc9, #ffe6d5, #ffede2, #fff4ee);
-	  margin-top: auto;
+	  width: fit-content;
+	  background-color:white;
+	  background-image: url('https://drive.google.com/file/d/1Iy0CAhHPxLxudZtxkr35WW7UxMuQfAHb/view?usp=sharing');
+	  background-repeat: no-repeat;
+	  background-size: 100%;    margin-top: auto;
 	  margin-bottom: auto;
 	  margin-left: auto;
 	  margin-right: auto;
 	  padding: 30px;
-	  border: 1px;
+	  border: 0px;
 	  border-radius: 20px;
 	  box-sizing: content-box;
-	  font-family: 'Circular std',sans-serif;
+	  font-family: 'Montserrat', sans-serif;
 	  color: #333333;
 	  width: 70%;
+	  display: flex;
+	  flex-direction: column;
 	}
   
 	.inner-content {
 	  align-items: center;
 	  justify-content: space-between;
-	  font-family: 'Circular std',sans-serif;
+	  font-family: 'Montserrat', sans-serif;
 	  margin: auto;
 	}
   
 	.Form {
-	  position:relative;
-	  font-family: 'Circular std',sans-serif;
+	  position: relative;
+	  font-family: 'Montserrat', sans-serif;
 	  display: flex;
 	  flex-wrap: wrap;
 	  justify-content: center;
 	}
   
 	.submitBtn {
-	  width: 90%;
 	  background-color: #ff7d4f;
-	  padding: 12px;
-	  font-family: 'Circular std',sans-serif;
+	  font-family: 'Montserrat',sans-serif;
 	  font-size: 14px;
 	  color: #ffffff;
 	  border-radius: 20px;
@@ -2253,72 +2249,59 @@
   
 	.submitBtn:hover {
 	  background-color: white;
-	  border:1px solid #fff;
+	  border:1px solid #ff7d4f;
 	  box-shadow: 0px 0px 32px 0 #f8f8f850;
 	  color: #ff7d4f;
 	  transition-duration: 250ms;
 	}
   
 	input {
-	  width: 86%;
-	  margin-top: 5px;
-	  margin-bottom: 10px;
+	  border:none;
+	  width: -webkit-fill-available;
 	  padding-top: 12px;
 	  padding-bottom: 12px;
 	  padding-left: 16px;
-	  border: 1px solid #d2d9e4;
 	  border-radius: 20px;
-	  font-family: 'Circular std',sans-serif;
+	  background-color: transparent;
+	  font-family: 'Montserrat',sans-serif;
+	}
+  
+	input:focus {
+	  outline: none;
+	  background-color: transparent;
+	}
+  
+	input:-webkit-autofill,
+	input:-webkit-autofill:hover,
+	input:-webkit-autofill:focus {
+	  -webkit-box-shadow: 0 0 0px 1000px white inset;
+	  -webkit-text-fill-color: #333;
+	}
+  
+	input:-moz-autofill {
+	  -moz-box-shadow: 0 0 0px 1000px white inset;
+	  -moz-text-fill-color: #333;
+	}
+  
+  
+	input:-ms-input-placeholder {
+	  background-color: transparent !important;
 	}
   </style>
-  
-  <div id="myModal" class="modal" onclick="document.getElementById('myModal').style.display='none'">
-	  <table class="modal-content" onclick="event.stopPropagation()">
-		<tbody>
-		  <tr>
-			<td>
-			  <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
-			</td>
-			<td colspan="2">
-			  <span colspan="2" onclick="document.getElementById('myModal').style.display='none'" class="close">×</span>
-			</td>
-		  </tr>
-		  <tr style="height: 2em;"></tr>
-		  <tr>
-			<td>
-			  <div border="1" class="inner-content" id="inner-content">
-				<div id="left half">
-				  <div class="Form" id="Form">
-				  <div style="display: contents;">
-				  <input type="text" id="emailField" name="emailField" placeholder="Enter your Email" style="font-family: 'Circular std',sans-serif; display: none;"> 
-				  <input type="text" id="idField" name="idFormField" placeholder="Enter your ID" style="font-family: 'Circular std',sans-serif;">
-				  </div>
-				  <div style="width:85%; margin-bottom:1em">
-					<a style="float:right; color:grey;  text-decoration: none;" id="forgotButton">ID vergessen?</a>
-					<p style="margin: 0;float:left; color:grey;  text-decoration: none;" id="infoText"></p>
-					<br>
-					</div>
-					<button id="submitBtn" class="submitBtn">Senden</button>
-				  </div>
-				</div>
-			  </div>
-			</td>
-		  </tr>
-		</tbody>
-	  </table>
-	</div>
-  
-  `) : (V.innerHTML = `
+  ` : q.innerHTML = `
 	<style>
-	@import url('https://fonts.cdnfonts.com/css/circular-std');
-	
+	@import url('https://fonts.cdnfonts.com/css/montserrat');
+  
+	th, td{
+	  border: 0px !important;
+	  }
+  
 	  .firstclose {
 		color: #aaaaaa;
 		float: right;
 		font-size: 28px;
 		font-weight: bold;
-		margin-top: -35px;
-		margin-left: -20px;
+		margin-top: -10px;
 	  }
 	
 	  .firstclose:hover,
@@ -2341,12 +2324,18 @@
 		overflow: auto;
 		transition: all 0.3s linear;
 		backdrop-filter: blur(15px);
-		font-family: 'Circular std',sans-serif;
+		font-family: 'Montserrat',sans-serif;
 	  }
 	
 	  .firstmodal-content {
+		display:flex;
+		flex-direction: column;
+		align-items: center;
 		width:1000px;
-		background-image: linear-gradient(to right, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffdfc9, #ffe6d5, #ffede2, #fff4ee);
+		background-color:white;
+		background-image: url('https://drive.google.com/file/d/1Iy0CAhHPxLxudZtxkr35WW7UxMuQfAHb/view?usp=sharing');
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
 		margin-top: auto;
 		margin-bottom: auto;
 		margin-left: auto;
@@ -2354,18 +2343,18 @@
 		padding: 30px;
 		padding-right:50px;
 		padding-left:50px;
-		border: 1px;
+		border: 0px !important;
 		border-radius: 20px;
 		box-sizing: content-box;
-		font-family: 'Circular std',sans-serif;
+		font-family: 'Montserrat',sans-serif;
 		color: #333333;
 	  }
 	
 	  .continueBtn {
-		width: 90%;
+		width: 50%;
 		background-color: #ff7d4f;
 		padding: 12px;
-		font-family: 'Circular std',sans-serif;
+		font-family: 'Montserrat',sans-serif;
 		font-size: 14px;
 		color: #ffffff;
 		border-radius: 20px;
@@ -2374,7 +2363,7 @@
 	
 	  .continueBtn:hover {
 		background-color: white;
-		border:1px solid #fff;
+		border:1px solid;
 		box-shadow: 0px 0px 32px 0 #f8f8f850;
 		color: #ff7d4f;
 		transition-duration: 250ms;
@@ -2382,61 +2371,60 @@
 	
 	</style>
 	
+  
+  
+  
 	<div id="firstModal" class="firstModal" onclick="document.getElementById('firstModal').style.display='none'">
-	  <table class="firstmodal-content" onclick="event.stopPropagation()">
-		<tbody>
-		  <tr>
-			<td>
-			  <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
-			</td>
-			<td colspan="4">
-			  <span colspan="4" onclick="document.getElementById('firstModal').style.display='none'" class="firstclose">&times;</span>
-			</td>
-		  </tr>
-	
-		  <tr>
-			<td>
-			  <p style="position:relative;z-index:1;font-family: 'Circular std',sans-serif;" align="top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita porro voluptas nihil ipsam labore sunt maxime incidunt officiis aspernatur non praesentium iusto veritatis, exercitationem delectus velit reiciendis cupiditate eos accusamus.</p>
-			</td>
-	
-			<td>
-			  <hr style="width:0px;height:350px;margin-left:50px;margin-right:50px;border:1px solid #ff7d4f;border-radius:50%;" />
-			</td>
-	
-			<td>
-			  <p style="position:relative;z-index:1;font-family: 'Circular std',sans-serif;" align="top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita porro voluptas nihil ipsam labore sunt maxime incidunt officiis aspernatur non praesentium iusto veritatis, exercitationem delectus velit reiciendis cupiditate eos accusamus.</p>
-			</td>
-	
-			<td>
-			  <hr style="width:0px;height:350px;margin-left:50px;margin-right:50px;border:1px solid #ff7d4f;border-radius:50%;" />
-			</td>
-	 
-			<td>
-			  <p style="position:relative;z-index:1;font-family: 'Circular std',sans-serif;" align="top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita porro voluptas nihil ipsam labore sunt maxime incidunt officiis aspernatur non praesentium iusto veritatis, exercitationem delectus velit reiciendis cupiditate eos accusamus.</p>
-			</td>
-		  </tr>
-			  
-			 <tr>
-			 <td></td><td></td>
-			  <td colspan="5" style = "display: flex;justify-content: center;width:100%" >
-				<button id="continueBtn" class="continueBtn">Fortfahren</button>
-			  </td>
-			  <td></td><td></td>
-			</tr>
-	
-		</tbody>
-	  </table>
+  
+	<div class="modal-content" onclick="event.stopPropagation()" style="display:none;">
+	<div style="width: -webkit-fill-available;">
+	  <img style="margin-left:30px;position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/6458f00e1462140aca5e9f19_mySHOEFITTER%20Logo-p-800.png" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
+	  <span colspan="2" onclick="document.getElementById('firstModal').style.display='none'" class="close">&times;</span>
 	</div>
-	`, q.innerHTML = `
+	<br>
+	<div class="inner-content" id="inner-content">
+	  <div style="width:33.3%;display: flex;flex-direction: column;justify-content: space-around;align-items: center;">
+	  <h4>Deine perfekte Schuhgröße wartet schon auf dich! 🚀</h4>
+	  <p>Wenn du schon eine <b>ID</b> hast, kannst du sie unten <b>eingeben</b> und kommst so direkt zu deiner perfekten Größe. Falls du noch keine Messung durchgeführt hast, <b>scanne den QR-Code</b> und folge den Anweisungen. <br> <br> Falls du deine <b>ID vergessen</b> hast, kannst du sie über deine Mail herausfinden. </p>
+	  <div class="Form" id="Form">
+		
+		<div style="display:flex;flex-direction:row;width:-webkit-fill-available;border:1px solid #d2d9e4;padding:1px; border-radius:20px;background:#fff;">
+		  <input type="text" id="idField" name="idFormField" placeholder="Enter your ID" style="font-family: 'Montserrat',sans-serif;">
+		  <input type="text" id="emailField" name="emailField" placeholder="Enter your Email" style="display:none;font-family: 'Montserrat',sans-serif;">
+		  <button id="submitBtn" class="submitBtn">Senden</button>
+		</div>
+		  <div style="background-color: transparent;;width:100%;margin-top:.5em ;margin-bottom:1em">
+			<a style="cursor:pointer;float:right; color:grey;" id="forgotButton">ID vergessen?</a>
+			<p style="margin: 0;float:left; color:grey;  text-decoration: none;" id="infoText"></p>
+		  </div>
+	  </div>
+	  </div>
+	  <div>
+		<hr style="width:0px;height:350px;border:1px solid #ff7d4f;border-radius:50%;" />
+	  </div>
+	  <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+	  <div id="qr-code" class="qr-code"> </div>
+	  <center style="color:black;font-size:16 px;margin-top:8px; font-family:'Montserrat',sans-serif;">Scan mich mit deinem Smartphone :-)</center>
+	</div>
+	</div>
+  
+  
+  
+	</div>
+  
 	<style>
-	@import url('https://fonts.cdnfonts.com/css/circular-std');
+	@import url('https://fonts.cdnfonts.com/css/montserrat');
 	
+	  th, td{
+	  border: 0px !important;
+	  }
+  
 	  .close {
 		color: #aaaaaa;
 		float: right;
 		font-size: 28px;
 		font-weight: bold;
-		margin-top: -35px;
+		margin-top: -10px;
 	  }
 	
 	  .close:hover,
@@ -2459,49 +2447,51 @@
 		overflow: auto;
 		transition: all 0.3s linear;
 		backdrop-filter: blur(15px);
-		font-family: 'Circular std',sans-serif;
+		font-family: 'Montserrat',sans-serif;
 	  }
 	
 	  .modal-content {
-		max-width: 800px;
-		background-image: linear-gradient(to right, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffd9bc, #ffdfc9, #ffe6d5, #ffede2, #fff4ee);
-		margin-top: auto;
-		margin-bottom: auto;
-		margin-left: auto;
-		margin-right: auto;
+		display:flex;
+		flex-direction: column;
+		align-items: center;
+		width: fit-content;
+		background-color:white;
+		background-image: url('https://drive.google.com/file/d/1Iy0CAhHPxLxudZtxkr35WW7UxMuQfAHb/view?usp=sharing');
+		background-repeat: no-repeat;
+		background-size: 100%;
+		margin: auto;
 		padding: 30px;
-		border: 1px;
 		border-radius: 20px;
-		box-sizing: content-box;
-		font-family: 'Circular std',sans-serif;
+		font-family: 'Montserrat',sans-serif;
 		color: #333333;
 	  }
 	
 	  .inner-content {
-		align-items: center;
-		justify-content: space-between;
-		font-family: 'Circular std',sans-serif;
+		font-family: 'Montserrat',sans-serif;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
 		margin: auto;
-		width: 420px;
+		width: 1000px;
 	  }
 	
 	  .qr-code {
-		margin-left: 25px;
-		margin-top: -20px;
-		margin-bottom: 15px;
+  
 	  }
 	
 	  .Form {
 		position:relative;
-		font-family: 'Circular std',sans-serif;
-		display: block;
+		width:100%;
+		margin-bottom:25px;
+		font-family: 'Montserrat',sans-serif;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
 	  }
 	
 	  .submitBtn {
-		width: 90%;
 		background-color: #ff7d4f;
-		padding: 12px;
-		font-family: 'Circular std',sans-serif;
+		font-family: 'Montserrat',sans-serif;
 		font-size: 14px;
 		color: #ffffff;
 		border-radius: 20px;
@@ -2510,140 +2500,124 @@
 	
 	  .submitBtn:hover {
 		background-color: white;
-		border:1px solid #fff;
+		border:1px solid #ff7d4f;
 		box-shadow: 0px 0px 32px 0 #f8f8f850;
 		color: #ff7d4f;
 		transition-duration: 250ms;
 	  }
 	
 	  input {
-		width: 85%;
-		margin-top: 5px;
-		margin-bottom: 10px;
-		padding-top: 12px;
-		padding-bottom: 12px;
+		border:none;
+		width: -webkit-fill-available;
+		padding-top: 10px;
+		padding-bottom: 10px;
 		padding-left: 16px;
-		border: 1px solid #d2d9e4;
 		border-radius: 20px;
-		font-family: 'Circular std',sans-serif;
+		background-color: transparent;
+		font-family: 'Montserrat',sans-serif;
+	  }
+  
+	  input:focus {
+		outline: none;
+		background-color: transparent;
+	  }
+  
+	  input:-webkit-autofill,
+	  input:-webkit-autofill:hover,
+	  input:-webkit-autofill:focus {
+		-webkit-box-shadow: 0 0 0px 1000px white inset;
+		-webkit-text-fill-color: #333;
+	  }
+  
+	  input:-moz-autofill {
+		-moz-box-shadow: 0 0 0px 1000px white inset;
+		-moz-text-fill-color: #333;
+	  }
+  
+  
+	  input:-ms-input-placeholder {
+		background-color: transparent !important;
 	  }
 	</style>
-	
-	<div id="myModal" class="modal" onclick="document.getElementById('myModal').style.display='none'">
-	  <table class="modal-content" onclick="event.stopPropagation()">
-		<tbody>
-		  <tr>
-			<td>
-			  <img style="position: relative;z-index: 1;" src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/627137e6fd5e54d4f660aff5_mySHOEFITTER-logo.svg" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
-			</td>
-			<td colspan="2">
-			  <span colspan="2" onclick="document.getElementById('myModal').style.display='none'" class="close">&times;</span>
-			</td>
-		  </tr>
-		  <tr>
-			<td>
-			  <div border="1" class="inner-content" id="inner-content">
-				<div id="left half">
-				<img style="width:350px;position:absolute" src="./background.png" alt="mySHOEFITTER background" class="myshoefitter-background"></img>
-				  <p style="position:relative;z-index:1;font-family: 'Circular std',sans-serif;" align="top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita porro voluptas nihil ipsam labore sunt maxime incidunt officiis aspernatur non praesentium iusto veritatis, exercitationem delectus velit reiciendis cupiditate eos accusamus.</p>
-				  <br>
-				  <div class="Form" id="Form">
-					<label style = "font-family: 'Circular std',sans-serif;">ScanID:</label> <br>
-					<input type="text" id="idField" name="idFormField" placeholder="Enter your ID" style="font-family: 'Circular std',sans-serif;"> <br>
-					<label style= "font-family: 'Circular std',sans-serif;">Email: </label> <br>
-					<input type="text" id="emailField" name="emailField" placeholder="Enter your Email" style="font-family: 'Circular std',sans-serif;"> <br>
-					<button id="submitBtn" class="submitBtn">Senden</button>
-				  </div>
-				</div>
-			  </div>
-			</td>
-			<td>
-			<hr style="width:0px;height:350px;margin-left:50px;margin-right:50px;border:1px solid #ff7d4f;border-radius:50%;" />
-			</td>
-			<td>
-			  <div id="qr-code" class="qr-code"> </div>
-			  <center style="color:#33333375; font-family:'Circular std',sans-serif; font-size:14px">QrCode mit dem Smartphone scannen</center>
-			</td>
-		  </tr>
-		</tbody>
-	  </table>
-	</div>
-	
-	`);
-  O.onclick = function() {
-	V.style.display = "flex", F || Ut()
+	`;
+  document.querySelector("#mySF_Widget_Button").onclick = function() {
+	q.style.display = "flex", document.querySelector(".modal-content").style.display = "flex", P || $t()
   };
   document.querySelector("#submitBtn").onclick = function() {
 	var n = document.querySelector("#idField"),
-	  t = document.querySelector("#emailField"),
-	  e = n.value,
-	  i = t.value;
-	e != "" && (Ye(e), console.log("ID submitted!")), i != "" && (Qe(i), console.log("Email submitted!")), Dt && (document.getElementById("infoText").textContent = "Email gesendet!", document.getElementById("forgotButton").textContent = "ID vergessen?", document.getElementById("emailField").style.display = "none", document.getElementById("idField").style.display = "flex")
+	  e = document.querySelector("#emailField"),
+	  t = n.value,
+	  r = e.value;
+	t != "" && (Kt(t), console.log("ID submitted!")), r != "" && (Wt(r), console.log("Email submitted!")), qe && (document.getElementById("forgotButton").textContent = "ID vergessen?", document.getElementById("emailField").style.display = "none", document.getElementById("idField").style.display = "flex")
   };
-  document.querySelector("#continueBtn").onclick = function() {
-	document.getElementById("firstModal").style.display = "none", document.getElementById("myModal").style.display = "flex", Ut()
-  };
-  F && (document.querySelector("#continueBtn2").onclick = function() {
-	window.open(zt, "_blank")
-  }, document.querySelector("#forgotButton").onclick = function() {
-	document.getElementById("emailField").style.display = "flex", document.getElementById("idField").style.display = "none", document.getElementById("forgotButton").textContent = " ", document.getElementById("infoText").textContent = " ", Dt = !0
+  P && (document.querySelector("#continueBtn2").onclick = function() {
+	window.open(le, "_blank")
+  }, document.querySelector("#continueBtn").onclick = function() {
+	document.getElementById("mysf_mob").style.display = "none", document.getElementById("mysf_input").style.display = "block"
   });
+  var te = !1;
+  document.querySelector("#forgotButton").onclick = function() {
+	te ? (document.querySelector("#emailField").style.display = "none", document.querySelector("#idField").style.display = "flex", document.querySelector("#forgotButton").textContent = "ID vergessen?", document.querySelector("#infoText").textContent = " ", te = !1) : (document.querySelector("#emailField").style.display = "flex", document.querySelector("#idField").style.display = "none", document.querySelector("#forgotButton").textContent = "ID eingeben", document.querySelector("#infoText").textContent = " ", te = !0, qe = !0)
+  };
   document.querySelector("#idField").onclick = function() {
-	document.getElementById("infoText").textContent = " "
+	document.querySelector("#infoText").textContent = " "
   };
   window.addEventListener("resize", function() {
-	screen.width <= 768 ? (F = !0, console.log("MOBILE DEVICE VIEW")) : (console.log("DESKTOP DEVICE VIEW"), F = !1)
+	screen.width <= 768 ? (P = !0, console.log("MOBILE DEVICE VIEW")) : (console.log("DESKTOP DEVICE VIEW"), P = !1)
   });
   
-  function Ye(n) {
-	var t = new Headers;
-	t.append("Authorization", "Bearer oU-s4wmSpctuufVBIFNf-rUi9MtNKj5a"), t.append("Content-Type", "application/json");
-	var e = JSON.stringify({
+  function Kt(n) {
+	var e = new Headers;
+	e.append("Authorization", "Bearer oU-s4wmSpctuufVBIFNf-rUi9MtNKj5a"), e.append("Content-Type", "application/json");
+	var t = JSON.stringify({
 		code: n
 	  }),
-	  i = {
+	  r = {
 		method: "POST",
-		headers: t,
-		body: e,
+		headers: e,
+		body: t,
 		redirect: "follow"
 	  };
-	fetch("https://admin.myshoefitter.com/flows/trigger/c7a5aa72-8ff2-4398-b910-a88994aeab4c", i).then(s => s.json()).then(s => {
+	fetch("https://admin.myshoefitter.com/flows/trigger/c7a5aa72-8ff2-4398-b910-a88994aeab4c", r).then(s => s.json()).then(s => {
 	  console.log(s);
-	  const l = s[0].id;
-	  console.log(l), document.getElementById("infoText").textContent = "ID gesendet!"
+	  const l = s[0].size;
+	  console.log(l), document.querySelector("#infoText").textContent = "ID gesendet!"
 	}).catch(s => {
-	  console.log("error", s), document.getElementById("infoText").textContent = "Dieser Code exisitert nicht!"
+	  console.log("error", s), document.querySelector("#infoText").textContent = "Dieser Code exisitert nicht!"
 	})
   }
   
-  function Qe(n) {
-	var t = new Headers;
-	t.append("Authorization", "Bearer oU-s4wmSpctuufVBIFNf-rUi9MtNKj5a"), t.append("Content-Type", "application/json");
-	var e = JSON.stringify({
+  function Wt(n) {
+	var e = new Headers;
+	e.append("Authorization", "Bearer oU-s4wmSpctuufVBIFNf-rUi9MtNKj5a"), e.append("Content-Type", "application/json");
+	var t = JSON.stringify({
 		email: n
 	  }),
-	  i = {
+	  r = {
 		method: "POST",
-		headers: t,
-		body: e,
+		headers: e,
+		body: t,
 		redirect: "follow"
 	  };
-	fetch("https://admin.myshoefitter.com/flows/trigger/bc96cffb-f215-4b8e-ba65-481d8c29e910", i).then(s => s.json()).then(s => console.log(s)).catch(s => console.log("error", s))
+	fetch("https://admin.myshoefitter.com/flows/trigger/bc96cffb-f215-4b8e-ba65-481d8c29e910", r).then(s => s.json()).then(s => {
+	  console.log(s)
+	}).catch(s => {
+	  console.log("error", s), document.querySelector("#infoText").textContent = "Email nicht gefunden"
+	})
   }
   
-  function Ut() {
+  function $t() {
 	var n = document.querySelector("#inner-content");
-	if (!F && q.style.display != "none") {
+	if (!P) {
 	  document.querySelector("#qr-code").innerHTML = "";
-	  var t = n.clientWidth * .75;
-	  Kt.render({
-		text: zt,
-		radius: Pe,
-		ecLevel: Fe,
-		fill: ze,
+	  var e = n.clientWidth * .333;
+	  Ke.render({
+		text: le,
+		radius: Ft,
+		ecLevel: zt,
+		fill: qt,
 		background: null,
-		size: t
+		size: e
 	  }, document.querySelector("#qr-code"))
 	}
-  }
-  
+  };
