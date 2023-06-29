@@ -28,9 +28,9 @@ socket.on('disconnect', () => {
 }); */
 
 var
-    qrRadius = .5,
-    qreEcLevel = "H",
-    qrFill = "#333333";
+    qrRadius = 0,
+    qreEcLevel = "L",
+    qrFill = "#022652";
 
 var 
     url ,
@@ -71,15 +71,16 @@ url = `https://mysf.vercel.app/?hash=${encoded}`;
 console.log(url);
 }
 
-var firstModal = document.createElement("div");
-document.body.appendChild(firstModal);
-firstModal.id = "modal-overlay";
-firstModal.style.display = "none";
+var mySFModal = document.createElement("div");
+document.body.appendChild(mySFModal);
+mySFModal.id = "modal-overlay";
+mySFModal.className = "animate__fadeInUp";
+mySFModal.style.display = "none";
 
 
 if(isMobile)
 {
-firstModal.innerHTML = `
+mySFModal.innerHTML = `
 <style>
   @import url('https://fonts.cdnfonts.com/css/montserrat');
 
@@ -111,9 +112,6 @@ firstModal.innerHTML = `
     display: flex;
     flex-direction: column;
     background-color: white;
-    background-image: url('./background0.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
     box-shadow: 0 0 40px 10px rgba(0,0,0,0.1);
   }
 
@@ -270,7 +268,7 @@ firstModal.innerHTML = `
 `;
 }
 else {
-  firstModal.innerHTML = `
+  mySFModal.innerHTML = `
   <style>
   @import url('https://fonts.cdnfonts.com/css/montserrat');
 
@@ -287,17 +285,16 @@ else {
   }
 
   .modal-content {
-    display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
-    width: 1000px;
+    min-width: 800px;
+    max-width: 1000px;
+    overflow: hidden;
     background-color: white;
-    background-image: url('./background0.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
     box-shadow: 0 0 40px 10px rgba(0,0,0,0.1);
     margin: auto;
-    padding: 30px;
+    padding: 20px;
     border-radius: 40px;
     font-family: 'Montserrat', sans-serif;
     color: #333333;
@@ -327,16 +324,18 @@ else {
   .inner-content {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    padding: 0px 70px;
+    justify-content: space-between;
     margin: auto;
+    z-index:1;
   }
 
   .left-section {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
-    width: 33.3%;
+    align-items: flex-start;
+    width: 50%;
   }
 
   .right-section {
@@ -346,10 +345,51 @@ else {
     justify-content: center;
   }
 
+  .button-container {
+    display:flex;
+    width: max-content;
+  }
+
+  .continue-button {
+    background-color: #ff7d4f;
+    padding: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #ff7d4f;
+    margin-bottom: 1em;
+  }
+
+  .continue-button:hover {
+    cursor:pointer;
+    background-color: transparent;
+    box-shadow: 0px 0px 32px 0 #f8f8f850;
+    color: #ff7d4f;
+    transition-duration: 250ms;
+  }
+  
+  .continue-to-id-button {
+    background-color: transparent;
+    padding: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #ff7d4f;
+    border-radius: 20px;
+    border: 0px;
+    margin-bottom: 1em;
+  }
+
+  .continue-to-id-button:hover {
+    cursor:pointer;
+    color: #aaa;
+    transition-duration: 250ms;
+  }
+
   .form {
+    display:none;
     width: 100%;
     margin-bottom: 25px;
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
@@ -363,7 +403,6 @@ else {
     border-radius: 20px;
     background: #fff;
   }
-
 
   input {
     border: none;
@@ -433,32 +472,97 @@ else {
     text-decoration: none;
   }
 
-  .separator {
-    width: 0px;
-    height: 350px;
-    border: 1px solid #ff7d4f;
+  .big-circle {
+    background: linear-gradient(#ff7d4f10, #ff7d4f40);
     border-radius: 50%;
+    height: 300px;
+    position: absolute;
+    width: 300px;
+    z-index:0;
+    top:50%;
+    left:-100px;
   }
 
-  .qr-instruction {
-    color: black;
-    font-size: 16px;
-    margin-top: 8px;
-    font-family: 'Montserrat', sans-serif;
+  .qr-circle {
+    background: linear-gradient(#ff7d4f10, #ff7d4f30);
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+    z-index:0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:-100px;
+  }
+
+  .qr-background {
+    background-color:white;
+    box-shadow: 0 0 10px #0003;
+    border-radius:20px;
+    width:70%;
+    height:70%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .qr-code {
+    z-index:1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cut-border {
+    position: relative;
+    display: inline-block;
+    border: 2px solid #022652;
+    width: 90%;
+    height: 90%;
+    border-radius: 10px;
+  }
+  .cut-border::before {
+    content: "";
+    position: absolute;
+    height: calc(100% + 10px);
+    width: 50%;
+    background-color: white;
+    top: -5px;
+    left: 25%;
+  }
+  .cut-border::after {
+    content: "";
+    position: absolute;
+    height: 50%;
+    width: calc(100% + 10px);
+    background-color: white;
+    top: 25%;
+    left: -5px;
   }
 
 </style>
 
-<div id="modal-overlay" class="modal-overlay" onclick="document.getElementById('modal-overlay').style.display='none'">
-  <div class="modal-content animate__fadeInUp" onclick="event.stopPropagation()">
+<div id="modal-overlay" class="modal-overlay" onclick="document.getElementById('modal-overlay').style.display='none'
+  document.querySelector('.button-container').style.display = 'flex';
+  document.getElementById('form').style.display = 'none';">
+  <div class="modal-content animate__animated animate__fadeInDown" onclick="event.stopPropagation()">
+  <div class="big-circle"></div>
     <div class="header">
-      <img src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/6458f00e1462140aca5e9f19_mySHOEFITTER%20Logo-p-800.png" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px">
-      <span class="close" onclick="document.getElementById('modal-overlay').style.display='none'">&times;</span>
+      <img src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/6458f00e1462140aca5e9f19_mySHOEFITTER%20Logo-p-800.png" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px" style="margin-left:50px">
+      <span class="close" onclick="document.getElementById('modal-overlay').style.display='none';
+      document.querySelector('.button-container').style.display = 'flex';
+      document.getElementById('form').style.display = 'none';
+      ">&times;</span>
     </div>
     <div class="inner-content">
       <div class="left-section">
         <h4>Deine perfekte Schuhgröße wartet schon auf dich! 🚀</h4>
         <p>Wenn du schon eine <b>ID</b> hast, kannst du sie unten <b>eingeben</b> und kommst so direkt zu deiner perfekten Größe. Falls du noch keine Messung durchgeführt hast, <b>scanne den QR-Code</b> und folge den Anweisungen. <br> <br> Falls du deine <b>ID vergessen</b> hast, kannst du sie über deine Mail herausfinden. </p>
+        <div class="button-container"> 
+          <button class="continue-button">So funktioniert's</button>
+          <button id="continue-btn" class="continue-to-id-button">Mit Scan-ID fortfahren</button>
+        </div>
         <div class="form" id="form">
           <div class="form-fields">
             <input type="text" id="id-field" name="idFormField" placeholder="Enter your ID">
@@ -471,10 +575,14 @@ else {
           </div>
         </div>
       </div>
-      <div class="separator"></div>
       <div class="right-section">
-        <div id="qr-code" class="qr-code"></div>
-        <center class="qr-instruction">Scan mich mit deinem Smartphone :-)</center>
+        <div class="qr-circle">
+          <div class="qr-background">
+            <div class="cut-border">
+            <div id="qr-code" class="qr-code"/>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -487,7 +595,7 @@ else {
 
 
 document.querySelector("#mySF_Widget_Button").onclick = function() {
-  firstModal.style.display = "flex";
+  mySFModal.style.display = "flex";
   document.querySelector(".modal-content").style.display = "flex";
   if (!isMobile){
   draw();
@@ -525,6 +633,12 @@ if(isMobile)  {
   document.querySelector("#continue-btn").onclick = function() {
     document.getElementById("mysf_mob").style.display = "none";
     document.getElementById("mysf_input").style.display = "block";
+  };
+} 
+else{
+  document.querySelector("#continue-btn").onclick = function() {
+    document.querySelector(".button-container").style.display = "none";
+    document.getElementById("form").style.display = "flex";
   };
 }
 
@@ -630,11 +744,11 @@ function fetchEmail(Email) {
 }
 
 function draw() {
-  var box = document.querySelector(".inner-content");
+  var box = document.querySelector(".qr-background");
   if (!isMobile) {
       document.querySelector("#qr-code").innerHTML = "";
       //console.log("Width is " + testbox.offsetWidth);
-      var x = box.clientWidth * .333;
+      var x = box.clientWidth * .8;
       QrCreator.render({
               text: url,
               radius: qrRadius, // 0.0 to 0.5
