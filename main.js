@@ -232,7 +232,7 @@ mySFModal.innerHTML = `
     left:90%;
   }
 
-  #mysf_input {
+  #mysf_input { 
     width: inherit;
     padding: 0px 50px;
     margin: 10px;
