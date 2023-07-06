@@ -10,12 +10,12 @@ if (screen.width <= 768) {
   // Code for mobile devices
   // Apply mobile styles or behaviors
   isMobile = true;
-  console.log("MOBILE DEVICE VIEW");
+  //console.log("MOBILE DEVICE VIEW");
   device = "mobile"
 } else {
   // Code for desktop devices
   // Apply desktop styles or behaviors
-  console.log("DESKTOP DEVICE VIEW");
+  //console.log("DESKTOP DEVICE VIEW");
   isMobile = false;
 }
 
@@ -67,8 +67,7 @@ const json = JSON.stringify(urlObj);
 // Hashed JSON String
 const encoded = btoa(json);
 // Build URL
-url = `https://mysf.vercel.app/?hash=${encoded}`;
-console.log(url);
+url = `https://pwa-ke9iftha1-mysf.vercel.app/?hash=${encoded}`;
 }
 
 var mySFModal = document.createElement("div");
@@ -82,7 +81,78 @@ if(isMobile)
 {
 mySFModal.innerHTML = `
 <style>
-  @import url('https://fonts.cdnfonts.com/css/montserrat');
+/* montserrat-100 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100;
+  src: url('../fonts/montserrat-v25-latin-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-200 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../fonts/montserrat-v25-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-300 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/montserrat-v25-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/montserrat-v25-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/montserrat-v25-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/montserrat-v25-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/montserrat-v25-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-800 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../fonts/montserrat-v25-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-900 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../fonts/montserrat-v25-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 
   .modal-overlay {
     display: flex;
@@ -92,35 +162,44 @@ mySFModal.innerHTML = `
     z-index: 9999;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    -webkit-transition: 0.5s;
-    transition: all 0.3s linear;
-    backdrop-filter: blur(15px);
+    background-color: rgba(0, 0, 0, 0.3);
     font-family: 'Montserrat', sans-serif;
   }
 
   .modal-content {
-    width: 70%;
-    margin: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-    padding: 2em;
-    border-radius: 40px;
-    box-sizing: content-box;
-    font-family: 'Montserrat', sans-serif;
-    color: #333333;
-    display: flex;
+    position: relative;
     flex-direction: column;
+    align-items: center;
+    width:90%;
+    overflow: hidden;
     background-color: white;
     box-shadow: 0 0 40px 10px rgba(0,0,0,0.1);
+    margin: auto;
+    padding: 30px;
+    border-radius: 40px;
+    font-family: 'Montserrat', sans-serif;
+    color: #333333;
+  }
+
+  #mysf_mob {
+    padding: 0px 50px;
+    margin: 10px;
+    z-index:1;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index:1;
   }
 
   .close {
     color: #ff7d4f;
-    float: right;
     font-size: 64px;
     font-weight: 300;
-    margin-top: -10px;
+    cursor: pointer;
   }
 
   .close:hover,
@@ -128,6 +207,35 @@ mySFModal.innerHTML = `
     color: #aaa;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  .big-circle {
+    background: linear-gradient(#ff7d4f10, #ff7d4f40);
+    border-radius: 50%;
+    height: 300px;
+    position: absolute;
+    width: 300px;
+    z-index:0;
+    top:50%;
+    left:-100px;
+  }
+
+  .big-circle-top {
+    background: linear-gradient(#ff7d4f10, #ff7d4f40);
+    border-radius: 50%;
+    height: 200px;
+    position: absolute;
+    width: 200px;
+    z-index:0;
+    top:15%;
+    left:90%;
+  }
+
+  #mysf_input {
+    width: inherit;
+    padding: 0px 50px;
+    margin: 10px;
+    z-index:1;
   }
 
   .form-container {
@@ -200,6 +308,8 @@ mySFModal.innerHTML = `
   }
 
   .continue-button {
+    display: block; 
+    margin: auto;
     width: 100%;
     background-color: #ff7d4f;
     padding: 12px;
@@ -211,7 +321,7 @@ mySFModal.innerHTML = `
     margin-bottom: 1em;
   }
 
-  .continue-button:hover {
+  .continue-button:active {
     background-color: white;
     box-shadow: 0px 0px 32px 0 #f8f8f850;
     color: #ff7d4f;
@@ -219,7 +329,24 @@ mySFModal.innerHTML = `
   }
   
   .continue-to-id-button {
-    width: 100%;
+    display: block; 
+    width: 50%;
+    background-color: transparent;
+    padding: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #ff7d4f;
+    border: 0;
+    margin-bottom: 1em;
+  }
+
+  .continue-to-id-button:active {
+    color: #aaa;
+  }
+
+  .continue-to-info-button {
+    display: block; 
+    width: 50%;
     background-color: transparent;
     padding: 12px;
     font-family: 'Montserrat', sans-serif;
@@ -229,16 +356,77 @@ mySFModal.innerHTML = `
     border: 1px solid #ff7d4f;
     margin-bottom: 1em;
   }
+  .circle {
+    position: relative;
+    background: #ff7d4f;
+    width: fit-content;
+    width: 160px;
+    height: 160px;
+    border-radius: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  .shoe-size {
+    position: absolute;
+    font-weight: 500;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    font-size: 70px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .specs {
+    margin: 12px;
+    background-color: #f2f2f280;
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0px 24px;
+  }
+
+  li {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .label {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .note {
+    font-style: italic;
+    color: gray;
+  }
+
 </style>
 
-<div id="modal-overlay" class="modal-overlay" onclick="document.getElementById('modal-overlay').style.display='none'">
-
-  <div class="modal-content animate__fadeInUp" onclick="event.stopPropagation()">
-    <div>
-      <img src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/6458f00e1462140aca5e9f19_mySHOEFITTER%20Logo-p-800.png" width="150px" style="position: relative; z-index: 1;">
-      <span onclick="{document.getElementById('modal-overlay').style.display='none';document.getElementById('mysf_input').style.display='none';document.getElementById('mysf_mob').style.display='block'}" class="close">×</span>
-    </div>
-    <br>
+<div id="modal-overlay" class="modal-overlay" onclick="document.getElementById('modal-overlay').style.display='none';
+document.getElementById('mysf_mob').style.display = 'block';
+document.getElementById('mysf_size').style.display = 'none';
+document.getElementById('mysf_input').style.display = 'none'";>
+  <div class="modal-content animate__animated animate__fadeInDown" onclick="event.stopPropagation()">
+    <div class="big-circle"></div>
+    <div class="big-circle-top"></div>
+    <div class="header">
+      <img src=" https://cdn.myshoefitter.com/images/logo.png" width="150px" style="margin-left:50px">
+      <span class="close" onclick="document.getElementById('modal-overlay').style.display='none';
+       document.getElementById('mysf_mob').style.display = 'block';
+       document.getElementById('mysf_size').style.display = 'none';
+       document.getElementById('mysf_input').style.display = 'none';
+      ">&times;</span>
+      </div>
     <div id="mysf_input" style="display:none">
       <div class="form-container">
         <div class="form-inputs">
@@ -256,13 +444,40 @@ mySFModal.innerHTML = `
     <div id="mysf_mob">
       <h4>Deine perfekte Schuhgröße wartet schon auf dich! 🚀</h4>
       <p>Wenn du schon eine <b>ID</b> hast, kannst du sie unten <b>eingeben</b> und kommst so direkt zu deiner perfekten Größe, <b>oder</b> falls du noch keine Messung durchgeführt hast, klicke auf <b>"Jetzt Fuß vermessen"</b> und folge den Anweisungen.</p>
-      <br>
-      <button id="continue-btn2" class="continue-button" style="display: block; margin: 0 auto;">Jetzt Fuß vermessen</button>
-      <br>
-      <button id="continue-btn" class="continue-to-id-button" style="display: block; margin: 0 auto;">ID eingeben</button>
+      <button id="continue-btn2" class="continue-button">Jetzt Fuß vermessen</button>
+      <div style="display:flex;flex-direction:row;justify-content:space-evenly;margin-top: 0.5em;">
+        <button id="continue-to-info-button" class="continue-to-info-button">So funktioniert's</button>
+        <button id="continue-btn" class="continue-to-id-button">Mit Scan-ID fortfahren</button>
+      </div>
     </div>
-  </div>
 
+    <div id="mysf_size" style="display:none">
+    <div class="circle">
+      <h2 class="shoe-size">35</h2>
+    </div>
+    <div class="specs">
+        <ul>
+          <li>
+            <div>
+              Marke:
+            </div>
+            <div>
+              Manufacturer
+            </div>
+          </li>
+           <hr style="width:-webkit-fill-available;height:0px;border:1px solid #00000020; border-radius: 50%" />
+          <li>
+            <div>
+              Modell:
+            </div>
+            <div>
+              Model
+            </div>
+          </li>
+        </ul>
+      </div>
+    <center>Vielen Dank, dass du mySHOEFITTER nutzt. Du hast gerade unserem Planeten geholfen, indem du 500g CO2 eingespart hast</center>
+  </div>
 </div>
 
 `;
@@ -270,7 +485,78 @@ mySFModal.innerHTML = `
 else {
   mySFModal.innerHTML = `
   <style>
-  @import url('https://fonts.cdnfonts.com/css/montserrat');
+  /* montserrat-100 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 100;
+    src: url('../fonts/montserrat-v25-latin-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* montserrat-200 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 200;
+    src: url('../fonts/montserrat-v25-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* montserrat-300 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/montserrat-v25-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* montserrat-regular - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/montserrat-v25-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* montserrat-500 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/montserrat-v25-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* montserrat-600 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/montserrat-v25-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* montserrat-700 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/montserrat-v25-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* montserrat-800 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 800;
+    src: url('../fonts/montserrat-v25-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* montserrat-900 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 900;
+    src: url('../fonts/montserrat-v25-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
 
   .modal-overlay {
     display: flex;
@@ -541,17 +827,75 @@ else {
     left: -5px;
   }
 
+  .circle {
+    position: relative;
+    background: #ff7d4f;
+    width: fit-content;
+    width: 160px;
+    height: 160px;
+    border-radius: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  .shoe-size {
+    position: absolute;
+    font-weight: 500;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    font-size: 70px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .specs {
+    margin: 12px;
+    background-color: #f2f2f280;
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0px 24px;
+  }
+
+  li {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .label {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .note {
+    font-style: italic;
+    color: gray;
+  }
+
 </style>
 
-<div id="modal-overlay" class="modal-overlay" onclick="document.getElementById('modal-overlay').style.display='none'
-  document.querySelector('.button-container').style.display = 'flex';
-  document.getElementById('form').style.display = 'none';">
+<div id="modal-overlay" class="modal-overlay" onclick="document.getElementById('modal-overlay').style.display='none';
+      document.querySelector('.button-container').style.display = 'flex';
+      document.getElementById('mysf_size').style.display = 'none';
+      document.querySelector('.qr-circle').style.display = 'flex';
+      document.getElementById('form').style.display = 'none';">
   <div class="modal-content animate__animated animate__fadeInDown" onclick="event.stopPropagation()">
   <div class="big-circle"></div>
     <div class="header">
-      <img src="https://uploads-ssl.webflow.com/627136f58be1570905eb8a28/6458f00e1462140aca5e9f19_mySHOEFITTER%20Logo-p-800.png" alt="mySHOEFITTER Logo" class="myshoefitter-logo-icon" width="150px" style="margin-left:50px">
+      <img src=" https://cdn.myshoefitter.com/images/logo.png" width="150px" style="margin-left:50px">
       <span class="close" onclick="document.getElementById('modal-overlay').style.display='none';
       document.querySelector('.button-container').style.display = 'flex';
+      document.getElementById('mysf_size').style.display = 'none';
+      document.querySelector('.qr-circle').style.display = 'flex';
       document.getElementById('form').style.display = 'none';
       ">&times;</span>
     </div>
@@ -560,7 +904,7 @@ else {
         <h4>Deine perfekte Schuhgröße wartet schon auf dich! 🚀</h4>
         <p>Wenn du schon eine <b>ID</b> hast, kannst du sie unten <b>eingeben</b> und kommst so direkt zu deiner perfekten Größe. Falls du noch keine Messung durchgeführt hast, <b>scanne den QR-Code</b> und folge den Anweisungen. <br> <br> Falls du deine <b>ID vergessen</b> hast, kannst du sie über deine Mail herausfinden. </p>
         <div class="button-container"> 
-          <button class="continue-button">So funktioniert's</button>
+          <button class="continue-button" id="continue-to-info-button">So funktioniert's</button>
           <button id="continue-btn" class="continue-to-id-button">Mit Scan-ID fortfahren</button>
         </div>
         <div class="form" id="form">
@@ -576,6 +920,33 @@ else {
         </div>
       </div>
       <div class="right-section">
+      <div id="mysf_size" style="display:none">
+      <div class="circle">
+        <h2 class="shoe-size">35</h2>
+      </div>
+      <div class="specs">
+          <ul>
+            <li>
+              <div>
+                Marke:
+              </div>
+              <div>
+                Manufacturer
+              </div>
+            </li>
+             <hr style="width:-webkit-fill-available;height:0px;border:1px solid #00000020; border-radius: 50%" />
+            <li>
+              <div>
+                Modell:
+              </div>
+              <div>
+                Model
+              </div>
+            </li>
+          </ul>
+        </div>
+      <center>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis iste dolorem amet! Eveniet quae, cum molestias earum libero</center>
+    </div>
         <div class="qr-circle">
           <div class="qr-background">
             <div class="cut-border">
@@ -583,16 +954,15 @@ else {
             </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
 </div>
-
   `;
 }
 
-
-
+document.querySelector("#continue-to-info-button").onclick = function() {
+  window.open("https://myshoefitter.com/faq", '_blank');
+};
 
 document.querySelector("#mySF_Widget_Button").onclick = function() {
   mySFModal.style.display = "flex";
@@ -611,11 +981,11 @@ document.querySelector("#submit-btn").onclick = function() {
 
   if (userCode != "") {
       fetchCode(userCode);
-      console.log("ID submitted!");
+      //console.log("ID submitted!");
   }
   if (userEmail != "") {
       fetchEmail(userEmail);
-      console.log("Email submitted!");
+      //console.log("Email submitted!");
   }
   if (sentMail) {
     document.getElementById("forgot-button").textContent = "ID vergessen?";
@@ -673,11 +1043,11 @@ if (screen.width <= 768) {
     // Code for mobile devices
     // Apply mobile styles or behaviors
     isMobile = true;
-    console.log("MOBILE DEVICE VIEW");
+    //console.log("MOBILE DEVICE VIEW");
 } else {
     // Code for desktop devices
     // Apply desktop styles or behaviors
-    console.log("DESKTOP DEVICE VIEW");
+    //console.log("DESKTOP DEVICE VIEW");
     isMobile = false;
 }
 });
@@ -702,14 +1072,21 @@ function fetchCode(Code) {
   fetch("https://admin.myshoefitter.com/flows/trigger/c7a5aa72-8ff2-4398-b910-a88994aeab4c", requestOptions)
       .then(response => response.json())
       .then(result => {
-          console.log(result);
+          //console.log(result);
           //note: response is json array
           const Data = result[0].size;
-          console.log(Data);
+          //console.log(Data);
           document.querySelector("#info-text").textContent = "ID gesendet!";
+          if(isMobile){
+            document.querySelector("#mysf_mob").style.display = "none";
+            document.querySelector("#mysf_input").style.display = "none";
+          }else{
+            document.querySelector(".qr-circle").style.display = "none";
+          }
+          document.querySelector("#mysf_size").style.display = "block";
       })
       .catch(error => {
-          console.log('error', error);
+          //console.log('error', error);
           document.querySelector("#info-text").textContent = "Dieser Code exisitert nicht!";
       });
 }
@@ -734,11 +1111,11 @@ function fetchEmail(Email) {
   fetch("https://admin.myshoefitter.com/flows/trigger/bc96cffb-f215-4b8e-ba65-481d8c29e910", requestOptions)
       .then(response => response.json())
       .then(result => {
-        console.log(result);
+        //console.log(result);
         //document.getElementById("infoText").textContent = "Email gesendet!";
       })
       .catch(error => {
-        console.log('error', error);
+        //console.log('error', error);
         document.querySelector("#info-text").textContent = "Email nicht gefunden";
     });
 }
@@ -761,8 +1138,6 @@ function draw() {
       );
   }
 }
-
-
 
 
 mySF.setvalues("model","manufacturer","mySHOEFITTER Shop");
