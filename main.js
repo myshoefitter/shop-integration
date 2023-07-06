@@ -227,7 +227,7 @@ mySFModal.innerHTML = `
     height: 200px;
     position: absolute;
     width: 200px;
-    z-index:0;
+    z-index:0; 
     top:15%;
     left:90%;
   }
