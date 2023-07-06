@@ -87,7 +87,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 100;
-  src: url('../fonts/montserrat-v25-latin-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-200 - latin */
 @font-face {
@@ -95,7 +95,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 200;
-  src: url('../fonts/montserrat-v25-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-300 - latin */
 @font-face {
@@ -103,7 +103,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 300;
-  src: url('../fonts/montserrat-v25-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-regular - latin */
 @font-face {
@@ -111,7 +111,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/montserrat-v25-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-500 - latin */
 @font-face {
@@ -119,7 +119,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
-  src: url('../fonts/montserrat-v25-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-600 - latin */
 @font-face {
@@ -127,7 +127,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
-  src: url('../fonts/montserrat-v25-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-700 - latin */
 @font-face {
@@ -135,7 +135,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/montserrat-v25-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-800 - latin */
 @font-face {
@@ -143,7 +143,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 800;
-  src: url('../fonts/montserrat-v25-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-900 - latin */
 @font-face {
@@ -151,7 +151,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 900;
-  src: url('../fonts/montserrat-v25-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
   .modal-overlay {
@@ -491,7 +491,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 100;
-    src: url('../fonts/montserrat-v25-latin-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-200 - latin */
   @font-face {
@@ -499,7 +499,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 200;
-    src: url('../fonts/montserrat-v25-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-300 - latin */
   @font-face {
@@ -507,7 +507,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 300;
-    src: url('../fonts/montserrat-v25-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-regular - latin */
   @font-face {
@@ -515,7 +515,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/montserrat-v25-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-500 - latin */
   @font-face {
@@ -523,7 +523,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    src: url('../fonts/montserrat-v25-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-600 - latin */
   @font-face {
@@ -531,7 +531,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    src: url('../fonts/montserrat-v25-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-700 - latin */
   @font-face {
@@ -539,7 +539,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
-    src: url('../fonts/montserrat-v25-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-800 - latin */
   @font-face {
@@ -547,7 +547,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 800;
-    src: url('../fonts/montserrat-v25-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-900 - latin */
   @font-face {
@@ -555,7 +555,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 900;
-    src: url('../fonts/montserrat-v25-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
 
   .modal-overlay {
