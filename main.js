@@ -67,7 +67,7 @@ const json = JSON.stringify(urlObj);
 // Hashed JSON String
 const encoded = btoa(json);
 // Build URL
-url = `https://pwa-ke9iftha1-mysf.vercel.app/?hash=${encoded}`;
+url = `https://app.myshoefitter.com/?hash=${encoded}`;
 }
 
 var mySFModal = document.createElement("div");
@@ -87,7 +87,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 100;
-  src: url('../fonts/montserrat-v25-latin-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-200 - latin */
 @font-face {
@@ -95,7 +95,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 200;
-  src: url('../fonts/montserrat-v25-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-300 - latin */
 @font-face {
@@ -103,7 +103,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 300;
-  src: url('../fonts/montserrat-v25-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-regular - latin */
 @font-face {
@@ -111,7 +111,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/montserrat-v25-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-500 - latin */
 @font-face {
@@ -119,7 +119,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
-  src: url('../fonts/montserrat-v25-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-600 - latin */
 @font-face {
@@ -127,7 +127,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
-  src: url('../fonts/montserrat-v25-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-700 - latin */
 @font-face {
@@ -135,7 +135,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/montserrat-v25-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-800 - latin */
 @font-face {
@@ -143,7 +143,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 800;
-  src: url('../fonts/montserrat-v25-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* montserrat-900 - latin */
 @font-face {
@@ -151,7 +151,7 @@ mySFModal.innerHTML = `
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 900;
-  src: url('../fonts/montserrat-v25-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
   .modal-overlay {
@@ -182,6 +182,7 @@ mySFModal.innerHTML = `
   }
 
   #mysf_mob {
+    width:inherit;
     padding: 0px 50px;
     margin: 10px;
     z-index:1;
@@ -442,8 +443,8 @@ document.getElementById('mysf_input').style.display = 'none'";>
     </div>
 
     <div id="mysf_mob">
-      <h4>Deine perfekte Schuhgröße wartet schon auf dich! 🚀</h4>
-      <p>Wenn du schon eine <b>ID</b> hast, kannst du sie unten <b>eingeben</b> und kommst so direkt zu deiner perfekten Größe, <b>oder</b> falls du noch keine Messung durchgeführt hast, klicke auf <b>"Jetzt Fuß vermessen"</b> und folge den Anweisungen.</p>
+      <h3>Einmal deinen Fuß scannen,<br>immer die richtige Größe bestellen</h3>
+      <p>Scanne den QR-Code und starte mit der Messung. Du <br>musst nur einen Scan von deinem Fuß machen.<br> Es dauert nur wenige Minuten.</p>
       <button id="continue-btn2" class="continue-button">Jetzt Fuß vermessen</button>
       <div style="display:flex;flex-direction:row;justify-content:space-evenly;margin-top: 0.5em;">
         <button id="continue-to-info-button" class="continue-to-info-button">So funktioniert's</button>
@@ -491,7 +492,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 100;
-    src: url('../fonts/montserrat-v25-latin-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-200 - latin */
   @font-face {
@@ -499,7 +500,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 200;
-    src: url('../fonts/montserrat-v25-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-300 - latin */
   @font-face {
@@ -507,7 +508,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 300;
-    src: url('../fonts/montserrat-v25-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-regular - latin */
   @font-face {
@@ -515,7 +516,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/montserrat-v25-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-500 - latin */
   @font-face {
@@ -523,7 +524,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    src: url('../fonts/montserrat-v25-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-600 - latin */
   @font-face {
@@ -531,7 +532,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    src: url('../fonts/montserrat-v25-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-700 - latin */
   @font-face {
@@ -539,7 +540,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
-    src: url('../fonts/montserrat-v25-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-800 - latin */
   @font-face {
@@ -547,7 +548,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 800;
-    src: url('../fonts/montserrat-v25-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   /* montserrat-900 - latin */
   @font-face {
@@ -555,7 +556,7 @@ else {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 900;
-    src: url('../fonts/montserrat-v25-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('https://cdn.myshoefitter.com/fonts/montserrat-v25-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
 
   .modal-overlay {
@@ -901,8 +902,8 @@ else {
     </div>
     <div class="inner-content">
       <div class="left-section">
-        <h4>Deine perfekte Schuhgröße wartet schon auf dich! 🚀</h4>
-        <p>Wenn du schon eine <b>ID</b> hast, kannst du sie unten <b>eingeben</b> und kommst so direkt zu deiner perfekten Größe. Falls du noch keine Messung durchgeführt hast, <b>scanne den QR-Code</b> und folge den Anweisungen. <br> <br> Falls du deine <b>ID vergessen</b> hast, kannst du sie über deine Mail herausfinden. </p>
+      <h3>Einmal deinen Fuß scannen,<br>immer die richtige Größe bestellen</h3>
+      <p>Scanne den QR-Code und starte mit der Messung. Du <br>musst nur einen Scan von deinem Fuß machen.<br> Es dauert nur wenige Minuten.</p>
         <div class="button-container"> 
           <button class="continue-button" id="continue-to-info-button">So funktioniert's</button>
           <button id="continue-btn" class="continue-to-id-button">Mit Scan-ID fortfahren</button>
