@@ -67,7 +67,7 @@ const json = JSON.stringify(urlObj);
 // Hashed JSON String
 const encoded = btoa(json);
 // Build URL
-url = `https://pwa-ke9iftha1-mysf.vercel.app/?hash=${encoded}`;
+url = `https://app.myshoefitter.com/?hash=${encoded}`;
 }
 
 var mySFModal = document.createElement("div");
@@ -182,6 +182,7 @@ mySFModal.innerHTML = `
   }
 
   #mysf_mob {
+    width:inherit;
     padding: 0px 50px;
     margin: 10px;
     z-index:1;
@@ -226,12 +227,12 @@ mySFModal.innerHTML = `
     height: 200px;
     position: absolute;
     width: 200px;
-    z-index:0;
+    z-index:0; 
     top:15%;
     left:90%;
   }
 
-  #mysf_input {
+  #mysf_input { 
     width: inherit;
     padding: 0px 50px;
     margin: 10px;
@@ -442,8 +443,8 @@ document.getElementById('mysf_input').style.display = 'none'";>
     </div>
 
     <div id="mysf_mob">
-      <h4>Deine perfekte Schuhgröße wartet schon auf dich! 🚀</h4>
-      <p>Wenn du schon eine <b>ID</b> hast, kannst du sie unten <b>eingeben</b> und kommst so direkt zu deiner perfekten Größe, <b>oder</b> falls du noch keine Messung durchgeführt hast, klicke auf <b>"Jetzt Fuß vermessen"</b> und folge den Anweisungen.</p>
+      <h3>Einmal deinen Fuß scannen,<br>immer die richtige Größe bestellen</h3>
+      <p>Scanne den QR-Code und starte mit der Messung. Du <br>musst nur einen Scan von deinem Fuß machen.<br> Es dauert nur wenige Minuten.</p>
       <button id="continue-btn2" class="continue-button">Jetzt Fuß vermessen</button>
       <div style="display:flex;flex-direction:row;justify-content:space-evenly;margin-top: 0.5em;">
         <button id="continue-to-info-button" class="continue-to-info-button">So funktioniert's</button>
@@ -901,8 +902,8 @@ else {
     </div>
     <div class="inner-content">
       <div class="left-section">
-        <h4>Deine perfekte Schuhgröße wartet schon auf dich! 🚀</h4>
-        <p>Wenn du schon eine <b>ID</b> hast, kannst du sie unten <b>eingeben</b> und kommst so direkt zu deiner perfekten Größe. Falls du noch keine Messung durchgeführt hast, <b>scanne den QR-Code</b> und folge den Anweisungen. <br> <br> Falls du deine <b>ID vergessen</b> hast, kannst du sie über deine Mail herausfinden. </p>
+      <h3>Einmal deinen Fuß scannen,<br>immer die richtige Größe bestellen</h3>
+      <p>Scanne den QR-Code und starte mit der Messung. Du <br>musst nur einen Scan von deinem Fuß machen.<br> Es dauert nur wenige Minuten.</p>
         <div class="button-container"> 
           <button class="continue-button" id="continue-to-info-button">So funktioniert's</button>
           <button id="continue-btn" class="continue-to-id-button">Mit Scan-ID fortfahren</button>
