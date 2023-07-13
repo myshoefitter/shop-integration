@@ -3,6 +3,7 @@ import io from "socket.io-client";
 import {v1 as uuidGenerator} from "uuid";
 import 'animate.css';
 
+
 var isMobile = false;
 var sentMail = false;
 var device;
@@ -1139,6 +1140,16 @@ function draw() {
       );
   }
 }
+if(document.getElementById('manufacturer') && document.getElementById('model')){
+  const manufacturer = document.getElementById('manufacturer').textContent; 
+  const model = document.getElementById('model').textContent;
+  const shop = getSiteName();
+  mySF.setvalues(model,manufacturer,shop);
+  }else mySF.setvalues("null","null","null");
 
-
-mySF.setvalues("model","manufacturer","mySHOEFITTER Shop");
+  function getSiteName() {
+    const fullUrlSplit = window.location.host.split(".");
+    if (fullUrlSplit[0] !== "www")
+      return fullUrlSplit[0];
+    return fullUrlSplit[1];   
+  }
