@@ -440,7 +440,7 @@ mySFModal.innerHTML = `
   
 	  <div id="mysf_mob">
 		<h3>Einmal deinen Fuß scannen,<br>immer die richtige Größe bestellen</h3>
-    <p>Scanne den QR-Code und starte mit der Messung. Du musst nur einen Scan von deinem Fuß machen.<br> Es dauert nur wenige Minuten.</p>		
+    <p>Scanne den QR-Code und starte mit der Messung. Du musst nur einen Scan von deinem Fuß machen. Es dauert nur wenige Minuten.</p>		
     <button id="continue-btn2" class="continue-button">Jetzt Fuß vermessen</button>
 		<div style="display:flex;flex-direction:row;justify-content:space-evenly;margin-top: 0.5em;">
 		  <button id="continue-to-info-button" class="continue-to-info-button">So funktioniert's</button>
@@ -899,7 +899,7 @@ else {
 	  <div class="inner-content">
 		<div class="left-section">
 		<h3>Einmal deinen Fuß scannen,<br>immer die richtige Größe bestellen</h3>
-    <p>Scanne den QR-Code und starte mit der Messung. Du musst nur einen Scan von deinem Fuß machen.<br> Es dauert nur wenige Minuten.</p>
+    <p>Scanne den QR-Code und starte mit der Messung. Du musst nur einen Scan von deinem Fuß machen. Es dauert nur wenige Minuten.</p>
     	<div class="button-container"> 
 			<button class="continue-button" id="continue-to-info-button">So funktioniert's</button>
 			<button id="continue-btn" class="continue-to-id-button">Mit Scan-ID fortfahren</button>
