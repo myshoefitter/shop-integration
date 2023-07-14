@@ -79,7 +79,7 @@ mySFModal.style.display = "none";
 
 if(isMobile)
 {
-mySFModal.innerHTML = `<!--LOL-->
+mySFModal.innerHTML = `<!-- Test Deploy Action (Remove) -->
 <style>
   /* montserrat-100 - latin */
   @font-face {
