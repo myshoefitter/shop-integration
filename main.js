@@ -3,7 +3,6 @@ import io from "socket.io-client";
 import {v1 as uuidGenerator} from "uuid";
 import 'animate.css';
 
-
 var isMobile = false;
 var sentMail = false;
 var device;
@@ -80,7 +79,7 @@ mySFModal.style.display = "none";
 
 if(isMobile)
 {
-mySFModal.innerHTML = `
+mySFModal.innerHTML = `<!--LOL-->
 <style>
   /* montserrat-100 - latin */
   @font-face {
