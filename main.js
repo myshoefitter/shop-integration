@@ -38,11 +38,9 @@ var
     uuid = uuidGenerator();
 
 
-var token = "1234567890"; //reseved for shopify app
-
 const mySF = (function() {
-  function setvalues(manufacturer, model, token) {  
-     generateURL(token,manufacturer,model);
+  function setvalues(product_id, token) {  
+     generateURL(product_id,token);
   }
 
   return {
@@ -51,15 +49,14 @@ const mySF = (function() {
 })();
 
 
-function generateURL(shopID,shoeManufacturer,shoeModel) {
+function generateURL(product_id,shopID) {
 //Hashing URL
 // JS Object
 const urlObj = {
     uid: uuid, // Random UID
     host: hostURL,
     shop: shopID,
-    manufacturer: shoeManufacturer,
-    model: shoeModel,
+    model: product_id,
     client: device
 };
 // Object to JSON String
@@ -1133,12 +1130,11 @@ function draw() {
       );
   }
 }
-if(document.getElementById('manufacturer') && document.getElementById('model')){
-  const manufacturer = document.getElementById('manufacturer').textContent; 
-  const model = document.getElementById('model').textContent;
+if(document.getElementById('product_id')){ 
+  const product_id = document.getElementById('product_id').textContent;
   const shop = getSiteName();
-  mySF.setvalues(model,manufacturer,shop);
-  }else mySF.setvalues("null","null","null");
+  mySF.setvalues(product_id,shop);
+  }else mySF.setvalues("null","null");
 
   function getSiteName() {
     const fullUrlSplit = window.location.host.split(".");
