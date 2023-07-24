@@ -435,8 +435,8 @@ mySFModal.innerHTML = `<!-- Test Deploy Action (Remove) -->
 	  </div>
   
 	  <div id="mysf_mob">
-		<h3>Einmal deinen Fuß scannen,<br>immer die richtige Größe bestellen</h3>
-    <p>Scanne den QR-Code und starte mit der Messung. Du musst nur einen Scan von deinem Fuß machen. Es dauert nur wenige Minuten.</p>		
+		<h3>Einmal deinen Fuß scannen,<br>immer die richtige Größe bestellen.</h3>
+    <p>Scanne den QR-Code und starte mit der Messung. Du musst nur einen Scan von deinem Fuß machen, was nur wenige Minuten dauert.</p>		
     <button id="continue-btn2" class="continue-button">Jetzt Fuß vermessen</button>
 		<div style="display:flex;flex-direction:row;justify-content:space-evenly;margin-top: 0.5em;">
 		  <button id="continue-to-info-button" class="continue-to-info-button">So funktioniert's</button>
@@ -631,9 +631,9 @@ else {
   
 	.continue-button {
 	  background-color: #ff7d4f;
-	  padding: 12px;
+	  padding: 10px 20px;
 	  font-family: 'Montserrat', sans-serif;
-	  font-size: 14px;
+	  font-size: 12px;
 	  color: #ffffff;
 	  border-radius: 20px;
 	  border: 1px solid #ff7d4f;
@@ -650,19 +650,21 @@ else {
 	
 	.continue-to-id-button {
 	  background-color: transparent;
-	  padding: 12px;
+	  padding: 10px 20px;
 	  font-family: 'Montserrat', sans-serif;
-	  font-size: 14px;
+	  font-size: 12px;
 	  color: #ff7d4f;
 	  border-radius: 20px;
-	  border: 0px;
+	  border: 1px solid #ff7d4f;
 	  margin-bottom: 1em;
+	  margin-left: 20px;
 	}
   
 	.continue-to-id-button:hover {
 	  cursor:pointer;
 	  color: #aaa;
-	  transition-duration: 250ms;
+	  border: 0px;
+	  margin-left: 21px;
 	}
   
 	.form {
@@ -769,6 +771,7 @@ else {
 	  width: 300px;
 	  z-index:0;
 	  display:flex;
+	  flex-direction: column;
 	  align-items: center;
 	  justify-content: center;
 	  margin-top:-100px;
@@ -884,7 +887,7 @@ else {
 	<div class="modal-content animate__animated animate__fadeInDown" onclick="event.stopPropagation()">
 	<div class="big-circle"></div>
 	  <div class="header">
-		<img src=" https://cdn.myshoefitter.com/images/logo.png" width="150px" style="margin-left:50px">
+		<img src=" https://cdn.myshoefitter.com/images/logo.png" width="150px" style="margin-left:70px">
 		<span class="close" onclick="document.getElementById('modal-overlay').style.display='none';
 		document.querySelector('.button-container').style.display = 'flex';
 		document.getElementById('mysf_size').style.display = 'none';
@@ -894,8 +897,8 @@ else {
 	  </div>
 	  <div class="inner-content">
 		<div class="left-section">
-		<h3>Einmal deinen Fuß scannen,<br>immer die richtige Größe bestellen</h3>
-    <p>Scanne den QR-Code und starte mit der Messung. Du musst nur einen Scan von deinem Fuß machen. Es dauert nur wenige Minuten.</p>
+		<h3>Einmal deinen Fuß scannen,<br>immer die richtige Größe bestellen.</h3>
+    <p><b>Scanne den QR-Code</b> und starte mit der Messung. Du musst nur einen Scan von deinem Fuß machen, was nur wenige Minuten dauert.</p>
     	<div class="button-container"> 
 			<button class="continue-button" id="continue-to-info-button">So funktioniert's</button>
 			<button id="continue-btn" class="continue-to-id-button">Mit Scan-ID fortfahren</button>
