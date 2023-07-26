@@ -381,28 +381,6 @@ mySFModal.innerHTML = `<!-- Test Deploy Action (Remove) -->
 	  border-radius: 12px;
 	}
   
-	ul {
-	  list-style-type: none;
-	  padding: 0px 24px;
-	}
-  
-	li {
-	  justify-content: space-between;
-	  display: flex;
-	  align-items: center;
-	  margin-bottom: 10px;
-	}
-  
-	.label {
-	  font-weight: bold;
-	  margin-right: 5px;
-	}
-  
-	.note {
-	  font-style: italic;
-	  color: gray;
-	}
-  
   </style>
   
   <div id="modal-overlay" class="modal-overlay" onclick="document.getElementById('modal-overlay').style.display='none';
@@ -853,28 +831,6 @@ else {
 	  background-color: #f2f2f280;
 	  padding: 10px;
 	  border-radius: 12px;
-	}
-  
-	ul {
-	  list-style-type: none;
-	  padding: 0px 24px;
-	}
-  
-	li {
-	  justify-content: space-between;
-	  display: flex;
-	  align-items: center;
-	  margin-bottom: 10px;
-	}
-  
-	.label {
-	  font-weight: bold;
-	  margin-right: 5px;
-	}
-  
-	.note {
-	  font-style: italic;
-	  color: gray;
 	}
   
   </style>
