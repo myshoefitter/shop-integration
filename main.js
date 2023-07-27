@@ -1105,7 +1105,13 @@ if(document.getElementById('product_id')){
 /* vite-keep-varname */
   const mySF_reload = (function () {
 	function reload() {
-		loadScript();
+		document.querySelector("#mySF_Widget_Button").onclick = function() {
+			mySFModal.style.display = "flex";
+			document.querySelector(".modal-content").style.display = "flex";
+			if (!isMobile){
+			draw();
+			}
+		  };
 		console.log('mySF script reloaded');
 	}
 
