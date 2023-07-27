@@ -1042,32 +1042,7 @@ function fetchCode(Code) {
 }
 
 function fetchEmail(Email) {
-  var myHeaders = new Headers();
-  myHeaders.append("Authorization", "Bearer oU-s4wmSpctuufVBIFNf-rUi9MtNKj5a");
-  myHeaders.append("Content-Type", "application/json");
-
-  var raw = JSON.stringify({
-      "email": Email
-  });
-
-  var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow'
-  };
-
-
-  fetch("https://admin.myshoefitter.com/flows/trigger/bc96cffb-f215-4b8e-ba65-481d8c29e910", requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        //console.log(result);
-        //document.getElementById("infoText").textContent = "Email gesendet!";
-      })
-      .catch(error => {
-        //console.log('error', error);
-        document.querySelector("#info-text").textContent = "Email nicht gefunden";
-    });
+ //Appwrite Email logic
 }
 
 function draw() {
