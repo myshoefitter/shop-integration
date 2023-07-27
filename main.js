@@ -1,6 +1,5 @@
 import QrCreator from "qr-creator";
-import io from "socket.io-client";
-import {v1 as uuidGenerator} from "uuid";
+import { nanoid } from 'nanoid'
 import 'animate.css';
 
 var isMobile = false;
@@ -35,7 +34,7 @@ var
 var 
     url ,
     hostURL = window.location.protocol + "//" + window.location.host,
-    uuid = uuidGenerator();
+    uuid = nanoid(32);
 
 
 const mySF = (function() {
