@@ -2,7 +2,8 @@ import QrCreator from "qr-creator";
 import { nanoid } from 'nanoid'
 import 'animate.css';
 
-window.addEventListener('load', function () {
+function loadScript() {
+
 var isMobile = false;
 var sentMail = false;
 var device;
@@ -38,15 +39,22 @@ var
     uuid = nanoid(32);
 
 
-const mySF = (function() {
-  function setvalues(product_id, token) {  
-     generateURL(product_id,token);
-  }
+	const mySF = (function () {
+		function setvalues(product_id, token) {
+		  // Call the external generateURL function
+		  generateURL(product_id, token);
+		}
+	  
+		function reloadScript() {
 
-  return {
-    setvalues: setvalues,
-  };
-})();
+		}
+	  
+		// Return the public interface of the mySF object
+		return {
+		  setvalues: setvalues,
+		  reloadScript: reloadScript,
+		};
+	  })();
 
 
 function generateURL(product_id,shopID) {
@@ -1068,7 +1076,7 @@ if(document.getElementById('product_id')){
   const product_id = document.getElementById('product_id').textContent;
   const shop = getSiteName();
   mySF.setvalues(product_id,shop);
-  }else mySF.setvalues("null","null");
+  }else {mySF.setvalues("null","null"); console.log('failed to read values');};
 
   function getSiteName() {
     const fullUrlSplit = window.location.host.split(".");
@@ -1076,4 +1084,38 @@ if(document.getElementById('product_id')){
       return fullUrlSplit[0];
     return fullUrlSplit[1];   
   }
+
+  function addToCart() {
+	if ( typeof gtag !== 'undefined' ) {
+		gtag('event', 'add_to_cart', {
+			'value': `117.56`,
+			'send_to': 'AW-748897528',
+			'items': [
+				{
+					'id': `GND-110040-01-H`,
+					'google_business_vertical': 'retail',
+				},
+			],
+		});
+	}
+}
+
+}  
+
+/* vite-keep-varname */
+  const mySF_reload = (function () {
+	function reload() {
+		loadScript();
+		console.log('mySF script reloaded');
+	}
+
+	return {
+		reload: reload,
+	};
+  })();
+
+window.addEventListener('loaded', function () {
+	loadScript();
   })
+
+  mySF_reload.reload();

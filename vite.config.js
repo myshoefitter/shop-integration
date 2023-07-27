@@ -3,6 +3,12 @@ import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 export default {
   plugins: [cssInjectedByJsPlugin()],
   build: {
+    minify: 'terser',
+    terserOptions: {
+      mangle: {
+        reserved: ['mySF_reload'],
+      },
+    },
     cssCodeSplit: false,
     rollupOptions: {
       input: {
