@@ -2,8 +2,26 @@ import QrCreator from "qr-creator";
 import { nanoid } from 'nanoid'
 import 'animate.css';
 
-function loadScript() {
+/* vite-keep-varname */
+  const mySF_reload = (function () {
+	function reload() {
+		document.querySelector("#mySF_Widget_Button").onclick = function() {
+			mySFModal.style.display = "flex";
+			document.querySelector(".modal-content").style.display = "flex";
+			if (!isMobile){
+			draw();
+			}
+		  };
+		console.log('mySF script reloaded');
+	}
 
+	return {
+		reload: reload,
+	};
+  })();
+
+window.addEventListener('loaded', function () {
+	
 var isMobile = false;
 var sentMail = false;
 var device;
@@ -1099,29 +1117,6 @@ if(document.getElementById('product_id')){
 		});
 	}
 }
-
-}  
-
-/* vite-keep-varname */
-  const mySF_reload = (function () {
-	function reload() {
-		document.querySelector("#mySF_Widget_Button").onclick = function() {
-			mySFModal.style.display = "flex";
-			document.querySelector(".modal-content").style.display = "flex";
-			if (!isMobile){
-			draw();
-			}
-		  };
-		console.log('mySF script reloaded');
-	}
-
-	return {
-		reload: reload,
-	};
-  })();
-
-window.addEventListener('loaded', function () {
-	loadScript();
   })
 
   mySF_reload.reload();
