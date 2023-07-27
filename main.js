@@ -2,6 +2,7 @@ import QrCreator from "qr-creator";
 import { nanoid } from 'nanoid'
 import 'animate.css';
 
+window.addEventListener('load', function () {
 var isMobile = false;
 var sentMail = false;
 var device;
@@ -1075,3 +1076,4 @@ if(document.getElementById('product_id')){
       return fullUrlSplit[0];
     return fullUrlSplit[1];   
   }
+  })
