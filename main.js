@@ -5,7 +5,9 @@ import 'animate.css';
 /* vite-keep-varname */
   const mySF_reload = (function () {
 	function reload() {
-			
+		if(document.querySelector('#modal-overlay')) {
+		document.querySelector('#modal-overlay').remove();
+		}
 var isMobile = false;
 var sentMail = false;
 var device;
@@ -21,14 +23,6 @@ if (screen.width <= 768) {
   //console.log("DESKTOP DEVICE VIEW");
   isMobile = false;
 }
-
-/* const socket = io('https://mysf.vercel.app/');
-socket.on('connect', () => {
-    console.log('Connected to server');
-});
-socket.on('disconnect', () => {
-    console.log('Disconnected from server');
-}); */
 
 var
     qrRadius = 0,
@@ -69,6 +63,7 @@ const urlObj = {
     model: product_id,
     client: device
 };
+console.log(urlObj);
 // Object to JSON String
 const json = JSON.stringify(urlObj);
 // Hashed JSON String
@@ -2209,4 +2204,5 @@ if(document.getElementById('product_id')){
 }
   })
 
+  
   mySF_reload.reload();
