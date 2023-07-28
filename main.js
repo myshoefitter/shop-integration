@@ -1044,5 +1044,3 @@ checekDevice();
 }
 
 mySF_reload.reload();
-mySF_reload.reload();
-mySF_reload.reload(); 
