@@ -489,7 +489,6 @@ checkDevice();
 	  border-radius: 20px;
 	  border: 1px solid #ff7d4f;
 	  margin-bottom: 1em;
-	  max-height:20px;
 	}
 	.mySF-circle {
 	  position: relative;
