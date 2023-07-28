@@ -511,7 +511,6 @@ checkDevice();
 		padding: 0 10px;
 		margin-right: 10px;
 		font-size: 1.2em;
-		margin-left: 75%;
 	  }
 	  
 	#mySF-languageSelector option {
