@@ -2167,6 +2167,7 @@ function draw() {
       document.querySelector("#qr-code").innerHTML = "";
       //console.log("Width is " + testbox.offsetWidth);
       var x = box.clientWidth * .8;
+	  console.log(url);
       QrCreator.render({
               text: url,
               radius: qrRadius, // 0.0 to 0.5
