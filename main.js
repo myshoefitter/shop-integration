@@ -12,6 +12,8 @@ const translations = {
 		sendButton: "Submit",
 		forgotButton: "Forgot ID?",
 		forgotButton1: "Back to ID",
+		idFieldPlaceholder: "Enter your ID",
+		emailFieldPlaceholder: "Enter your E-mail",
 	  },
 	es: {
 		title: "Escanea tu pie una vez, siempre pide el tamaño correcto.",
@@ -23,6 +25,34 @@ const translations = {
 		sendButton: "Enviar",
 		forgotButton: "¿Olvidaste tu ID?",
 		forgotButton1: "Volver a la ID",
+		idFieldPlaceholder: "Ingresa tu ID",
+  		emailFieldPlaceholder: "Ingresa tu correo electrónico",
+	  },
+	it: {
+		title: "Scansiona il tuo piede una volta, ordina sempre la taglia giusta.",
+		description: "Scansiona il codice QR e avvia la misurazione. Devi solo scansionare il tuo piede, che richiede solo pochi minuti.",
+		descriptionMobile: "Clicca su 'Misura piede ora' e avvia la misurazione. Devi solo scansionare il tuo piede, che richiede solo pochi minuti.",
+		continueButton: "Come funziona",
+		continueToIdButton: "Continua con ID di scansione",
+		howItWorksButton: "Come funziona",
+		sendButton: "Invia",
+		forgotButton: "ID dimenticato?",
+		forgotButton1: "Torna all'ID",
+		idFieldPlaceholder: "Inserisci il tuo ID",
+		emailFieldPlaceholder: "Inserisci la tua Email",
+	  },
+	pt: {
+		title: "Digitalize seu pé uma vez, sempre peça o tamanho correto.",
+		description: "Digitalize o código QR e inicie a medição. Você só precisa digitalizar o seu pé, o que leva apenas alguns minutos.",
+		descriptionMobile: "Clique em 'Medir pé agora' e inicie a medição. Você só precisa digitalizar o seu pé, o que leva apenas alguns minutos.",
+		continueButton: "Como funciona",
+		continueToIdButton: "Continuar com ID de digitalização",
+		howItWorksButton: "Como funciona",
+		sendButton: "Enviar",
+		forgotButton: "Esqueceu o ID?",
+		forgotButton1: "Voltar para o ID",
+		idFieldPlaceholder: "Digite seu ID",
+		emailFieldPlaceholder: "Digite seu E-mail",
 	  },
 	fr: {
 		title: "Numérisez votre pied une fois, commandez toujours la bonne taille.",
@@ -34,6 +64,8 @@ const translations = {
 		sendButton: "Soumettre",
 		forgotButton: "ID oublié?",
 		forgotButton1: "Retour à l'ID",
+		idFieldPlaceholder: "Entrez votre ID",
+  		emailFieldPlaceholder: "Entrez votre adresse e-mail",
 	  },
 	de: {
 		title: "Einmal deinen Fuß scannen, immer die richtige Größe bestellen.",
@@ -45,6 +77,8 @@ const translations = {
 		sendButton: "Senden",
 		forgotButton: "ID vergessen?",
 		forgotButton1: "Zurück zur ID",
+		idFieldPlaceholder: "ID eingeben",
+  		emailFieldPlaceholder: "E-mail eingeben",
 	  },
 	pl: {
 		title: "Zeskanuj swój stopę raz, zawsze zamawiaj odpowiedni rozmiar.",
@@ -56,6 +90,8 @@ const translations = {
 		sendButton: "Wyślij",
 		forgotButton: "Zapomniałeś ID?",
 		forgotButton1: "Powrót do ID",
+		idFieldPlaceholder: "Wprowadź swoje ID",
+  		emailFieldPlaceholder: "Wprowadź swój adres e-mail",
 	  },
 	ru: {
 		title: "Сканируйте вашу ногу один раз, всегда заказывайте правильный размер.",
@@ -67,6 +103,8 @@ const translations = {
 		sendButton: "Отправить",
 		forgotButton: "Забыли ID?",
 		forgotButton1: "Вернуться к ID",
+		idFieldPlaceholder: "Введите ваш ID",
+  		emailFieldPlaceholder: "Введите ваш адрес электронной почты",
 	  },
 	tr: {
 		title: "Ayaklarınızı bir kez tarayın, her zaman doğru bedeni sipariş edin.",
@@ -78,6 +116,8 @@ const translations = {
 		sendButton: "Gönder",
 		forgotButton: "Kimliği unuttunuz mu?",
 		forgotButton1: "Kimliğe geri dön",
+		idFieldPlaceholder: "Kimliğinizi girin",
+  		emailFieldPlaceholder: "E-postanızı girin",
 	  },
 	ar: {
 		title: "امسح قدمك مرة واحدة ، واطلب دائمًا الحجم الصحيح.",
@@ -89,6 +129,8 @@ const translations = {
 		sendButton: "إرسال",
 		forgotButton: "نسيت المعرف؟",
 		forgotButton1: "العودة إلى المعرف",
+		idFieldPlaceholder: "أدخل هويتك",
+  		emailFieldPlaceholder: "أدخل بريدك الإلكتروني",
 	  },
 	in: {
 		title: "एक बार अपने पैरों को स्कैन करें, हमेशा सही साइज़ का ऑर्डर दें।",
@@ -100,6 +142,8 @@ const translations = {
 		sendButton: "भेजें",
 		forgotButton: "आईडी भूल गए?",
 		forgotButton1: "आईडी पर वापस जाएं",
+		idFieldPlaceholder: "अपना आईडी दर्ज करें",
+  		emailFieldPlaceholder: "अपना ईमेल दर्ज करें",
 	  },
 	zh: {
 		title: "一次扫描您的脚，永远订购正确尺寸。",
@@ -111,6 +155,8 @@ const translations = {
 		sendButton: "提交",
 		forgotButton: "忘记ID？",
 		forgotButton1: "返回ID",
+		idFieldPlaceholder: "输入您的身份证",
+  		emailFieldPlaceholder: "输入您的电子邮件",
 	  },
 	ja: {
 		title: "足を一度スキャンするだけで、常に正しいサイズを注文します。",
@@ -122,6 +168,8 @@ const translations = {
 		sendButton: "送信",
 		forgotButton: "IDを忘れましたか？",
 		forgotButton1: "IDに戻る",
+		idFieldPlaceholder: "IDを入力してください",
+  		emailFieldPlaceholder: "メールアドレスを入力してください",
 	  },
 	ko: {
 		title: "한 번 발을 스캔하면 항상 올바른 사이즈를 주문합니다.",
@@ -133,6 +181,8 @@ const translations = {
 		sendButton: "제출",
 		forgotButton: "ID를 잊어버렸나요?",
 		forgotButton1: "ID로 돌아가기",
+		idFieldPlaceholder: "ID를 입력하세요",
+  		emailFieldPlaceholder: "이메일을 입력하세요",
 	  },
     } 
 
@@ -607,8 +657,10 @@ checkDevice();
 	</div>
 	<select id="mySF-languageSelector">
 	<option value="en">🇺🇸 English</option>
-	<option value="es">🇪🇸 Español</option>
-	<option value="fr">🇫🇷 Français</option>
+  	<option value="es">🇪🇸 Español</option>
+  	<option value="fr">🇫🇷 Français</option>
+  	<option value="it">🇮🇹 Italiano</option>
+  	<option value="pt">🇵🇹 Português</option>
 	<option value="de">🇩🇪 Deutsch</option>
 	<option value="pl">🇵🇱 Polski</option>
 	<option value="ru">🇷🇺 Русский</option>
@@ -1095,18 +1147,20 @@ checkDevice();
 		  </div>
 	  </div>
 	  <select id="mySF-languageSelector">
-	  <option value="en">🇺🇸 English</option>
-	  <option value="es">🇪🇸 Español</option>
-	  <option value="fr">🇫🇷 Français</option>
-	  <option value="de">🇩🇪 Deutsch</option>
-	  <option value="pl">🇵🇱 Polski</option>
-	  <option value="ru">🇷🇺 Русский</option>
-	  <option value="tr">🇹🇷 Türkçe</option>
-	  <option value="ar">🇸🇦 العربية</option>
-	  <option value="in">🇮🇳 हिन्दी</option>
-	  <option value="zh">🇨🇳 中文</option>
-	  <option value="ja">🇯🇵 日本語</option>
-	  <option value="ko">🇰🇷 한국어</option>
+	  	<option value="en">🇺🇸 English</option>
+  		<option value="es">🇪🇸 Español</option>
+  		<option value="fr">🇫🇷 Français</option>
+  		<option value="it">🇮🇹 Italiano</option>
+  		<option value="pt">🇵🇹 Português</option>
+		<option value="de">🇩🇪 Deutsch</option>
+		<option value="pl">🇵🇱 Polski</option>
+		<option value="ru">🇷🇺 Русский</option>
+		<option value="tr">🇹🇷 Türkçe</option>
+		<option value="ar">🇸🇦 العربية</option>
+		<option value="in">🇮🇳 हिन्दी</option>
+		<option value="zh">🇨🇳 中文</option>
+		<option value="ja">🇯🇵 日本語</option>
+		<option value="ko">🇰🇷 한국어</option>
 	</select>
 	</div>
   </div>
@@ -1129,6 +1183,8 @@ checkDevice();
 		const continueToIdElement = document.getElementById('mySF-continue-btn');
 		const sendElement = document.getElementById('mySF-submit-btn');
 		const forgotElement = document.getElementById('mySF-forgot-button');
+		const idField = document.getElementById('mySF-modal-id-form-field');
+		const emailField = document.getElementById('mySF-modal-email-form-field'); 
 	  
 		titleElement.textContent = translations[language].title;
 		continueElement.textContent = translations[language].continueButton;
@@ -1136,6 +1192,8 @@ checkDevice();
 		howItWorksElement.textContent = translations[language].howItWorksButton;
 		sendElement.textContent = translations[language].sendButton;
 		forgotElement.textContent = translations[language].forgotButton;
+		idField.placeholder = translations[language].idFieldPlaceholder;
+		emailField.placeholder = translations[language].emailFieldPlaceholder;
 
 		currentLanguage = language;
 	}
