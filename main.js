@@ -471,6 +471,7 @@ checkDevice();
 	  color: #ff7d4f;
 	  border: 0;
 	  margin-bottom: 1em;
+	  max-height:20px;
 	}
   
 	.mySF-modal-continue-to-id-button:active {
@@ -488,6 +489,7 @@ checkDevice();
 	  border-radius: 20px;
 	  border: 1px solid #ff7d4f;
 	  margin-bottom: 1em;
+	  max-height:20px;
 	}
 	.mySF-circle {
 	  position: relative;
@@ -573,7 +575,7 @@ checkDevice();
 		<h3 id="mySF-title">Einmal deinen Fuß scannen,<br>immer die richtige Größe bestellen.</h3>
     <p id="mySF-description-mobile">Scanne den QR-Code und starte mit der Messung. Du musst nur einen Scan von deinem Fuß machen, was nur wenige Minuten dauert.</p>		
     <button id="mySF-continue-btn2" class="mySF-modal-continue-button">Jetzt Fuß vermessen</button>
-		<div style="display:flex;flex-direction:row;justify-content:space-evenly;margin-top: 0.5em;">
+		<div style="display:flex;flex-direction:row;justify-content:space-evenly;margin-top: 0.5em;align-items: center;">
 		  <button id="continue-to-info-button" class="continue-to-info-button">So funktioniert's</button>
 		  <button id="mySF-continue-btn" class="mySF-modal-continue-to-id-button">Mit Scan-ID fortfahren</button>
 		</div>
@@ -991,7 +993,7 @@ checkDevice();
 		box-shadow: 0 0 5px rgba(0, 0, 0, 0.16);
 		border-radius: 10px;
 		min-height: 30px;
-		padding: 0 10px;
+		padding: 0 15px;
 		margin-right: 10px;
 		font-size: 1.2em;
 	  }
