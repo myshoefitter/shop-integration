@@ -509,7 +509,7 @@ checkDevice();
 		box-shadow: 0 0 5px rgba(0, 0, 0, 0.16);
 		border-radius: 10px;
 		min-height: 30px;
-		padding: 0 10px;
+		padding: 0 20px;
 		margin-right: 10px;
 		font-size: 1.2em;
 	  }
