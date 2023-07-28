@@ -471,7 +471,6 @@ checkDevice();
 	  color: #ff7d4f;
 	  border: 0;
 	  margin-bottom: 1em;
-	  max-height:20px;
 	}
   
 	.mySF-modal-continue-to-id-button:active {
