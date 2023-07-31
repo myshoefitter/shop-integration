@@ -6,7 +6,7 @@ export default {
     minify: 'terser',
     terserOptions: {
       mangle: {
-        reserved: ['mySF_reload','mySFModal'],
+        reserved: ['mySF_reload','mySFModal', 'reload', 'runScript'],
       },
     },
     cssCodeSplit: false,
