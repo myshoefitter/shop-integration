@@ -208,6 +208,8 @@ function runScript() {
     var sentMail = false;
     var device;
 
+    console.log('mySHOEFITTER load');
+
     function checkDevice() {
         if (screen.width <= 768) {
             // Apply mobile styles or behaviors
