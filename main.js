@@ -1210,7 +1210,7 @@ checkDevice();
 	document.getElementById('mySF-languageSelector').addEventListener('change', function() {
 		const selectedLanguage = document.getElementById('mySF-languageSelector').value;
 		updateLanguage(selectedLanguage);
-	});
+	}); 
 
     document.querySelector("#continue-to-info-button").onclick = function() {
         window.open("https://myshoefitter.com/faq", '_blank');
