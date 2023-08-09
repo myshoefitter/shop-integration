@@ -1174,7 +1174,9 @@ checkDevice();
 	function updateLanguage(language) {
 		if (isMobile) {
 			const descriptionElement = document.getElementById('mySF-description-mobile');
+			const toPWAElement = document.getElementById('mySF-continue-btn2');
 			descriptionElement.textContent = translations[language].descriptionMobile;
+			toPWAElement.textContent = translations[language].continueButton;
 		} else {
 			const descriptionElement = document.getElementById('mySF-description');
 			descriptionElement.textContent = translations[language].description;
