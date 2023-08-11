@@ -1,12 +1,23 @@
 import QrCreator from "qr-creator";
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
+import { Client, Account, Functions } from "appwrite";
 import 'animate.css';
+
+const client = new Client();
+
+const account = new Account(client);
+const  functions  = new Functions(client);
+client
+    .setEndpoint('https://api.myshoefitter.com/v1') // Your API Endpoint
+    .setProject('mysf') // Your project ID
+;
+
 const translations = {
 	en: {
 		title: "Scan your foot once, always order the right size.",
 		description: "Scan the QR code and start the measurement. You only need to scan your foot, which takes just a few minutes.",
 		descriptionMobile: "Click 'Measure Foot Now' and start the measurement. You only need to scan your foot, which takes just a few minutes.",
-		continueButton: "Medir pie ahora",
+		continueButton: "Measure Foot Now",
 		continueToIdButton: "Continue with Scan ID",
 		howItWorksButton: "How it works",
 		sendButton: "Submit",
@@ -14,6 +25,10 @@ const translations = {
 		forgotButton1: "Back to ID",
 		idFieldPlaceholder: "Enter your ID",
 		emailFieldPlaceholder: "Enter your E-mail",
+		length:"Length:",
+		width:"Width:",
+		brand:"Brand:",
+		model:"Model:",
 	  },
 	es: {
 		title: "Escanea tu pie una vez, siempre pide el tamaño correcto.",
@@ -27,6 +42,10 @@ const translations = {
 		forgotButton1: "Volver a la ID",
 		idFieldPlaceholder: "Ingresa tu ID",
   		emailFieldPlaceholder: "Ingresa tu correo electrónico",
+		length: "Longitud:",
+		width: "Ancho:",
+		brand: "Marca:",
+		model: "Modelo:",
 	  },
 	it: {
 		title: "Scansiona il tuo piede una volta, ordina sempre la taglia giusta.",
@@ -40,6 +59,10 @@ const translations = {
 		forgotButton1: "Torna all'ID",
 		idFieldPlaceholder: "Inserisci il tuo ID",
 		emailFieldPlaceholder: "Inserisci la tua Email",
+		length: "Lunghezza:",
+		width: "Larghezza:",
+		brand: "Marca:",
+		model: "Modello:",
 	  },
 	pt: {
 		title: "Digitalize seu pé uma vez, sempre peça o tamanho correto.",
@@ -53,6 +76,10 @@ const translations = {
 		forgotButton1: "Voltar para o ID",
 		idFieldPlaceholder: "Digite seu ID",
 		emailFieldPlaceholder: "Digite seu E-mail",
+		length: "Comprimento:",
+		width: "Largura:",
+		brand: "Marca:",
+		model: "Modelo:",
 	  },
 	fr: {
 		title: "Numérisez votre pied une fois, commandez toujours la bonne taille.",
@@ -66,6 +93,10 @@ const translations = {
 		forgotButton1: "Retour à l'ID",
 		idFieldPlaceholder: "Entrez votre ID",
   		emailFieldPlaceholder: "Entrez votre adresse e-mail",
+		length: "Longueur:",
+		width: "Largeur:",
+		brand: "Marque:",
+		model: "Modèle:",
 	  },
 	de: {
 		title: "Einmal deinen Fuß scannen, immer die richtige Größe bestellen.",
@@ -79,6 +110,10 @@ const translations = {
 		forgotButton1: "Zurück zur ID",
 		idFieldPlaceholder: "ID eingeben",
   		emailFieldPlaceholder: "E-mail eingeben",
+		length:"Länge:",
+		width:"Breite:",
+		brand:"Marke:",
+		model:"Model:",
 	  },
 	pl: {
 		title: "Zeskanuj swój stopę raz, zawsze zamawiaj odpowiedni rozmiar.",
@@ -92,6 +127,10 @@ const translations = {
 		forgotButton1: "Powrót do ID",
 		idFieldPlaceholder: "Wprowadź swoje ID",
   		emailFieldPlaceholder: "Wprowadź swój adres e-mail",
+		length: "Długość:",
+		width: "Szerokość:",
+		brand: "Marka:",
+		model: "Model:",
 	  },
 	ru: {
 		title: "Сканируйте вашу ногу один раз, всегда заказывайте правильный размер.",
@@ -105,6 +144,10 @@ const translations = {
 		forgotButton1: "Вернуться к ID",
 		idFieldPlaceholder: "Введите ваш ID",
   		emailFieldPlaceholder: "Введите ваш адрес электронной почты",
+		length: "Длина:",
+		width: "Ширина:",
+		brand: "Бренд:",
+		model: "Модель:",
 	  },
 	tr: {
 		title: "Ayaklarınızı bir kez tarayın, her zaman doğru bedeni sipariş edin.",
@@ -118,6 +161,10 @@ const translations = {
 		forgotButton1: "Kimliğe geri dön",
 		idFieldPlaceholder: "Kimliğinizi girin",
   		emailFieldPlaceholder: "E-postanızı girin",
+		length: "Uzunluk:",
+		width: "Genişlik:",
+		brand: "Marka:",
+		model: "Model:",
 	  },
 	ar: {
 		title: "امسح قدمك مرة واحدة ، واطلب دائمًا الحجم الصحيح.",
@@ -131,6 +178,10 @@ const translations = {
 		forgotButton1: "العودة إلى المعرف",
 		idFieldPlaceholder: "أدخل هويتك",
   		emailFieldPlaceholder: "أدخل بريدك الإلكتروني",
+		length: "الطول:",
+		width: "العرض:",
+		brand: "العلامة التجارية:",
+		model: "الموديل:",
 	  },
 	in: {
 		title: "एक बार अपने पैरों को स्कैन करें, हमेशा सही साइज़ का ऑर्डर दें।",
@@ -144,6 +195,10 @@ const translations = {
 		forgotButton1: "आईडी पर वापस जाएं",
 		idFieldPlaceholder: "अपना आईडी दर्ज करें",
   		emailFieldPlaceholder: "अपना ईमेल दर्ज करें",
+		length: "लंबाई:",
+		width: "चौड़ाई:",
+		brand: "ब्रांड:",
+		model: "मॉडल:",
 	  },
 	zh: {
 		title: "一次扫描您的脚，永远订购正确尺寸。",
@@ -157,6 +212,10 @@ const translations = {
 		forgotButton1: "返回ID",
 		idFieldPlaceholder: "输入您的身份证",
   		emailFieldPlaceholder: "输入您的电子邮件",
+		length: "长度：",
+		width: "宽度：",
+		brand: "品牌：",
+		model: "型号：",
 	  },
 	ja: {
 		title: "足を一度スキャンするだけで、常に正しいサイズを注文します。",
@@ -170,6 +229,11 @@ const translations = {
 		forgotButton1: "IDに戻る",
 		idFieldPlaceholder: "IDを入力してください",
   		emailFieldPlaceholder: "メールアドレスを入力してください",
+		length: "長さ：",
+		width: "幅：",
+		brand: "ブランド：",
+		model: "モデル：",
+		  
 	  },
 	ko: {
 		title: "한 번 발을 스캔하면 항상 올바른 사이즈를 주문합니다.",
@@ -183,6 +247,11 @@ const translations = {
 		forgotButton1: "ID로 돌아가기",
 		idFieldPlaceholder: "ID를 입력하세요",
   		emailFieldPlaceholder: "이메일을 입력하세요",
+		length: "길이:",
+		width: "너비:",
+		brand: "브랜드:",
+		model: "모델:",
+		  
 	  },
     } 
 
@@ -570,26 +639,148 @@ checkDevice();
 	}
   
 	.mySF-shoe-size {
-	  position: absolute;
-	  font-weight: 500;
-	  top: 50%;
-	  left: 50%;
-	  transform: translate(-50%, -50%);
-	  color: #fff;
-	  padding: 0;
-	  margin: 0;
-	  font-size: 70px;
-	  width: 100%;
-	  text-align: center;
-	}
+		position: absolute;
+		font-weight: 500;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: #fff;
+		padding: 0;
+		margin: 0;
+		font-size: 70px;
+		width: 100%;
+		text-align: center;
+	  }
+	
+	  #mysf_size {
+		  display:none;
+		  width: -webkit-fill-available;
+	  }
+	  
+	  .mySF-circle {
+		  position: relative;
+		  background: #ff7d4f; /* This is a placeholder color, adjust accordingly */
+		  width: 160px;
+		  height: 160px;
+		  border-radius: 100%;
+		  display: block;
+		  margin: auto;
+	  }
+	  
+	  .mySF-shoe-size {
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  transform: translate(-50%, -50%);
+		  color: #fff;
+		  padding: 0;
+		  margin: 0;
+		  font-size: 70px;
+		  width: 100%;
+		  text-align: center;
+	  }
+	  
+	  .mySF-card-row {
+		  display: flex;
+		  flex-direction: row;
+		  justify-content: space-between;
+		  margin: 0 16px;
+	  }
+	  
+	  .mySF-card {
+		margin: 10px;
+		  text-align: center;
+		  width: 100%;
+		  height: min-content;
+		  --background: transparent;
+		  backdrop-filter: blur(10px);
+		  -webkit-backdrop-filter: blur(10px);
+		  border-radius: 16px;
+		  font-size: 14px;
+		  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+	  }
+	  
+	  .mySF-specs {
+		margin: 0 26px;
+		  --background: transparent;
+		  backdrop-filter: blur(10px);
+		  -webkit-backdrop-filter: blur(10px);
+		  border-radius: 16px;
+		  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+	  }
+	  
+	  .mySF-card-content {
+		  padding: 0 20px; /* Adjust padding as required */
+	  }
+	  
+	  .mySF-specs ul {
+		  list-style-type: none;
+		  justify-content: space-around;
+		  padding: 26px 0;
+	  }
+	  
+	  .mySF-specs li {
+		  display: flex;
+		  justify-content: space-around;
+		  padding: 10px 0;
+	  }
+	  
+	  .mySF-specs div {
+		  width: 50%;
+		  
+	  }
+	  
+	  .mySF-start {
+		text-align: start;
+		margin-left: 5%;
+	  }
+	  
+	  .mySF-end {
+		text-align: end;
+		margin-right: 5%;
+	  }
   
-	.mySF-specs {
-	  margin: 12px;
-	  background-color: #f2f2f280;
-	  padding: 10px;
-	  border-radius: 12px;
-	}
+	  .mySF-back-button {
+		  display: none;
+		  align-items: center;
+		  padding: 10px 10px;
+		  background-color: transparent;
+		  border: none;
+		  border-radius: 50px;
+		  cursor: pointer;
+		  transition: background-color 0.3s;
+		  
+	  }
   
+	  .mySF-back-button:hover {
+		  background-color: #e0e0e0;
+	  }
+  
+	  .mySF-arrow {
+		  display: inline-block;
+		  width: 32px;
+		  height: 32px;
+	  }
+  
+	 .mySF-back-button svg {
+		 fill: #ff7d4f;
+		  width: 100%;
+		  height: 100%;
+	  }
+  
+	  #mySF-video {
+		  display:none;
+		  width: -webkit-fill-available;
+		  justify-content: center;
+	  }
+  
+	  #mySF-video-element {
+		position:relative;
+		  height: 80vh; /* 80% of the viewport height */
+		  width: fit-content;
+		   object-fit: contain; /* Maintain aspect ratio */
+		   border-radius: 30px;
+		 }
   </style>
   
   <div id="mySF-modal-overlay" class="mySF-modal-overlay" onclick="document.getElementById('mySF-modal-overlay').style.display='none';
@@ -600,7 +791,23 @@ checkDevice();
 	  <div class="mySF-big-circle"></div>
 	  <div class="mySF-big-circle-top"></div>
 	  <div class="mySF-modal-header">
-		<img src=" https://cdn.myshoefitter.com/images/logo.png" width="150px">
+	  <div style="display: flex;flex-direction: row;align-items: center;">		
+	  <button class="mySF-back-button">
+	<span class="mySF-arrow">
+	  <svg viewBox="0 0 44.952 44.952" xml:space="preserve" transform="matrix(-1, 0, 0, 1, 0, 0)">
+		<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+		<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+		<g id="SVGRepo_iconCarrier">
+		  <g>
+			<path d="M44.952,22.108c0-1.25-0.478-2.424-1.362-3.308L30.627,5.831c-0.977-0.977-2.561-0.977-3.536,0 c-0.978,0.977-0.976,2.568,0,3.546l10.574,10.57H2.484C1.102,19.948,0,21.081,0,22.464c0,0.003,0,0.025,0,0.028 c0,1.382,1.102,2.523,2.484,2.523h35.182L27.094,35.579c-0.978,0.978-0.978,2.564,0,3.541c0.977,0.979,2.561,0.978,3.538-0.001 l12.958-12.97c0.885-0.882,1.362-2.059,1.362-3.309C44.952,22.717,44.952,22.231,44.952,22.108z"></path>
+		  </g>
+		</g>
+	  </svg>
+	</span>
+  </button>
+	  <img src=" https://cdn.myshoefitter.com/images/logo.png" width="150px">
+	  
+	  </div>
 		<span class="mySF-modal-close" onclick="document.getElementById('mySF-modal-overlay').style.display='none';
 		 document.getElementById('mysf_mob').style.display = 'block';
 		 document.getElementById('mysf_size').style.display = 'none';
@@ -630,49 +837,76 @@ checkDevice();
 		  <button id="mySF-continue-btn" class="mySF-modal-continue-to-id-button">Mit Scan-ID fortfahren</button>
 		</div>
 	  </div>
-  
-	  <div id="mysf_size" style="display:none">
-	  <div class="mySF-circle">
-		<h2 class="mySF-shoe-size">35</h2>
+
+  <div id="mysf_size">
+  <!-- Shoe Size Circle -->
+  <div class="mySF-circle">
+	  <h2 class="mySF-shoe-size">35</h2>
+  </div>
+
+  <!-- Foot Dimensions -->
+  <div class="mySF-card-row">
+	  <div class="mySF-card">
+		  <div class="mySF-card-content">
+			  <p class="mySF-text-length mySF-text">Length:</p>
+			  <p class="mySF-text mySF-shoe-length">Length:<br>285 mm</p>
+		  </div>
 	  </div>
-	  <div class="mySF-specs">
-		  <ul>
-			<li>
-			  <div>
-				Marke:
+	  <div class="mySF-card">
+		  <div class="mySF-card-content">
+			  <p class="mySF-text-width mySF-text">Width:</p>
+			  <p class="mySF-text mySF-shoe-width">111 mm</p>
+		  </div>
+	  </div>
+  </div>
+
+  <!-- Specifications -->
+  <div class="mySF-specs">
+	  <ul>
+		  <li>
+			  <div class="mySF-text-brand mySF-start">
+				  Brand:
 			  </div>
-			  <div>
-				Manufacturer
+			  <div class="mySF-shoe-brand mySF-end">
+				  Groundies
 			  </div>
-			</li>
-			 <hr style="width:-webkit-fill-available;height:0px;border:1px solid #00000020; border-radius: 50%;margin: 5%;" />
-			<li>
-			  <div>
-				Modell:
+		  </li>
+		  <hr style="width: -webkit-fill-available;height: 0px;border: 0.55px solid #00000020;border-radius: 50%;margin: 5% 0;" />
+		  <li>
+			  <div class="mySF-text-model mySF-start">
+				  Model:
 			  </div>
-			  <div>
-				Model
+			  <div class="mySF-shoe-model mySF-end">
+				  Balance Vegan Women
 			  </div>
-			</li>
-		  </ul>
-		</div>
-	</div>
-	<select id="mySF-languageSelector">
-	<option value="en">🇺🇸 English</option>
-  	<option value="es">🇪🇸 Español</option>
-  	<option value="fr">🇫🇷 Français</option>
-  	<option value="it">🇮🇹 Italiano</option>
-  	<option value="pt">🇵🇹 Português</option>
-	<option value="de">🇩🇪 Deutsch</option>
-	<option value="pl">🇵🇱 Polski</option>
-	<option value="ru">🇷🇺 Русский</option>
-	<option value="tr">🇹🇷 Türkçe</option>
-	<option value="ar">🇸🇦 العربية</option>
-	<option value="in">🇮🇳 हिन्दी</option>
-	<option value="zh">🇨🇳 中文</option>
-	<option value="ja">🇯🇵 日本語</option>
-	<option value="ko">🇰🇷 한국어</option>
-  </select>
+		  </li>
+	  </ul>
+  </div>
+</div>
+<div id="mySF-video">
+<div id="mySF-video-overlay">
+  <video id="mySF-video-element" controls>
+  <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/intro-video-de-mp4/view?project=mysf" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+</div>
+</div>
+<select id="mySF-languageSelector">
+<option value="en">🇺🇸 English</option>
+  <option value="es">🇪🇸 Español</option>
+  <option value="fr">🇫🇷 Français</option>
+  <option value="it">🇮🇹 Italiano</option>
+  <option value="pt">🇵🇹 Português</option>
+<option value="de">🇩🇪 Deutsch</option>
+<option value="pl">🇵🇱 Polski</option>
+<option value="ru">🇷🇺 Русский</option>
+<option value="tr">🇹🇷 Türkçe</option>
+<option value="ar">🇸🇦 العربية</option>
+<option value="in">🇮🇳 हिन्दी</option>
+<option value="zh">🇨🇳 中文</option>
+<option value="ja">🇯🇵 日本語</option>
+<option value="ko">🇰🇷 한국어</option>
+</select>
   </div>
 `;
     } else {
@@ -789,7 +1023,7 @@ checkDevice();
   
 	.mySF-modal-close {
 	  color: #ff7d4f;
-	  font-size: 64px;
+	  font-size: 46px;
 	  font-weight: 300;
 	  cursor: pointer;
 	}
@@ -816,7 +1050,6 @@ checkDevice();
 	  flex-direction: column;
 	  justify-content: space-around;
 	  align-items: flex-start;
-	  width: 50%;
 	}
   
 	.mySF-modal-right-section {
@@ -1026,17 +1259,6 @@ checkDevice();
 	  left: -5px;
 	}
   
-	.mySF-circle {
-	  position: relative;
-	  background: #ff7d4f;
-	  width: fit-content;
-	  width: 160px;
-	  height: 160px;
-	  border-radius: 100%;
-	  display: block;
-	  margin: auto;
-	}
-
 	#mySF-languageSelector {
 		border: 1px solid #ccc;
 		background-color: #fff;
@@ -1068,12 +1290,135 @@ checkDevice();
 	  text-align: center;
 	}
   
-	.mySF-specs {
-	  margin: 12px;
-	  background-color: #f2f2f280;
-	  padding: 10px;
-	  border-radius: 12px;
+	#mysf_size {
+		display:none;
+		width: -webkit-fill-available;
 	}
+	
+	.mySF-circle {
+		position: relative;
+		background: #ff7d4f; /* This is a placeholder color, adjust accordingly */
+		width: 160px;
+		height: 160px;
+		border-radius: 100%;
+		display: block;
+		margin: auto;
+	}
+	
+	.mySF-shoe-size {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: #fff;
+		padding: 0;
+		margin: 0;
+		font-size: 70px;
+		width: 100%;
+		text-align: center;
+	}
+	
+	.mySF-card-row {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin: 0 16px;
+	}
+	
+	.mySF-card {
+	  margin: 10px;
+		text-align: center;
+		width: 100%;
+		height: min-content;
+		--background: transparent;
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border-radius: 16px;
+		font-size: 14px;
+		box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+	}
+	
+	.mySF-specs {
+	  margin: 0 26px;
+		--background: transparent;
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border-radius: 16px;
+		box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+	}
+	
+	.mySF-card-content {
+		padding: 0 20px; /* Adjust padding as required */
+	}
+	
+	.mySF-specs ul {
+		list-style-type: none;
+		justify-content: space-around;
+		padding: 26px 0;
+	}
+	
+	.mySF-specs li {
+		display: flex;
+		justify-content: space-around;
+		padding: 10px 0;
+	}
+	
+	.mySF-specs div {
+		width: 50%;
+		
+	}
+	
+	.mySF-start {
+	  text-align: start;
+	  margin-left: 5%;
+	}
+	
+	.mySF-end {
+	  text-align: end;
+	  margin-right: 5%;
+	}
+
+	.mySF-back-button {
+		display: none;
+		align-items: center;
+		padding: 10px 10px;
+		background-color: transparent;
+		border: none;
+		border-radius: 50px;
+		cursor: pointer;
+		transition: background-color 0.3s;
+		
+	}
+
+	.mySF-back-button:hover {
+		background-color: #e0e0e0;
+	}
+
+	.mySF-arrow {
+		display: inline-block;
+		width: 32px;
+		height: 32px;
+	}
+
+   .mySF-back-button svg {
+	   fill: #ff7d4f;
+		width: 100%;
+		height: 100%;
+	}
+
+	#mySF-video {
+		display:none;
+		width: -webkit-fill-available;
+    	justify-content: center;
+	}
+
+	#mySF-video-element {
+		
+		height: 80vh; /* 80% of the viewport height */
+		width: fit-content;
+		 object-fit: contain; /* Maintain aspect ratio */
+		 border-radius: 30px;
+	   }
   
   </style>
   
@@ -1081,14 +1426,34 @@ checkDevice();
 		document.querySelector('.mySF-modal-button-container').style.display = 'flex';
 		document.getElementById('mysf_size').style.display = 'none';
 		document.querySelector('.mySF-qr-circle').style.display = 'flex';
+		document.querySelector('.mySF-modal-left-section').style.display = 'flex';
+		document.querySelector('.mySF-modal-right-section').style.display = 'flex';
 		document.getElementById('mySF-modal-form').style.display = 'none';">
 	<div class="mySF-modal-content animate__animated animate__fadeInDown" onclick="event.stopPropagation()">
 	<div class="mySF-big-circle"></div>
 	  <div class="mySF-modal-header">
-		<img src=" https://cdn.myshoefitter.com/images/logo.png" width="150px" style="margin-left:70px">
-		<span class="mySF-modal-close" onclick="document.getElementById('mySF-modal-overlay').style.display='none';
+	<div style="display: flex;flex-direction: row;align-items: center;">		
+	<button class="mySF-back-button">
+  <span class="mySF-arrow">
+    <svg viewBox="0 0 44.952 44.952" xml:space="preserve" transform="matrix(-1, 0, 0, 1, 0, 0)">
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="SVGRepo_iconCarrier">
+        <g>
+          <path d="M44.952,22.108c0-1.25-0.478-2.424-1.362-3.308L30.627,5.831c-0.977-0.977-2.561-0.977-3.536,0 c-0.978,0.977-0.976,2.568,0,3.546l10.574,10.57H2.484C1.102,19.948,0,21.081,0,22.464c0,0.003,0,0.025,0,0.028 c0,1.382,1.102,2.523,2.484,2.523h35.182L27.094,35.579c-0.978,0.978-0.978,2.564,0,3.541c0.977,0.979,2.561,0.978,3.538-0.001 l12.958-12.97c0.885-0.882,1.362-2.059,1.362-3.309C44.952,22.717,44.952,22.231,44.952,22.108z"></path>
+        </g>
+      </g>
+    </svg>
+  </span>
+</button>
+	<img src=" https://cdn.myshoefitter.com/images/logo.png" width="150px" style="margin-left:70px">
+	
+	</div>
+	  <span class="mySF-modal-close" onclick="document.getElementById('mySF-modal-overlay').style.display='none';
 		document.querySelector('.mySF-modal-button-container').style.display = 'flex';
 		document.getElementById('mysf_size').style.display = 'none';
+		document.querySelector('.mySF-modal-left-section').style.display = 'flex';
+		document.querySelector('.mySF-modal-right-section').style.display = 'flex';
 		document.querySelector('.mySF-qr-circle').style.display = 'flex';
 		document.getElementById('mySF-modal-form').style.display = 'none';
 		">&times;</span>
@@ -1114,32 +1479,6 @@ checkDevice();
 		  </div>
 		</div>
 		<div class="mySF-modal-right-section">
-		<div id="mysf_size" style="display:none;width: -webkit-fill-available;">
-		<div class="mySF-circle">
-		  <h2 class="mySF-shoe-size">35</h2>
-		</div>
-		<div class="mySF-specs">
-			<ul>
-			  <li>
-				<div>
-				  Marke:
-				</div>
-				<div>
-				  Manufacturer
-				</div>
-			  </li>
-			   <hr style="width:-webkit-fill-available;height:0px;border:1px solid #00000020; border-radius: 50%;margin:5%" />
-			  <li>
-				<div>
-				  Modell:
-				</div>
-				<div>
-				  Model
-				</div>
-			  </li>
-			</ul>
-		  </div>
-	  </div>
 		  <div class="mySF-qr-circle">
 			<div class="mySF-qr-background">
 			  <div class="mySF-cut-border">
@@ -1165,6 +1504,77 @@ checkDevice();
 		<option value="ko">🇰🇷 한국어</option>
 	</select>
 	</div>
+	<div id="mysf_size">
+    <!-- Shoe Size Circle -->
+    <div class="mySF-circle">
+        <h2 class="mySF-shoe-size">35</h2>
+    </div>
+
+    <!-- Foot Dimensions -->
+    <div class="mySF-card-row">
+        <div class="mySF-card">
+            <div class="mySF-card-content">
+                <p class="mySF-text-length mysf-text">Length:</p>
+				<p class="mysf-text mySF-shoe-length">285 mm</p>
+            </div>
+        </div>
+        <div class="mySF-card">
+            <div class="mySF-card-content">
+				<p class="mySF-text-width mysf-text">Width:</p>
+            	<p class="text mySF-shoe-width">111 mm</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Specifications -->
+    <div class="mySF-specs">
+        <ul>
+            <li>
+                <div class="mySF-text-brand mySF-start">
+                    Brand:
+                </div>
+                <div class="mySF-shoe-brand mySF-end">
+                    Groundies
+                </div>
+            </li>
+            <hr style="width: -webkit-fill-available;height: 0px;border: 0.55px solid #00000020;border-radius: 50%;margin: 5% 0;" />
+            <li>
+                <div class="mySF-text-model mySF-start">
+                    Model:
+                </div>
+                <div class="mySF-shoe-model mySF-end">
+                    Balance Vegan Women
+                </div>
+            </li>
+        </ul>
+    </div>
+	<div style="display:flex;justify-content:center;">
+	<select id="mySF-languageSelector">
+	<option value="en">🇺🇸 English</option>
+	<option value="es">🇪🇸 Español</option>
+	<option value="fr">🇫🇷 Français</option>
+	<option value="it">🇮🇹 Italiano</option>
+	<option value="pt">🇵🇹 Português</option>
+  <option value="de">🇩🇪 Deutsch</option>
+  <option value="pl">🇵🇱 Polski</option>
+  <option value="ru">🇷🇺 Русский</option>
+  <option value="tr">🇹🇷 Türkçe</option>
+  <option value="ar">🇸🇦 العربية</option>
+  <option value="in">🇮🇳 हिन्दी</option>
+  <option value="zh">🇨🇳 中文</option>
+  <option value="ja">🇯🇵 日本語</option>
+  <option value="ko">🇰🇷 한국어</option>
+</select>
+	</div>
+</div>
+<div id="mySF-video">
+<div id="mySF-video-overlay">
+    <video id="mySF-video-element" controls>
+    <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/intro-video-de-mp4/view?project=mysf" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+</div>
   </div>
   `;
     }
@@ -1188,8 +1598,16 @@ checkDevice();
 		const sendElement = document.getElementById('mySF-submit-btn');
 		const forgotElement = document.getElementById('mySF-forgot-button');
 		const idField = document.getElementById('mySF-modal-id-form-field');
-		const emailField = document.getElementById('mySF-modal-email-form-field'); 
+		const emailField = document.getElementById('mySF-modal-email-form-field');
+		const lengthText = document.querySelector('.mySF-text-length');
+		const widthText = document.querySelector('.mySF-text-width');
+		const brandText = document.querySelector('.mySF-text-brand');
+		const modelText = document.querySelector('.mySF-text-model');
 	  
+		lengthText.textContent = translations[language].length;
+		widthText.textContent = translations[language].width;
+		brandText.textContent = translations[language].brand;
+		modelText.textContent = translations[language].model;
 		titleElement.textContent = translations[language].title;
 		continueElement.textContent = translations[language].continueButton;
 		continueToIdElement.textContent = translations[language].continueToIdButton;
@@ -1205,15 +1623,53 @@ checkDevice();
 	const initialLanguage = navigator.language.slice(0, 2);
 
 	updateLanguage(initialLanguage);
-	document.getElementById('mySF-languageSelector').value = currentLanguage;
-
-	document.getElementById('mySF-languageSelector').addEventListener('change', function() {
-		const selectedLanguage = document.getElementById('mySF-languageSelector').value;
+	document.querySelectorAll('#mySF-languageSelector')[0].value = currentLanguage;
+	if(!isMobile){
+	document.querySelectorAll('#mySF-languageSelector')[1].value = currentLanguage;
+	}
+	document.querySelectorAll('#mySF-languageSelector')[0].addEventListener('change', function() {
+		const selectedLanguage = document.querySelectorAll('#mySF-languageSelector')[0].value;
+		if(!isMobile){
+		document.querySelectorAll('#mySF-languageSelector')[1].value=document.querySelectorAll('#mySF-languageSelector')[0].value;
+		}
 		updateLanguage(selectedLanguage);
 	}); 
-
+	if(!isMobile){
+	document.querySelectorAll('#mySF-languageSelector')[1].addEventListener('change', function() {
+		const selectedLanguage = document.querySelectorAll('#mySF-languageSelector')[1].value;
+		document.querySelectorAll('#mySF-languageSelector')[0].value=document.querySelectorAll('#mySF-languageSelector')[1].value;
+		updateLanguage(selectedLanguage);
+	}); 
+	}
     document.querySelector("#continue-to-info-button").onclick = function() {
-        window.open("https://myshoefitter.com/faq", '_blank');
+		if(isMobile) {
+		document.querySelector('#mysf_mob').style.display = 'none';
+		}
+		else {
+		document.querySelector('.mySF-modal-left-section').style.display = 'none';
+		document.querySelector('.mySF-modal-right-section').style.display = 'none';
+		}
+        document.getElementById('mySF-video').style.display = "flex";
+		document.querySelector(".mySF-back-button").style.display = "inline-flex";
+    };
+
+
+	document.querySelector(".mySF-back-button").onclick = function() {
+        document.querySelector('#mysf_size').style.display = 'none';
+		document.getElementById('mySF-video').style.display = "none";
+    	document.getElementById('mySF-video-element').pause();
+		if(!isMobile){
+		document.querySelector('.mySF-modal-left-section').style.display = 'flex';
+		document.querySelector('.mySF-modal-right-section').style.display = 'flex';
+		document.querySelector(".mySF-modal-button-container").style.display = "flex";
+    	document.getElementById("mySF-modal-form").style.display = "none";
+		document.querySelector(".mySF-back-button").style.display = "none";
+		}else{
+			document.querySelector('#mysf_mob').style.display = 'block';
+			document.getElementById("mySF-input").style.display = "none";
+			document.querySelector("#mySF-video").style.display = "none";
+			document.querySelector(".mySF-back-button").style.display = "none";
+		}
     };
 
     document.querySelector("#mySF_Widget_Button").onclick = function() {
@@ -1253,11 +1709,13 @@ checkDevice();
         document.querySelector("#mySF-continue-btn").onclick = function() {
             document.getElementById("mysf_mob").style.display = "none";
             document.getElementById("mySF-input").style.display = "block";
+			document.querySelector(".mySF-back-button").style.display = "flex";
         };
     } else {
         document.querySelector("#mySF-continue-btn").onclick = function() {
             document.querySelector(".mySF-modal-button-container").style.display = "none";
             document.getElementById("mySF-modal-form").style.display = "flex";
+			document.querySelector(".mySF-back-button").style.display = "inline-flex";
         };
     }
 
@@ -1291,12 +1749,71 @@ checkDevice();
         checkDevice();
     });
 
-    function fetchCode(Code) {
-        //Appwrite code logic
-    }
+	function fetchCode(Code) {
+		// Construct the payload object
+		const payload = {
+			"model_id": product_id, // Replace with the actual value
+			"scan_code": Code // Use the Code parameter directly
+		};
+	
+		// Convert the payload to a JSON string
+		const payloadString = JSON.stringify(payload);
+	
+		// Appwrite code logic
+		let promise = functions.createExecution('64b7f975bc6fb063472b', payloadString);
+		promise.then(function (response) {
+			try {
+				const responseData = response; // Parse the response as JSON
+				const responseBody = JSON.parse(responseData.response); // Parse the nested JSON string
+	
+				if (responseBody.success && responseBody.response && responseBody.response.found) {
+					const eurValue = responseBody.response.eur;
+					const footLengthValue = responseBody.response.length;
+					const footWidthValue = responseBody.response.width;
+					const brandNameValue = responseBody.response.brand;
+					const modelNameValue = responseBody.response.model;
+
+					console.log('EUR value:', eurValue);
+					console.log('length value:', footLengthValue);
+					console.log('width value:', footWidthValue);
+					console.log('brand value:', brandNameValue);
+					console.log('model value:', modelNameValue);
+
+					document.querySelector('.mySF-shoe-size').textContent = eurValue;
+					document.querySelector('.mySF-shoe-length').textContent = Math.round(footLengthValue)+" mm";
+					document.querySelector('.mySF-shoe-width').textContent = Math.round(footWidthValue)+" mm";
+					document.querySelector('.mySF-shoe-brand').textContent = brandNameValue;
+					document.querySelector('.mySF-shoe-model').textContent = modelNameValue;
+
+					document.querySelector('#mysf_size').style.display = 'block';
+					document.querySelector(".mySF-back-button").style.display = "inline-flex";
+					if(!isMobile){
+					document.querySelector('.mySF-modal-left-section').style.display = 'none';
+					document.querySelector('.mySF-modal-right-section').style.display = 'none';
+					document.getElementById('mySF-languageSelector').value = currentLanguage;
+					}
+					else{
+						document.querySelector('#mySF-input').style.display = 'none';
+					}
+				} else {
+					console.log('EUR value not found in the response.');
+				}
+			} catch (error) {
+				console.error('Error parsing response:', error);
+			}
+		}).catch(function (error) {
+			console.log(error); // Failure
+		});
+	}
 
     function fetchEmail(Email) {
         //Appwrite Email logic
+		account.createMagicURLSession('unique()',Email,'https://app.myshoefitter.com/scans')
+		.then(response => {
+			console.log(response); // Success
+		}, error => {
+			console.log(error); // Failure
+		});
     }
 
     function draw() {
@@ -1316,9 +1833,9 @@ checkDevice();
             );
         }
     }
-
+	var product_id = 0;
     if (document.getElementById('product_id')) {
-        const product_id = document.getElementById('product_id').textContent;
+        product_id = document.getElementById('product_id').textContent;
         const shop = getSiteName();
         mySF.setvalues(product_id, shop);
     } else {
