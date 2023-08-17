@@ -7,7 +7,7 @@ const translations = {
 		title: "Scan your foot once, always order the right size.",
 		description: "Scan the QR code and start the measurement. You only need to scan your foot, which takes just a few minutes.",
 		descriptionMobile: "Click 'Measure Foot Now' and start the measurement. You only need to scan your foot, which takes just a few minutes.",
-		continueButton: "Medir pie ahora",
+		continueButton: "Measure Foot Now",
 		continueToIdButton: "Continue with Scan ID",
 		howItWorksButton: "How it works",
 		sendButton: "Submit",
