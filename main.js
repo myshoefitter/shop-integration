@@ -1018,7 +1018,7 @@ class MySF {
     <div id="mySF-video">
     <div id="mySF-video-overlay">
       <video id="mySF-video-element" controls>
-      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/intro-video-de-mp4/view?project=mysf" type="video/mp4">
+      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/intro-video-en-mp4/view?project=mysf" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     </div>
@@ -1703,7 +1703,7 @@ class MySF {
     <div id="mySF-video">
     <div id="mySF-video-overlay">
         <video id="mySF-video-element" controls>
-        <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/intro-video-de-mp4/view?project=mysf" type="video/mp4">
+        <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/intro-video-en-mp4/view?project=mysf" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
