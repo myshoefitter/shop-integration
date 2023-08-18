@@ -1123,6 +1123,7 @@ class MySF {
       
         .mySF-modal-left-section {
           display: flex;
+		  max-width:50%;
           flex-direction: column;
           justify-content: space-around;
           align-items: flex-start;
@@ -1537,7 +1538,7 @@ class MySF {
           <div class="mySF-modal-inner-content">
             <div class="mySF-modal-left-section">
             <h3 id="mySF-title">Einmal deinen Fuß scannen,<br>immer die richtige Größe bestellen.</h3>
-        <p id="mySF-description"><b>Scanne den QR-Code</b> und starte mit der Messung. Du musst nur einen Scan von deinem Fuß machen, was nur wenige Minuten dauert.</p>
+        <p style="margin-top:0" id="mySF-description"><b>Scanne den QR-Code</b> und starte mit der Messung. Du musst nur einen Scan von deinem Fuß machen, was nur wenige Minuten dauert.</p>
             <div class="mySF-modal-button-container"> 
                 <button class="mySF-modal-continue-button" id="continue-to-info-button">So funktioniert's</button>
                 <button id="mySF-continue-btn" class="mySF-modal-continue-to-id-button">Mit Scan-ID fortfahren</button>
