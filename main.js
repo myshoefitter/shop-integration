@@ -952,6 +952,7 @@ class MySF {
               width: fit-content;
                object-fit: contain; /* Maintain aspect ratio */
                border-radius: 30px;
+               overflow: hidden;
              }
               .mySF-video-de {
             position:relative;
@@ -959,6 +960,7 @@ class MySF {
               width: fit-content;
                object-fit: contain; /* Maintain aspect ratio */
                border-radius: 30px;
+               overflow: hidden;
              }
 
              #mySF-title {
