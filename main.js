@@ -942,7 +942,14 @@ class MySF {
               justify-content: center;
           }
       
-          #mySF-video-element {
+          .mySF-video-en {
+            position:relative;
+              height: 80vh; /* 80% of the viewport height */
+              width: fit-content;
+               object-fit: contain; /* Maintain aspect ratio */
+               border-radius: 30px;
+             }
+              .mySF-video-de {
             position:relative;
               height: 80vh; /* 80% of the viewport height */
               width: fit-content;
@@ -962,9 +969,11 @@ class MySF {
       
       <div id="mySF-modal-overlay" class="mySF-modal-overlay" onclick="document.getElementById('mySF-modal-overlay').style.display='none';
       document.getElementById('mysf_mob').style.display = 'block';
-      document.querySelector(".mySF-back-button").style.visibility = "hidden";
+      document.querySelector('.mySF-back-button').style.visibility = 'hidden';
       document.getElementById('mysf_size').style.display = 'none';
       document.getElementById('mySF-video').style.display = 'none';
+      document.querySelector('.mySF-video-en').pause();
+      document.querySelector('.mySF-video-de').pause();
       document.getElementById('mySF-input').style.display = 'none'";>
         <div class="mySF-modal-content animate__animated animate__fadeInDown" onclick="event.stopPropagation()">
           <div class="mySF-big-circle"></div>
@@ -990,8 +999,10 @@ class MySF {
           </div>
             <span class="mySF-modal-close" onclick="document.getElementById('mySF-modal-overlay').style.display='none';
              document.getElementById('mysf_mob').style.display = 'block';
-             document.querySelector(".mySF-back-button").style.visibility = "hidden";
+             document.querySelector('.mySF-back-button').style.visibility = 'hidden';
              document.getElementById('mySF-video').style.display = 'none';
+             document.querySelector('.mySF-video-en').pause();
+             document.querySelector('.mySF-video-de').pause();
              document.getElementById('mysf_size').style.display = 'none';
              document.getElementById('mySF-input').style.display = 'none';
             ">&times;</span>
@@ -1067,9 +1078,14 @@ class MySF {
     </div>
     <div id="mySF-video">
     <div id="mySF-video-overlay">
-      <video id="mySF-video-element" controls>
-      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-${vidlang}-webm/view?project=mysf" type="video/webm">
-      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-${vidlang}-mp4/view?project=mysf" type="video/mp4">
+      <video class="mySF-video-en" controls>
+      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-webm/view?project=mysf" type="video/webm">
+      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-mp4/view?project=mysf" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <video class="mySF-video-de" controls>
+      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-de-webm/view?project=mysf" type="video/webm">
+      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-de-mp4/view?project=mysf" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     </div>
@@ -1631,8 +1647,14 @@ class MySF {
             justify-content: center;
         }
     
-        #mySF-video-element {
-            
+        .mySF-video-en{
+          height: 80vh; /* 80% of the viewport height */
+          width: fit-content;
+           object-fit: contain; /* Maintain aspect ratio */
+           border-radius: 30px;
+         }
+         
+         .mySF-video-de{
             height: 80vh; /* 80% of the viewport height */
             width: fit-content;
              object-fit: contain; /* Maintain aspect ratio */
@@ -1653,7 +1675,9 @@ class MySF {
             document.querySelector('.mySF-modal-button-container').style.display = 'flex';
             document.getElementById('mysf_size').style.display = 'none';
             document.getElementById('mySF-video').style.display = 'none';
-            document.querySelector(".mySF-back-button").style.visibility = "hidden";
+            document.querySelector('.mySF-video-en').pause();
+            document.querySelector('.mySF-video-de').pause();
+            document.querySelector('.mySF-back-button').style.visibility = 'hidden';
             document.querySelector('.mySF-qr-circle').style.display = 'flex';
             document.querySelector('.mySF-modal-left-section').style.display = 'flex';
             document.querySelector('.mySF-modal-right-section').style.display = 'flex';
@@ -1682,7 +1706,9 @@ class MySF {
             document.querySelector('.mySF-modal-button-container').style.display = 'flex';
             document.getElementById('mysf_size').style.display = 'none';
             document.getElementById('mySF-video').style.display = 'none';
-            document.querySelector(".mySF-back-button").style.visibility = "hidden";
+            document.querySelector('.mySF-video-en').pause();
+            document.querySelector('.mySF-video-de').pause();
+            document.querySelector('.mySF-back-button').style.visibility = 'hidden';
             document.querySelector('.mySF-modal-left-section').style.display = 'flex';
             document.querySelector('.mySF-modal-right-section').style.display = 'flex';
             document.querySelector('.mySF-qr-circle').style.display = 'flex';
@@ -1800,12 +1826,12 @@ class MySF {
     </div>
     <div id="mySF-video">
     <div id="mySF-video-overlay">
-        <video id="mySF-video-element" class="mySF-video-en" controls>
+        <video class="mySF-video-en" controls>
         <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-webm/view?project=mysf" type="video/webm">
         <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-mp4/view?project=mysf" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <video id="mySF-video-element" class="mySF-video-de" controls style="display:none">
+      <video class="mySF-video-de" controls style="display:none">
       <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-de-webm/view?project=mysf" type="video/webm">
       <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-de-mp4/view?project=mysf" type="video/mp4">
       Your browser does not support the video tag.
@@ -1872,7 +1898,8 @@ class MySF {
     document.querySelector(".mySF-back-button").onclick = function() {
       document.querySelector('#mysf_size').style.display = 'none';
       document.getElementById('mySF-video').style.display = "none";
-      document.getElementById('mySF-video-element').pause();
+      document.querySelector('.mySF-video-en').pause();
+      document.querySelector('.mySF-video-de').pause();
       if (!self.isMobile) {
         document.querySelector('.mySF-modal-left-section').style.display = 'flex';
         document.querySelector('.mySF-modal-right-section').style.display = 'flex';
