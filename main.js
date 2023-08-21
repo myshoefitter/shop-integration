@@ -412,12 +412,15 @@ class MySF {
           }
         } else {
           console.log('EUR value not found in the response.');
+          alert('Fitting size not found for this shoe model');
         }
       } catch (error) {
         console.error('Error parsing response:', error);
+        alert('Scan-ID does not exist');
       }
     }).catch(function(error) {
       console.log(error); // Failure
+      alert('Runtime error');
     });
   }
 
@@ -426,8 +429,10 @@ class MySF {
     this.account.createMagicURLSession('unique()', Email, 'https://app.myshoefitter.com/scans')
       .then(response => {
         console.log(response); // Success
+        alert('Email sent');
       }, error => {
         console.log(error); // Failure
+        alert('Email does not exist');
       });
   }
 
@@ -889,12 +894,12 @@ class MySF {
       
           .mySF-shoe-length {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
+            font-weight: 300;
           }
       
           .mySF-shoe-width {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
+            font-weight: 300;
           }
       
           .mySF-back-button {
@@ -905,8 +910,7 @@ class MySF {
               border: none;
               border-radius: 50px;
               cursor: pointer;
-              transition: background-color 0.3s;
-              
+              transition: background-color 0.3s;  
           }
       
           .mySF-back-button:hover {
@@ -925,6 +929,13 @@ class MySF {
               height: 100%;
           }
       
+          /* Target iOS Safari */
+          @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+            .mySF-back-button svg {
+              transform: scaleX(-1);
+            }
+          }
+
           #mySF-video {
               display:none;
               width: -webkit-fill-available;
@@ -1052,6 +1063,7 @@ class MySF {
     <div id="mySF-video">
     <div id="mySF-video-overlay">
       <video id="mySF-video-element" controls>
+      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-webm/view?project=mysf" type="video/webm">
       <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-mp4/view?project=mysf" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -1571,12 +1583,12 @@ class MySF {
 
 		.mySF-shoe-length {
 			font-family: 'Montserrat', sans-serif;
-			font-weight: 600;
+			font-weight: 300;
 		}
 
 		.mySF-shoe-width {
 			font-family: 'Montserrat', sans-serif;
-			font-weight: 600;
+			font-weight: 300;
 		}
 
         .mySF-back-button {
@@ -1779,6 +1791,7 @@ class MySF {
     <div id="mySF-video">
     <div id="mySF-video-overlay">
         <video id="mySF-video-element" controls>
+        <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-webm/view?project=mysf" type="video/webm">
         <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-mp4/view?project=mysf" type="video/mp4">
         Your browser does not support the video tag.
       </video>
