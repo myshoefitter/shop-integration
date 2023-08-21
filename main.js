@@ -787,6 +787,7 @@ class MySF {
           #mysf_size {
               display:none;
               width: -webkit-fill-available;
+              font-family: 'Montserrat', sans-serif;
           }
           
           .mySF-circle {
@@ -863,13 +864,37 @@ class MySF {
           }
           
           .mySF-start {
-            text-align: start;
-            margin-left: 5%;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+                text-align: start;
+                margin-left: 5%;
+              }
+              
+              .mySF-end {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+                text-align: end;
+                margin-right: 5%;
+              }
+      
+          .mySF-text-length {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
           }
-          
-          .mySF-end {
-            text-align: end;
-            margin-right: 5%;
+      
+          .mySF-text-width {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+          }
+      
+          .mySF-shoe-length {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+          }
+      
+          .mySF-shoe-width {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
           }
       
           .mySF-back-button {
@@ -913,6 +938,14 @@ class MySF {
                object-fit: contain; /* Maintain aspect ratio */
                border-radius: 30px;
              }
+
+             #mySF-title {
+              font-size: 20px;
+              font-weight: bold;
+            }
+            #mySF-description  {
+              font-weight: normal;
+            }
       </style>
       
       <div id="mySF-modal-overlay" class="mySF-modal-overlay" onclick="document.getElementById('mySF-modal-overlay').style.display='none';
@@ -1018,7 +1051,7 @@ class MySF {
     <div id="mySF-video">
     <div id="mySF-video-overlay">
       <video id="mySF-video-element" controls>
-      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/intro-video-en-mp4/view?project=mysf" type="video/mp4">
+      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-mp4/view?project=mysf" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     </div>
@@ -1135,6 +1168,7 @@ class MySF {
           align-items: center;
           min-width: 900px;
           width: 950px;
+		  min-height:350px;
           max-width:1200px;
           overflow: hidden;
           background-color: white;
@@ -1202,6 +1236,7 @@ class MySF {
           padding: 10px 20px;
           font-family: 'Montserrat', sans-serif;
           font-size: 12px;
+		  font-weight:600;
           color: #ffffff;
           border-radius: 20px;
           border: 1px solid #ff7d4f;
@@ -1221,6 +1256,7 @@ class MySF {
           padding: 10px 20px;
           font-family: 'Montserrat', sans-serif;
           font-size: 12px;
+		  font-weight:600;
           color: #ff7d4f;
           border-radius: 20px;
           border: 1px solid #ff7d4f;
@@ -1256,12 +1292,15 @@ class MySF {
         .mySF-modal-input {
           border: none;
           width: -webkit-fill-available;
+		  height: min-content;
           padding-top: 10px;
           padding-bottom: 10px;
           padding-left: 16px;
           border-radius: 20px;
           background-color: transparent;
           font-family: inherit;
+		  font-weight:600;
+		  font-size: 14px;
         }
       
         .mySF-modal-input:focus {
@@ -1288,6 +1327,7 @@ class MySF {
         .mySF-submit-btn {
           background-color: #ff7d4f;
           font-size: 14px;
+		  font-weight:600;
           color: #ffffff;
           border-radius: 20px;
           border: 1px solid #ff7d4f;
@@ -1402,7 +1442,8 @@ class MySF {
             min-height: 30px;
             padding: 0 15px;
             margin-right: 10px;
-            font-size: 1.2em;
+            font-size: 14px;
+			font-weight: 600;
           }
           
         #mySF-languageSelector option {
@@ -1425,6 +1466,7 @@ class MySF {
       
         #mysf_size {
             display:none;
+			font-family: 'Montserrat', sans-serif;
             width: -webkit-fill-available;
         }
         
@@ -1446,6 +1488,7 @@ class MySF {
             color: #fff;
             padding: 0;
             margin: 0;
+			font-family: 'Montserrat', sans-serif;
             font-size: 70px;
             width: 100%;
             text-align: center;
@@ -1502,15 +1545,39 @@ class MySF {
         }
         
         .mySF-start {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 400;
           text-align: start;
           margin-left: 5%;
         }
         
         .mySF-end {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 600;
           text-align: end;
           margin-right: 5%;
         }
-    
+
+		.mySF-text-length {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 400;
+		}
+
+		.mySF-text-width {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 400;
+		}
+
+		.mySF-shoe-length {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 600;
+		}
+
+		.mySF-shoe-width {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 600;
+		}
+
         .mySF-back-button {
             display: none;
             align-items: center;
@@ -1552,6 +1619,14 @@ class MySF {
              object-fit: contain; /* Maintain aspect ratio */
              border-radius: 30px;
            }
+
+        #mySF-title {
+          font-size: 20px;
+          font-weight: bold;
+        }
+        #mySF-description  {
+          font-weight: normal;
+        }
       
       </style>
       
@@ -1594,7 +1669,7 @@ class MySF {
           <div class="mySF-modal-inner-content">
             <div class="mySF-modal-left-section">
             <h3 id="mySF-title">Einmal deinen Fuß scannen,<br>immer die richtige Größe bestellen.</h3>
-        <p style="margin-top:0" id="mySF-description"><b>Scanne den QR-Code</b> und starte mit der Messung. Du musst nur einen Scan von deinem Fuß machen, was nur wenige Minuten dauert.</p>
+        <p style="margin-top:0;font-weight:500" id="mySF-description"><b>Scanne den QR-Code</b> und starte mit der Messung. Du musst nur einen Scan von deinem Fuß machen, was nur wenige Minuten dauert.</p>
             <div class="mySF-modal-button-container"> 
                 <button class="mySF-modal-continue-button" id="continue-to-info-button">So funktioniert's</button>
                 <button id="mySF-continue-btn" class="mySF-modal-continue-to-id-button">Mit Scan-ID fortfahren</button>
@@ -1703,7 +1778,7 @@ class MySF {
     <div id="mySF-video">
     <div id="mySF-video-overlay">
         <video id="mySF-video-element" controls>
-        <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/intro-video-en-mp4/view?project=mysf" type="video/mp4">
+        <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-mp4/view?project=mysf" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
