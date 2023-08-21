@@ -582,7 +582,7 @@ class MySF {
       
         .mySF-modal-close {
           color: #ff7d4f;
-          font-size: 64px;
+          font-size: 46px;
           font-weight: 300;
           cursor: pointer;
         }
@@ -943,8 +943,9 @@ class MySF {
               font-size: 20px;
               font-weight: bold;
             }
-            #mySF-description  {
+            #mySF-description-mobile {
               font-weight: normal;
+              margin: 12px 0 12px 0px;
             }
       </style>
       
