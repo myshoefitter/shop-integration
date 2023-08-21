@@ -884,21 +884,25 @@ class MySF {
           .mySF-text-length {
             font-family: 'Montserrat', sans-serif;
             font-weight: 400;
+            margin: 10px;
           }
       
           .mySF-text-width {
             font-family: 'Montserrat', sans-serif;
             font-weight: 400;
+            margin: 10px;
           }
       
           .mySF-shoe-length {
             font-family: 'Montserrat', sans-serif;
             font-weight: 300;
+            margin: 10px;
           }
       
           .mySF-shoe-width {
             font-family: 'Montserrat', sans-serif;
             font-weight: 300;
+            margin: 10px;
           }
       
           .mySF-back-button {
@@ -1595,21 +1599,25 @@ class MySF {
 		.mySF-text-length {
 			font-family: 'Montserrat', sans-serif;
 			font-weight: 400;
+      margin: 10px;
 		}
 
 		.mySF-text-width {
 			font-family: 'Montserrat', sans-serif;
 			font-weight: 400;
+      margin: 10px;
 		}
 
 		.mySF-shoe-length {
 			font-family: 'Montserrat', sans-serif;
 			font-weight: 300;
+      margin: 10px;
 		}
 
 		.mySF-shoe-width {
 			font-family: 'Montserrat', sans-serif;
 			font-weight: 300;
+      margin: 10px;
 		}
 
         .mySF-back-button {
