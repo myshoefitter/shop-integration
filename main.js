@@ -963,6 +963,7 @@ class MySF {
       <div id="mySF-modal-overlay" class="mySF-modal-overlay" onclick="document.getElementById('mySF-modal-overlay').style.display='none';
       document.getElementById('mysf_mob').style.display = 'block';
       document.getElementById('mysf_size').style.display = 'none';
+      document.getElementById('mySF-video').style.display = 'none';
       document.getElementById('mySF-input').style.display = 'none'";>
         <div class="mySF-modal-content animate__animated animate__fadeInDown" onclick="event.stopPropagation()">
           <div class="mySF-big-circle"></div>
@@ -987,6 +988,7 @@ class MySF {
           </div>
             <span class="mySF-modal-close" onclick="document.getElementById('mySF-modal-overlay').style.display='none';
              document.getElementById('mysf_mob').style.display = 'block';
+             document.getElementById('mySF-video').style.display = 'none';
              document.getElementById('mysf_size').style.display = 'none';
              document.getElementById('mySF-input').style.display = 'none';
             ">&times;</span>
@@ -1646,6 +1648,7 @@ class MySF {
       <div id="mySF-modal-overlay" class="mySF-modal-overlay" onclick="document.getElementById('mySF-modal-overlay').style.display='none';
             document.querySelector('.mySF-modal-button-container').style.display = 'flex';
             document.getElementById('mysf_size').style.display = 'none';
+            document.getElementById('mySF-video').style.display = 'none';
             document.querySelector('.mySF-qr-circle').style.display = 'flex';
             document.querySelector('.mySF-modal-left-section').style.display = 'flex';
             document.querySelector('.mySF-modal-right-section').style.display = 'flex';
@@ -1673,6 +1676,7 @@ class MySF {
           <span class="mySF-modal-close" onclick="document.getElementById('mySF-modal-overlay').style.display='none';
             document.querySelector('.mySF-modal-button-container').style.display = 'flex';
             document.getElementById('mysf_size').style.display = 'none';
+            document.getElementById('mySF-video').style.display = 'none';
             document.querySelector('.mySF-modal-left-section').style.display = 'flex';
             document.querySelector('.mySF-modal-right-section').style.display = 'flex';
             document.querySelector('.mySF-qr-circle').style.display = 'flex';
