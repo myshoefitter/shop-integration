@@ -255,7 +255,7 @@ class MySF {
 	this.functions = new Functions(this.client);
 
     this.isMobile = false;
-	this.back = false;
+	  this.back = false;
     this.sentMail = false;
     this.device;
 
@@ -266,7 +266,7 @@ class MySF {
     this.url;
     this.hostURL = window.location.protocol + "//" + window.location.host;
     this.uuid = nanoid(32);
-	this.product_id;
+	  this.product_id;
 
     this.currentLanguage = navigator.language.slice(0, 2);
 
@@ -463,7 +463,6 @@ class MySF {
 
   runScript() {
 	const self = this; // Store the reference to the class instance
-
     var mySFModal = document.createElement("div");
     document.body.appendChild(mySFModal);
     mySFModal.id = "mySF-modal-overlay";
@@ -903,7 +902,8 @@ class MySF {
           }
       
           .mySF-back-button {
-              display: none;
+              display: flex;
+              visibility:hidden;
               align-items: center;
               padding: 10px 10px;
               background-color: transparent;
@@ -919,8 +919,8 @@ class MySF {
       
           .mySF-arrow {
               display: inline-block;
-              width: 32px;
-              height: 32px;
+              width: 24px;
+              height: 24px;
           }
       
          .mySF-back-button svg {
@@ -962,6 +962,7 @@ class MySF {
       
       <div id="mySF-modal-overlay" class="mySF-modal-overlay" onclick="document.getElementById('mySF-modal-overlay').style.display='none';
       document.getElementById('mysf_mob').style.display = 'block';
+      document.querySelector(".mySF-back-button").style.visibility = "hidden";
       document.getElementById('mysf_size').style.display = 'none';
       document.getElementById('mySF-video').style.display = 'none';
       document.getElementById('mySF-input').style.display = 'none'";>
@@ -983,11 +984,13 @@ class MySF {
           </svg>
         </span>
       </button>
+      </div>
+      <div>
           <img src=" https://cdn.myshoefitter.com/images/logo.png" width="150px">
-          
           </div>
             <span class="mySF-modal-close" onclick="document.getElementById('mySF-modal-overlay').style.display='none';
              document.getElementById('mysf_mob').style.display = 'block';
+             document.querySelector(".mySF-back-button").style.visibility = "hidden";
              document.getElementById('mySF-video').style.display = 'none';
              document.getElementById('mysf_size').style.display = 'none';
              document.getElementById('mySF-input').style.display = 'none';
@@ -1065,8 +1068,8 @@ class MySF {
     <div id="mySF-video">
     <div id="mySF-video-overlay">
       <video id="mySF-video-element" controls>
-      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-webm/view?project=mysf" type="video/webm">
-      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-mp4/view?project=mysf" type="video/mp4">
+      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-${vidlang}-webm/view?project=mysf" type="video/webm">
+      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-${vidlang}-mp4/view?project=mysf" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     </div>
@@ -1594,7 +1597,8 @@ class MySF {
 		}
 
         .mySF-back-button {
-            display: none;
+            display: flex;
+            visibility: hidden;
             align-items: center;
             padding: 10px 10px;
             background-color: transparent;
@@ -1611,8 +1615,8 @@ class MySF {
     
         .mySF-arrow {
             display: inline-block;
-            width: 32px;
-            height: 32px;
+            width: 24px;
+            height: 24px;
         }
     
        .mySF-back-button svg {
@@ -1649,6 +1653,7 @@ class MySF {
             document.querySelector('.mySF-modal-button-container').style.display = 'flex';
             document.getElementById('mysf_size').style.display = 'none';
             document.getElementById('mySF-video').style.display = 'none';
+            document.querySelector(".mySF-back-button").style.visibility = "hidden";
             document.querySelector('.mySF-qr-circle').style.display = 'flex';
             document.querySelector('.mySF-modal-left-section').style.display = 'flex';
             document.querySelector('.mySF-modal-right-section').style.display = 'flex';
@@ -1670,13 +1675,14 @@ class MySF {
         </svg>
       </span>
     </button>
-        <img src=" https://cdn.myshoefitter.com/images/logo.png" width="150px" style="margin-left:70px">
+        <img src=" https://cdn.myshoefitter.com/images/logo.png" width="150px" style="margin-left:26px">
         
         </div>
           <span class="mySF-modal-close" onclick="document.getElementById('mySF-modal-overlay').style.display='none';
             document.querySelector('.mySF-modal-button-container').style.display = 'flex';
             document.getElementById('mysf_size').style.display = 'none';
             document.getElementById('mySF-video').style.display = 'none';
+            document.querySelector(".mySF-back-button").style.visibility = "hidden";
             document.querySelector('.mySF-modal-left-section').style.display = 'flex';
             document.querySelector('.mySF-modal-right-section').style.display = 'flex';
             document.querySelector('.mySF-qr-circle').style.display = 'flex';
@@ -1794,15 +1800,28 @@ class MySF {
     </div>
     <div id="mySF-video">
     <div id="mySF-video-overlay">
-        <video id="mySF-video-element" controls>
+        <video id="mySF-video-element" class="mySF-video-en" controls>
         <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-webm/view?project=mysf" type="video/webm">
         <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-mp4/view?project=mysf" type="video/mp4">
         Your browser does not support the video tag.
       </video>
+      <video id="mySF-video-element" class="mySF-video-de" controls style="display:none">
+      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-de-webm/view?project=mysf" type="video/webm">
+      <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-de-mp4/view?project=mysf" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
     </div>
     </div>
       </div>
             `;
+    }
+
+    if(self.currentLanguage === 'de') {
+      document.querySelector('.mySF-video-de').style.display = 'block';
+      document.querySelector('.mySF-video-en').style.display = 'none';
+    } else {
+      document.querySelector('.mySF-video-de').style.display = 'none';
+      document.querySelector('.mySF-video-en').style.display = 'block';
     }
 
     document.querySelectorAll('#mySF-languageSelector')[0].value = self.currentLanguage;
@@ -1812,6 +1831,13 @@ class MySF {
     }
     document.querySelectorAll('#mySF-languageSelector')[0].addEventListener('change', function() {
       const selectedLanguage = document.querySelectorAll('#mySF-languageSelector')[0].value;
+      if(selectedLanguage === 'de') {
+        document.querySelector('.mySF-video-de').style.display = 'block';
+        document.querySelector('.mySF-video-en').style.display = 'none';
+      } else {
+        document.querySelector('.mySF-video-de').style.display = 'none';
+        document.querySelector('.mySF-video-en').style.display = 'block';
+      }
       if (!self.isMobile) {
         document.querySelectorAll('#mySF-languageSelector')[1].value = document.querySelectorAll('#mySF-languageSelector')[0].value;
       }
@@ -1821,6 +1847,13 @@ class MySF {
       document.querySelectorAll('#mySF-languageSelector')[1].addEventListener('change', function() {
         const selectedLanguage = document.querySelectorAll('#mySF-languageSelector')[1].value;
         document.querySelectorAll('#mySF-languageSelector')[0].value = document.querySelectorAll('#mySF-languageSelector')[1].value;
+        if(selectedLanguage === 'de') {
+          document.querySelector('.mySF-video-de').style.display = 'block';
+          document.querySelector('.mySF-video-en').style.display = 'none';
+        } else {
+          document.querySelector('.mySF-video-de').style.display = 'none';
+          document.querySelector('.mySF-video-en').style.display = 'block';
+        }
         self.updateLanguage(selectedLanguage);
       });
     }
@@ -1832,7 +1865,7 @@ class MySF {
         document.querySelector('.mySF-modal-right-section').style.display = 'none';
       }
       document.getElementById('mySF-video').style.display = "flex";
-      document.querySelector(".mySF-back-button").style.display = "inline-flex";
+      document.querySelector(".mySF-back-button").style.visibility = "visible";
     };
 
 
@@ -1845,12 +1878,12 @@ class MySF {
         document.querySelector('.mySF-modal-right-section').style.display = 'flex';
         document.querySelector(".mySF-modal-button-container").style.display = "flex";
         document.getElementById("mySF-modal-form").style.display = "none";
-        document.querySelector(".mySF-back-button").style.display = "none";
+        document.querySelector(".mySF-back-button").style.visibility = "hidden";
       } else {
         document.querySelector('#mysf_mob').style.display = 'block';
         document.getElementById("mySF-input").style.display = "none";
         document.querySelector("#mySF-video").style.display = "none";
-        document.querySelector(".mySF-back-button").style.display = "none";
+        document.querySelector(".mySF-back-button").style.visibility = "hidden";
       }
     };
 
@@ -1891,13 +1924,13 @@ class MySF {
       document.querySelector("#mySF-continue-btn").onclick = function() {
         document.getElementById("mysf_mob").style.display = "none";
         document.getElementById("mySF-input").style.display = "block";
-        document.querySelector(".mySF-back-button").style.display = "flex";
+        document.querySelector(".mySF-back-button").style.visibility = "visible";
       };
     } else {
       document.querySelector("#mySF-continue-btn").onclick = function() {
         document.querySelector(".mySF-modal-button-container").style.display = "none";
         document.getElementById("mySF-modal-form").style.display = "flex";
-        document.querySelector(".mySF-back-button").style.display = "inline-flex";
+        document.querySelector(".mySF-back-button").style.visibility = "visible";
       };
     }
 
