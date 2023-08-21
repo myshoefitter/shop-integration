@@ -953,6 +953,8 @@ class MySF {
                object-fit: contain; /* Maintain aspect ratio */
                border-radius: 30px;
                overflow: hidden;
+               background-image: url('https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-img-en/view?project=mysf');
+               background-size: cover;
              }
               .mySF-video-de {
             position:relative;
@@ -961,6 +963,8 @@ class MySF {
                object-fit: contain; /* Maintain aspect ratio */
                border-radius: 30px;
                overflow: hidden;
+               background-image: url('https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-img-de/view?project=mysf');
+               background-size: cover;
              }
 
              #mySF-title {
@@ -1084,12 +1088,12 @@ class MySF {
     </div>
     <div id="mySF-video">
     <div id="mySF-video-overlay">
-      <video class="mySF-video-en" poster="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-img-en/view?project=mysf" controls>
+      <video class="mySF-video-en" controls>
       <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-webm/view?project=mysf" type="video/webm">
       <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-mp4/view?project=mysf" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <video class="mySF-video-de" poster="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-img-de/view?project=mysf" controls>
+    <video class="mySF-video-de" controls>
       <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-de-webm/view?project=mysf" type="video/webm">
       <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-de-mp4/view?project=mysf" type="video/mp4">
       Your browser does not support the video tag.
