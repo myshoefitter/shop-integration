@@ -33,6 +33,8 @@ const translations = {
     errorNoFit:"",
     errorTooSmall:"",
     errorTooLarge:"",
+    errorTooWide:"",
+    errorTooNarrow:"",
   },
   es: {
     title: "Escanea tu pie una vez, siempre pide el tamaño correcto.",
@@ -58,6 +60,8 @@ const translations = {
     errorNoFit:"",
     errorTooSmall:"",
     errorTooLarge:"",
+    errorTooWide:"",
+    errorTooNarrow:"",
   },
   it: {
     title: "Scansiona il tuo piede una volta, ordina sempre la taglia giusta.",
@@ -83,6 +87,8 @@ const translations = {
     errorNoFit:"",
     errorTooSmall:"",
     errorTooLarge:"",
+    errorTooWide:"",
+    errorTooNarrow:"",
   },
   pt: {
     title: "Digitalize seu pé uma vez, sempre peça o tamanho correto.",
@@ -108,6 +114,8 @@ const translations = {
     errorNoFit:"",
     errorTooSmall:"",
     errorTooLarge:"",
+    errorTooWide:"",
+    errorTooNarrow:"",
   },
   fr: {
     title: "Numérisez votre pied une fois, commandez toujours la bonne taille.",
@@ -133,6 +141,8 @@ const translations = {
     errorNoFit:"",
     errorTooSmall:"",
     errorTooLarge:"",
+    errorTooWide:"",
+    errorTooNarrow:"",
   },
   de: {
     title: "Einmal deinen Fuß scannen, immer die richtige Größe bestellen.",
@@ -158,6 +168,8 @@ const translations = {
     errorNoFit:"",
     errorTooSmall:"",
     errorTooLarge:"",
+    errorTooWide:"",
+    errorTooNarrow:"",
   },
   pl: {
     title: "Zeskanuj swój stopę raz, zawsze zamawiaj odpowiedni rozmiar.",
@@ -183,6 +195,8 @@ const translations = {
     errorNoFit:"",
     errorTooSmall:"",
     errorTooLarge:"",
+    errorTooWide:"",
+    errorTooNarrow:"",
   },
   ru: {
     title: "Сканируйте вашу ногу один раз, всегда заказывайте правильный размер.",
@@ -208,6 +222,8 @@ const translations = {
     errorNoFit:"",
     errorTooSmall:"",
     errorTooLarge:"",
+    errorTooWide:"",
+    errorTooNarrow:"",
   },
   tr: {
     title: "Ayaklarınızı bir kez tarayın, her zaman doğru bedeni sipariş edin.",
@@ -233,6 +249,8 @@ const translations = {
     errorNoFit:"",
     errorTooSmall:"",
     errorTooLarge:"",
+    errorTooWide:"",
+    errorTooNarrow:"",
   },
   ar: {
     title: "امسح قدمك مرة واحدة ، واطلب دائمًا الحجم الصحيح.",
@@ -258,6 +276,8 @@ const translations = {
     errorNoFit:"",
     errorTooSmall:"",
     errorTooLarge:"",
+    errorTooWide:"",
+    errorTooNarrow:"",
   },
   in: {
     title: "एक बार अपने पैरों को स्कैन करें, हमेशा सही साइज़ का ऑर्डर दें।",
@@ -283,6 +303,8 @@ const translations = {
     errorNoFit:"",
     errorTooSmall:"",
     errorTooLarge:"",
+    errorTooWide:"",
+    errorTooNarrow:"",
   },
   zh: {
     title: "一次扫描您的脚，永远订购正确尺寸。",
@@ -308,6 +330,8 @@ const translations = {
     errorNoFit:"",
     errorTooSmall:"",
     errorTooLarge:"",
+    errorTooWide:"",
+    errorTooNarrow:"",
   },
   ja: {
     title: "足を一度スキャンするだけで、常に正しいサイズを注文します。",
@@ -333,6 +357,8 @@ const translations = {
     errorNoFit:"",
     errorTooSmall:"",
     errorTooLarge:"",
+    errorTooWide:"",
+    errorTooNarrow:"",
   },
   ko: {
     title: "한 번 발을 스캔하면 항상 올바른 사이즈를 주문합니다.",
@@ -358,6 +384,8 @@ const translations = {
     errorNoFit:"",
     errorTooSmall:"",
     errorTooLarge:"",
+    errorTooWide:"",
+    errorTooNarrow:"",
   },
 }
 
@@ -568,6 +596,53 @@ class MySF {
               document.querySelector(".mySF-back-button").style.visibility = "visible";
               document.querySelector(".mySF-error-text").textContent = "Dein Fuß passt leider in die aktuell vorhandenen Größen nicht";
               }
+
+              if(responseBody.exitStatus === "WARN: FOOT TOO SMALL") {
+                if (!self.isMobile) {        
+                  document.querySelector('.mySF-modal-right-section').style.display = 'none';
+                } else {
+                  document.getElementById("mySF-input").style.display = "none";
+                }
+                document.querySelector('.mySF-success').style.display = "none";
+                document.querySelector('.mySF-error').style.display = "flex";
+                document.querySelector(".mySF-back-button").style.visibility = "visible";
+                document.querySelector(".mySF-error-text").textContent = "Dein Fuß ist leider zu klein";
+                }
+                
+                if(responseBody.exitStatus === "WARN: FOOT TOO LARGE") {
+                  if (!self.isMobile) {        
+                    document.querySelector('.mySF-modal-right-section').style.display = 'none';
+                  } else {
+                    document.getElementById("mySF-input").style.display = "none";
+                  }
+                  document.querySelector('.mySF-success').style.display = "none";
+                  document.querySelector('.mySF-error').style.display = "flex";
+                  document.querySelector(".mySF-back-button").style.visibility = "visible";
+                  document.querySelector(".mySF-error-text").textContent = "Dein Fuß ist leider zu groß";
+                  }
+                  if(responseBody.exitStatus === "WARN: FOOT TOO WIDE") {
+                    if (!self.isMobile) {        
+                      document.querySelector('.mySF-modal-right-section').style.display = 'none';
+                    } else {
+                      document.getElementById("mySF-input").style.display = "none";
+                    }
+                    document.querySelector('.mySF-success').style.display = "none";
+                    document.querySelector('.mySF-error').style.display = "flex";
+                    document.querySelector(".mySF-back-button").style.visibility = "visible";
+                    document.querySelector(".mySF-error-text").textContent = "Dein Fuß ist leider zu Breit";
+                    }
+                    
+                    if(responseBody.exitStatus === "WARN: FOOT TOO NARROW") {
+                      if (!self.isMobile) {        
+                        document.querySelector('.mySF-modal-right-section').style.display = 'none';
+                      } else {
+                        document.getElementById("mySF-input").style.display = "none";
+                      }
+                      document.querySelector('.mySF-success').style.display = "none";
+                      document.querySelector('.mySF-error').style.display = "flex";
+                      document.querySelector(".mySF-back-button").style.visibility = "visible";
+                      document.querySelector(".mySF-error-text").textContent = "Dein Fuß ist leider zu eng";
+                      }
             
       } catch (error) {
         //console.error('Error parsing response:', error);
