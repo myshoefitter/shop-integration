@@ -570,7 +570,7 @@ class MySF {
           document.querySelector('.mySF-success').style.display = "none";
           document.querySelector('.mySF-error').style.display = "flex";
           document.querySelector(".mySF-back-button").style.visibility = "visible";
-          document.querySelector(".mySF-error-text").textContent = "Dieser Schuhmodel exisitiert nicht";
+          document.querySelector(".mySF-error-text").textContent = translations[this.currentLanguage].errorNoModel;
           }
 
           if(responseBody.exitStatus === "WARN: SCAN_CODE NOT FOUND IN DATABANK") {
@@ -582,7 +582,7 @@ class MySF {
             document.querySelector('.mySF-success').style.display = "none";
             document.querySelector('.mySF-error').style.display = "flex";
             document.querySelector(".mySF-back-button").style.visibility = "visible";
-            document.querySelector(".mySF-error-text").textContent = "Diese Scan-ID existiert nicht";
+            document.querySelector(".mySF-error-text").textContent = translations[this.currentLanguage].errorNoID;
             }
 
             if(responseBody.exitStatus === "WARN: SIZE NOT FOUND AFTER FILTER") {
@@ -594,7 +594,7 @@ class MySF {
               document.querySelector('.mySF-success').style.display = "none";
               document.querySelector('.mySF-error').style.display = "flex";
               document.querySelector(".mySF-back-button").style.visibility = "visible";
-              document.querySelector(".mySF-error-text").textContent = "Dein Fuß passt leider in die aktuell vorhandenen Größen nicht";
+              document.querySelector(".mySF-error-text").textContent = translations[this.currentLanguage].errorNoFit;
               }
 
               if(responseBody.exitStatus === "WARN: FOOT TOO SMALL") {
@@ -606,7 +606,7 @@ class MySF {
                 document.querySelector('.mySF-success').style.display = "none";
                 document.querySelector('.mySF-error').style.display = "flex";
                 document.querySelector(".mySF-back-button").style.visibility = "visible";
-                document.querySelector(".mySF-error-text").textContent = "Dein Fuß ist leider zu klein";
+                document.querySelector(".mySF-error-text").textContent = translations[this.currentLanguage].errorTooSmall;
                 }
                 
                 if(responseBody.exitStatus === "WARN: FOOT TOO LARGE") {
@@ -618,7 +618,7 @@ class MySF {
                   document.querySelector('.mySF-success').style.display = "none";
                   document.querySelector('.mySF-error').style.display = "flex";
                   document.querySelector(".mySF-back-button").style.visibility = "visible";
-                  document.querySelector(".mySF-error-text").textContent = "Dein Fuß ist leider zu groß";
+                  document.querySelector(".mySF-error-text").textContent = translations[this.currentLanguage].errorTooLarge;
                   }
                   if(responseBody.exitStatus === "WARN: FOOT TOO WIDE") {
                     if (!self.isMobile) {        
@@ -629,7 +629,7 @@ class MySF {
                     document.querySelector('.mySF-success').style.display = "none";
                     document.querySelector('.mySF-error').style.display = "flex";
                     document.querySelector(".mySF-back-button").style.visibility = "visible";
-                    document.querySelector(".mySF-error-text").textContent = "Dein Fuß ist leider zu Breit";
+                    document.querySelector(".mySF-error-text").textContent = translations[this.currentLanguage].errorTooWide;
                     }
                     
                     if(responseBody.exitStatus === "WARN: FOOT TOO NARROW") {
@@ -641,7 +641,7 @@ class MySF {
                       document.querySelector('.mySF-success').style.display = "none";
                       document.querySelector('.mySF-error').style.display = "flex";
                       document.querySelector(".mySF-back-button").style.visibility = "visible";
-                      document.querySelector(".mySF-error-text").textContent = "Dein Fuß ist leider zu eng";
+                      document.querySelector(".mySF-error-text").textContent = translations[this.currentLanguage].errorTooNarrow;
                       }
             
       } catch (error) {
@@ -655,7 +655,7 @@ class MySF {
         document.querySelector('.mySF-success').style.display = "none";
         document.querySelector('.mySF-error').style.display = "flex";
         document.querySelector(".mySF-back-button").style.visibility = "visible";
-        document.querySelector(".mySF-error-text").textContent = "Wir hatten ein unerwartetes problem, bitte versuche es erneut";
+        document.querySelector(".mySF-error-text").textContent = translations[this.currentLanguage].errorGlobal;
       }
     }).catch(function(error) {
       console.log(error); // Failure
@@ -687,7 +687,7 @@ class MySF {
         }
         document.querySelector('.mySF-success').style.display = "flex";
         document.querySelector(".mySF-back-button").style.visibility = "visible";
-        document.querySelector(".mySF-success-text").textContent = "E-mail mit Zugangsdaten wurde erfolgreich gesendet";
+        document.querySelector(".mySF-success-text").textContent = translations[this.currentLanguage].successEmail;
       }, error => {
         console.log(error); // Failure
         if (!self.isMobile) {        
@@ -698,7 +698,7 @@ class MySF {
         document.querySelector('.mySF-success').style.display = "none";
         document.querySelector('.mySF-error').style.display = "flex";
         document.querySelector(".mySF-back-button").style.visibility = "visible";
-        document.querySelector(".mySF-error-text").textContent = "Diese E-mail existiert nicht";
+        document.querySelector(".mySF-error-text").textContent = translations[this.currentLanguage].errorNoEmail;
       });
   }
 
