@@ -407,7 +407,7 @@ class MySF {
 
     this.qrRadius = 0;
     this.qreEcLevel = "L";
-    this.qrFill = "#022652";
+    this.qrFill = "#137d79";
 
     this.url;
     this.hostURL = window.location.protocol + "//" + window.location.host;
@@ -706,7 +706,7 @@ class MySF {
     var box = document.querySelector(".mySF-qr-background");
     if (!this.isMobile) {
       document.querySelector("#mySF-qr-code").innerHTML = "";
-      var x = box.clientWidth * .8;
+      var x = box.clientWidth * 1.2;
       QrCreator.render({
           text: this.url,
           radius: this.qrRadius, // 0.0 to 0.5
@@ -859,8 +859,8 @@ class MySF {
           background-color: white;
           box-shadow: 0 0 40px 10px rgba(0, 0, 0, 0.1);
           margin: auto;
-          padding: 20px;
-          border-radius: 40px;
+          padding: 5px;
+          border-radius: 0px;
           font-family: 'Montserrat', sans-serif;
           color: #333333;
         }
@@ -878,10 +878,11 @@ class MySF {
         }
       
         .mySF-modal-close {
-          color: #ff7d4f;
+          color: #137d79;
           font-size: 46px;
           font-weight: 300;
           cursor: pointer;
+          margin-right: 20px;
         }
       
         .mySF-modal-close:hover,
@@ -892,7 +893,7 @@ class MySF {
         }
       
         .mySF-big-circle {
-          background: linear-gradient(#ff7d4f10, #ff7d4f40);
+          background: transparent;
           border-radius: 50%;
           height: 300px;
           position: absolute;
@@ -903,7 +904,7 @@ class MySF {
         }
       
         .mySF-big-circle-top {
-          background: linear-gradient(#ff7d4f10, #ff7d4f40);
+          background: transparent;
           border-radius: 50%;
           height: 200px;
           position: absolute;
@@ -933,7 +934,7 @@ class MySF {
           width: -webkit-fill-available;
           border: 1px solid #d2d9e4;
           padding: 1px;
-          border-radius: 20px;
+          border-radius: 0px;
           background: #fff;
           margin-bottom: 1em;
         }
@@ -944,7 +945,7 @@ class MySF {
           padding-top: 10px;
           padding-bottom: 10px;
           padding-left: 16px;
-          border-radius: 20px;
+          border-radius: 0px;
           background-color: transparent;
           font-family: inherit;
         }
@@ -995,20 +996,20 @@ class MySF {
           display: block;
           margin: auto;
           width: 100%;
-          background-color: #ff7d4f;
+          background-color: #137d79;
           padding: 12px;
           font-family: 'Montserrat', sans-serif;
           font-size: 14px;
           color: #ffffff;
-          border-radius: 20px;
-          border: 1px solid #ff7d4f;
+          border-radius: 0px;
+          border: 1px solid #137d79;
           margin-bottom: 1em;
         }
       
         .mySF-modal-continue-button:active {
           background-color: white;
           box-shadow: 0px 0px 32px 0 #f8f8f850;
-          color: #ff7d4f;
+          color: #137d79;
           transition-duration: 250ms;
         }
       
@@ -1019,7 +1020,7 @@ class MySF {
           padding: 12px;
           font-family: 'Montserrat', sans-serif;
           font-size: 14px;
-          color: #ff7d4f;
+          color: #137d79;
           border: 0;
           margin-bottom: 1em;
         }
@@ -1035,15 +1036,15 @@ class MySF {
           padding: 12px;
           font-family: 'Montserrat', sans-serif;
           font-size: 14px;
-          color: #ff7d4f;
-          border-radius: 20px;
-          border: 1px solid #ff7d4f;
+          color: #137d79;
+          border-radius: 0px;
+          border: 1px solid #137d79;
           margin-bottom: 1em;
         }
       
         .mySF-circle {
           position: relative;
-          background: #ff7d4f;
+          background: #137d79;
           width: fit-content;
           width: 160px;
           height: 160px;
@@ -1058,7 +1059,7 @@ class MySF {
           outline: none;
           margin-top: 10px;
           box-shadow: 0 0 5px rgba(0, 0, 0, 0.16);
-          border-radius: 10px;
+          border-radius: 0px;
           min-height: 30px;
           padding: 0 20px;
           margin-right: 10px;
@@ -1091,7 +1092,7 @@ class MySF {
       
         .mySF-circle {
           position: relative;
-          background: #ff7d4f;
+          background: #137d79;
           /* This is a placeholder color, adjust accordingly */
           width: 160px;
           height: 160px;
@@ -1128,7 +1129,7 @@ class MySF {
           --background: transparent;
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
-          border-radius: 16px;
+          border-radius: 0px;
           font-size: 14px;
           box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
         }
@@ -1138,7 +1139,7 @@ class MySF {
           --background: transparent;
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
-          border-radius: 16px;
+          border-radius: 0px;
           box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
         }
       
@@ -1225,7 +1226,7 @@ class MySF {
         }
       
         .mySF-back-button svg {
-          fill: #ff7d4f;
+          fill: #137d79;
           width: 100%;
           height: 100%;
         }
@@ -1250,7 +1251,7 @@ class MySF {
           width: fit-content;
           object-fit: contain;
           /* Maintain aspect ratio */
-          border-radius: 30px;
+          border-radius: 0px;
           overflow: hidden;
           background-image: url('https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-img-en/view?project=mysf');
           background-size: cover;
@@ -1263,7 +1264,7 @@ class MySF {
           width: fit-content;
           object-fit: contain;
           /* Maintain aspect ratio */
-          border-radius: 30px;
+          border-radius: 0px;
           overflow: hidden;
           background-image: url('https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-img-de/view?project=mysf');
           background-size: cover;
@@ -1617,8 +1618,8 @@ class MySF {
         background-color: white;
         box-shadow: 0 0 40px 10px rgba(0, 0, 0, 0.1);
         margin: auto;
-        padding: 20px;
-        border-radius: 40px;
+        padding: 5px;
+        border-radius: 0px;
         font-family: 'Montserrat', sans-serif;
         color: #333333;
       }
@@ -1631,10 +1632,11 @@ class MySF {
       }
     
       .mySF-modal-close {
-        color: #ff7d4f;
+        color: #137d79;
         font-size: 46px;
         font-weight: 300;
         cursor: pointer;
+        margin-right: 20px;
       }
     
       .mySF-modal-close:hover,
@@ -1675,14 +1677,14 @@ class MySF {
       }
     
       .mySF-modal-continue-button {
-        background-color: #ff7d4f;
+        background-color: #137d79;
         padding: 10px 20px;
         font-family: 'Montserrat', sans-serif;
         font-size: 12px;
         font-weight: 600;
         color: #ffffff;
-        border-radius: 20px;
-        border: 1px solid #ff7d4f;
+        border-radius: 0px;
+        border: 1px solid #137d79;
         margin-bottom: 1em;
       }
     
@@ -1690,7 +1692,7 @@ class MySF {
         cursor: pointer;
         background-color: transparent;
         box-shadow: 0px 0px 32px 0 #f8f8f850;
-        color: #ff7d4f;
+        color: #137d79;
         transition-duration: 250ms;
       }
     
@@ -1700,9 +1702,9 @@ class MySF {
         font-family: 'Montserrat', sans-serif;
         font-size: 12px;
         font-weight: 600;
-        color: #ff7d4f;
-        border-radius: 20px;
-        border: 1px solid #ff7d4f;
+        color: #137d79;
+        border-radius: 0px;
+        border: 1px solid #137d79;
         margin-bottom: 1em;
         margin-left: 20px;
       }
@@ -1728,7 +1730,7 @@ class MySF {
         width: -webkit-fill-available;
         border: 1px solid #d2d9e4;
         padding: 1px;
-        border-radius: 20px;
+        border-radius: 0px;
         background: #fff;
       }
     
@@ -1739,7 +1741,7 @@ class MySF {
         padding-top: 10px;
         padding-bottom: 10px;
         padding-left: 16px;
-        border-radius: 20px;
+        border-radius: 0px;
         background-color: transparent;
         font-family: inherit;
         font-weight: 600;
@@ -1768,19 +1770,19 @@ class MySF {
       }
     
       .mySF-submit-btn {
-        background-color: #ff7d4f;
+        background-color: #137d79;
         font-size: 14px;
         font-weight: 600;
         color: #ffffff;
-        border-radius: 20px;
-        border: 1px solid #ff7d4f;
+        border-radius: 0px;
+        border: 1px solid #137d79;
       }
     
       .mySF-submit-btn:hover {
         background-color: white;
-        border: 1px solid #ff7d4f;
+        border: 1px solid #137d79;
         box-shadow: 0px 0px 32px 0 #f8f8f850;
-        color: #ff7d4f;
+        color: #137d79;
         cursor: pointer;
         transition-duration: 250ms;
       }
@@ -1806,7 +1808,7 @@ class MySF {
       }
     
       .mySF-big-circle {
-        background: linear-gradient(#ff7d4f10, #ff7d4f40);
+        background: transparent;
         border-radius: 50%;
         height: 300px;
         position: absolute;
@@ -1817,7 +1819,7 @@ class MySF {
       }
     
       .mySF-qr-circle {
-        background: linear-gradient(#ff7d4f10, #ff7d4f30);
+        background: transparent;
         border-radius: 50%;
         height: 300px;
         width: 300px;
@@ -1826,12 +1828,12 @@ class MySF {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-top: -100px;
+        margin-top: -40px;
       }
     
       .mySF-qr-background {
-        background-color: white;
-        box-shadow: 0 0 10px #0003;
+        background-color: transparent;
+        
         border-radius: 20px;
         width: 70%;
         height: 70%;
@@ -1851,7 +1853,7 @@ class MySF {
       .mySF-cut-border {
         position: relative;
         display: inline-block;
-        border: 2px solid #022652;
+        border: 0px solid #137d79;
         width: 90%;
         height: 90%;
         border-radius: 10px;
@@ -1883,7 +1885,7 @@ class MySF {
         outline: none;
         margin-top: 10px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.16);
-        border-radius: 10px;
+        border-radius: 0px;
         min-height: 30px;
         padding: 0 15px;
         margin-right: 10px;
@@ -1917,7 +1919,7 @@ class MySF {
     
       .mySF-circle {
         position: relative;
-        background: #ff7d4f;
+        background: #137d79;
         /* This is a placeholder color, adjust accordingly */
         width: 160px;
         height: 160px;
@@ -1955,7 +1957,7 @@ class MySF {
         --background: transparent;
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        border-radius: 16px;
+        border-radius: 0px;
         font-size: 14px;
         box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
       }
@@ -1965,7 +1967,7 @@ class MySF {
         --background: transparent;
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        border-radius: 16px;
+        border-radius: 0px;
         box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
       }
     
@@ -2053,7 +2055,7 @@ class MySF {
       }
     
       .mySF-back-button svg {
-        fill: #ff7d4f;
+        fill: #137d79;
         width: 100%;
         height: 100%;
       }
@@ -2070,7 +2072,7 @@ class MySF {
         width: fit-content;
         object-fit: contain;
         /* Maintain aspect ratio */
-        border-radius: 30px;
+        border-radius: 0px;
       }
     
       .mySF-video-de {
@@ -2079,7 +2081,7 @@ class MySF {
         width: fit-content;
         object-fit: contain;
         /* Maintain aspect ratio */
-        border-radius: 30px;
+        border-radius: 0px;
       }
     
       #mySF-title {
