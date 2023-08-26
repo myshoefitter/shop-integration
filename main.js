@@ -1462,13 +1462,11 @@ class MySF {
           <div id="mySF-video">
             <div id="mySF-video-overlay">
               <video class="mySF-video-en" controls>
-                <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-webm/view?project=mysf" type="video/webm">
-                <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-mp4/view?project=mysf" type="video/mp4">
+                <source src="https://banner.myshoefitter.com/video/video-guide-en.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
               <video class="mySF-video-de" controls>
-                <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-de-webm/view?project=mysf" type="video/webm">
-                <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-de-mp4/view?project=mysf" type="video/mp4">
+                <source src=" https://banner.myshoefitter.com/video/video-guide-de.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -2320,13 +2318,11 @@ class MySF {
         <div id="mySF-video">
           <div id="mySF-video-overlay">
             <video class="mySF-video-en" controls>
-              <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-webm/view?project=mysf" type="video/webm">
-              <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-en-mp4/view?project=mysf" type="video/mp4">
+              <source src=" https://banner.myshoefitter.com/video/video-guide-en.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
             <video class="mySF-video-de" controls style="display:none">
-              <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-de-webm/view?project=mysf" type="video/webm">
-              <source src="https://api.myshoefitter.com/v1/storage/buckets/pwa-assets/files/banner-video-de-mp4/view?project=mysf" type="video/mp4">
+              <source src="https://banner.myshoefitter.com/video/video-guide-de.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
