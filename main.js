@@ -2317,11 +2317,11 @@ class MySF {
       </div>
         <div id="mySF-video">
           <div id="mySF-video-overlay">
-            <video class="mySF-video-en" controls>
+            <video class="mySF-video-en" preload="metadata" controls>
               <source src=" https://banner.myshoefitter.com/video/video-guide-en.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
-            <video class="mySF-video-de" controls style="display:none">
+            <video class="mySF-video-de" preload="metadata" controls>
               <source src="https://banner.myshoefitter.com/video/video-guide-de.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
