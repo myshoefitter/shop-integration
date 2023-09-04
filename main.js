@@ -2491,6 +2491,7 @@ class MySF {
   }
 
   reload() {
+    console.log('reloading..');
     if (document.querySelector('#mySF-modal-overlay')) {
       document.querySelector('#mySF-modal-overlay').remove();
     }
@@ -2499,4 +2500,5 @@ class MySF {
 }
 
 // Instanz der Klasse erstellen und verwenden
-const mySFInstance = new MySF();
+const mySF = new MySF();
+mySF.reload();
