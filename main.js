@@ -418,6 +418,13 @@ class MySF {
 
     console.log('mySHOEFITTER init');
 
+    this.reload = () => {
+      console.log("reloading..");
+      if (document.querySelector("#mySF-modal-overlay")) {
+        document.querySelector("#mySF-modal-overlay").remove();
+      }
+      this.runScript();
+    };
 
     // EventListener und andere Initialisierungen
     this.checkDevice();
@@ -2499,7 +2506,8 @@ class MySF {
   }
 }
 
-// Instanz der Klasse erstellen und verwenden
 let mySF = new MySF();
 console.log(mySF);
-mySF.reload();
+
+const mySF_reload = mySF.reload;
+console.log(mySF_reload);
