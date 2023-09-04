@@ -2498,16 +2498,19 @@ class MySF {
   }
 
   reload() {
+    self= this;
     console.log('reloading..');
     if (document.querySelector('#mySF-modal-overlay')) {
       document.querySelector('#mySF-modal-overlay').remove();
     }
+    this.updateLanguage(self.currentLanguage);
     this.runScript();
   }
 }
 
 let mySF = new MySF();
 console.log(mySF);
+mySF.reload()
 
-const mySF_reload = mySF.reload;
+const mySF_reload = mySF.reload.bind(mySF);
 console.log(mySF_reload);
