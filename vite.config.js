@@ -5,7 +5,9 @@ export default {
   build: {
     minify: 'terser',
     terserOptions: {
-      mangle: false,
+      mangle: {
+        reserved: ['mySF','mySFModal', 'reload', 'runScript'],
+      },
     },
     cssCodeSplit: false,
     rollupOptions: {

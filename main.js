@@ -2500,5 +2500,6 @@ class MySF {
 }
 
 // Instanz der Klasse erstellen und verwenden
-const mySF = new MySF();
+let mySF = new MySF();
+console.log(mySF);
 mySF.reload();
