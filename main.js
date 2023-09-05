@@ -423,7 +423,9 @@ class MySF {
       if (document.querySelector("#mySF-modal-overlay")) {
         document.querySelector("#mySF-modal-overlay").remove();
       }
+      this.checkDevice();
       this.runScript();
+      this.updateLanguage(navigator.language.slice(0, 2));
     };
 
     // EventListener und andere Initialisierungen
@@ -2503,13 +2505,13 @@ class MySF {
     if (document.querySelector('#mySF-modal-overlay')) {
       document.querySelector('#mySF-modal-overlay').remove();
     }
-    this.updateLanguage(self.currentLanguage);
+    this.checkDevice();
     this.runScript();
+    this.updateLanguage(navigator.language.slice(0, 2));
   }
 }
 
 let mySF = new MySF();
-console.log(mySF);
 mySF.reload()
 
 const mySF_reload = mySF.reload.bind(mySF);
