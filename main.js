@@ -521,7 +521,7 @@ class MySF {
         screen_width: screen.width,
         screen_height: screen.height,
         user_agent: navigator.userAgent,
-        event_name: 'Button Load',
+        event_name: eventName,
         event_duration: 0,
         event_meta: {
         sessionId: this.config.sessionId,
