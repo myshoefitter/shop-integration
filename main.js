@@ -578,7 +578,7 @@ class MySF {
     };
     const json = JSON.stringify(urlObj);
     const encoded = btoa(json);
-    this.url = `https://app.myshoefitter.com/?hash=${encoded}`;
+    this.url = `https://app.myshoefitter.com/?hash=${encoded}&ref=${location.href}`;
   }
 
   updateLanguage(language) {
